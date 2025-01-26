@@ -23,7 +23,7 @@ void Player::addItemToInventory(Item nItem) {
 
 void Player::outputAllItemsInInventory() {
 	for (int i = 0; i < this->playerInventory.size(); i++) {
-		this->playerInventory[i];//ADD ITEM DESCRIPTIONS HERE-------------------------------------------------------
+		this->playerInventory[i].get_Item_Description();
 	}
 	
 }

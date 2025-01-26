@@ -3,41 +3,42 @@
 
 using namespace std;
 
-
-Location::Location(string lName, string lDesc, string locNotLitDesc, string locDistDesc, bool isLit, Item item, bool blocked, string blockedBy) {
+Location::Location(string lName, string lDesc, string locNotLitDesc, string locDistDesc, bool isLit, Item item, string locSearchDesc, bool blocked, string blockedBy) {
 	this->locName = lName;
 	this->locDescription = lDesc;
-	this->locNotLightDescription = locNotLitDesc;
+	this->locNoLightDescription = locNotLitDesc;
 	this->locDistantDescription = locDistDesc;
-	this->isLight - isLit;
+	this->isLight = isLit;
 	this->locItems = item;
+	this->roomSearchDescription = locSearchDesc;
 	this->isPathBlocked = blocked;
-	this->pathBlockedBy = blockedBy;
-	//this->roomSearch = ADD DESCRITPION OF THE ITEM TO THIS 
+	this->pathBlockedByObstacle = blockedBy;
+	this->pathways = {};
+	
 }
 
-string Location::getName() {
+string Location::get_Name() {
 	return locName;
 }
 
-string Location::getLocDescription() {
+string Location::get_Loc_Description() {
 	return locDescription;
 }
 
-string Location::getNotLitDescription() {
-	return locNotLightDescription;
+string Location::get_Not_Lit_Description() {
+	return locNoLightDescription;
 }
 
-string Location::getLocDistantDescription() {
+string Location::get_Loc_Distant_Description() {
 	return locDistantDescription;
 }
 
-void Location::setIsLight(bool isLit) {
+void Location::set_Is_Light(bool isLit) {
 	this->isLight = isLit;
 }
 
 
-void Location::roomSearch() {
+void Location::room_Search_Description() {
 	if (isLight == true) {
 		//check to see if theres an item
 			//if there is - say its description
@@ -52,16 +53,16 @@ void Location::roomSearch() {
 }
 
 
-void Location::removeItemFromLoc() {
+void Location::remove_Item_From_Loc() {
 	cout << "NOTE ---- ADD REMOVE ITEM FROM LOCATION" << endl; ////////////////////////////////////////////////
 }
-void Location::blockedPath(bool blocked) {
+void Location::blocked_Path(bool blocked) {
 	this->isPathBlocked = blocked;
 }
 
-void Location::addPathway(Location& newPathway) {
+void Location::add_Pathway(Location& newPathway) {
 	this->pathways.push_back(newPathway);
 }
-vector<Location&> Location::getPathways() {
+vector<Location> Location::get_Pathways() {
 	return pathways;
 }

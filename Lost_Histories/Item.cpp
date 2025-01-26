@@ -2,20 +2,24 @@
 
 using namespace std;
 
-Item::Item(string nName, string nDesc, Obstacle linkedObs) {
-	this->itemName = nName;
-	this->itemDescription = nDesc;
-	this->linkedObstacleForItem = linkedObs;
+Item::Item() {
+	this->itemName = "iName";
+	this->itemDescription = "iDesc";
 	this->isDestroyed = false;
 }
 
-string Item::getItemName() {
+void Item::set_Item_Defaults(string iName, string iDesc) {
+	this->itemName = iName;
+	this->itemDescription = iDesc;
+}
+
+string Item::get_Item_Name() {
 	return this->itemName;
 }
 
-string Item::getItemDescription() {
+string Item::get_Item_Description() {
 	return this->itemDescription;
 }
-void Item::destroyItem() {
+void Item::destroy_Item() {
 	this->isDestroyed = true;
 }

@@ -2,6 +2,8 @@
 #include <string>
 #include "Obstacle.h"
 
+using namespace std;
+
 class Item
 {
 
@@ -25,33 +27,38 @@ private:
 	*	@brief The obstacle that your item is linked to.
 	*	For example, a key might be linked to a specifc door. Private.
 	*/
-	Obstacle linkedObstacleForItem;
+	//Obstacle linkedObstacleForItem;
 
 public:
 	/**
-	*	@brief Constructor for the Item. Requires Item name, description and a linked Obstacle
+	*	@brief Defualt constructor for the Item. 
+	*/
+	Item();
+	//Obstacle iLinkedObs
+
+	/**
+	*	@breif Set defualt name and description for Item
 	*	@param nName The name of the Item, as a String
 	*	@param nDesc The description for the item, as a String
-	*	@param linkedObs The Obstacle that the item is linked to and can be used on, as an Obstacle Class
 	*/
-	Item(string nName, string nDesc, Obstacle linkedObs);
+	void set_Item_Defaults(string iName, string iDesc);
 
 	/**
 	*	@brief Gets the Items name
 	*	@return The name of the Item as a String
 	*/
-	string getItemName();
+	string get_Item_Name();
 
 	/**
 	*	@brief Gets the Items description
 	*	@return The Items description as a String
 	*/
-	string getItemDescription();
+	string get_Item_Description();
 
 	/**
 	*	@brief Changes the item to be destroyed
 	*/
-	void destroyItem();
+	void destroy_Item();
 
 };
 

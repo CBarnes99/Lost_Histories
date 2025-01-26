@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 class Player
 {
 	
@@ -19,7 +18,7 @@ private:
 	*	@brief The players invventory as a vector of items
 	*/
 	vector<Item> playerInventory;
-
+	
 	/**
 	*	@brief If the player has light, it'll change the location the player is in.
 	*/

@@ -21,7 +21,7 @@ private:
 	/**
 	*	@brief The item that acts as a key to this obstale and allows the playe to pass
 	*/
-	Item obstcaleKey;
+	//Item obstcaleKey;
 
 	/**
 	*	@brief A hint on how to pass this obstacle
@@ -37,25 +37,26 @@ public:
 	*	@param obsKey The key to the obstacle that allows the player to pass through, as an Item Class
 	*	@param obsHint A hint for how to pass the obstacle, as a string
 	*/
-	Obstacle(string obsName, string obsDesc, Item obsKey, string obsHint);
+	Obstacle(string obsName, string obsDesc, string obsHint);
+	//Item obsKey,
 
 	/**
 	*	@brief The obstacles name
 	*	@return The obstacles name returned as a string
 	*/
-	string getObstacleName();
+	string get_Obstacle_Name();
 
 	/**
 	*	@brief The obstacles descripition
 	*	@return The obstacles description returned as a string
 	*/
-	string getObstacleDescription();
+	string get_Obstacle_Description();
 
 	/**
 	*	@brief The hint to bypass this obstacle
 	*	@return The hint to bypass this obstacle returned as a string
 	*/
-	string getObstacleHint();
+	string get_Obstacle_Hint();
 
 };
 
