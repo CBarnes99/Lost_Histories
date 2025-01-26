@@ -57,7 +57,7 @@ private:
 	/**
 	*	@brief A vector of locations that the player cand move to from this location
 	*/
-	vector<Location> pathways;
+	vector<Location*> pathways;
 
 public:
 	/**
@@ -126,7 +126,7 @@ public:
 	*	@brief Displayes the connecting locations from this one
 	*	@return The locations connecting this as a vector of strings
 	*/
-	vector<Location> get_Pathways();
+	vector<Location*> get_Pathways();
 
 
 };

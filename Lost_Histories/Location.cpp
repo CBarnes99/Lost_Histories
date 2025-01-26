@@ -61,8 +61,8 @@ void Location::blocked_Path(bool blocked) {
 }
 
 void Location::add_Pathway(Location& newPathway) {
-	this->pathways.push_back(newPathway);
+	this->pathways.push_back(&newPathway);
 }
-vector<Location> Location::get_Pathways() {
+vector<Location*> Location::get_Pathways() {
 	return pathways;
 }
