@@ -23,10 +23,12 @@ void Player::addItemToInventory(Item nItem) {
 
 void Player::outputAllItemsInInventory() {
 	for (int i = 0; i < this->playerInventory.size(); i++) {
-		this->playerInventory[i].get_Item_Description();
+		if (this->playerInventory[i].is_Item_Destroyed() == true) {
+			this->playerInventory[i].get_Item_Description();
+		}
 	}
-	
 }
+
 void Player::setLight(bool hasLight) {
 	this->hasLight = hasLight;
 	if (this->hasLight == true) {

@@ -67,7 +67,8 @@ public:
 	*	@param locNotLitDesc The Description for the location when the location is not lit, as a String
 	*	@param locDistDesc The Description for the location when viewed from another location, as a String
 	*	@param isLit Is the room lit by default, as a Bool
-	*	@param Item Is there an Item in the room that can be picked up by the player, as an Item class
+	*	@param item Is there an Item in the room that can be picked up by the player, as an Item class
+	*	@param locSearchDesc What is outputed if you search the area for an Item
 	*	@param blocked Is the location blocked by an obstacle, as a Bool
 	*	@param blockedBy What is the location blocked by, as a String
 	*/
@@ -126,8 +127,7 @@ public:
 	*	@brief Displayes the connecting locations from this one
 	*	@return The locations connecting this as a vector of strings
 	*/
-	vector<Location*> get_Pathways();
-
+	void get_Pathways();
 
 };
 

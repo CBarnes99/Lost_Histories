@@ -63,6 +63,9 @@ void Location::blocked_Path(bool blocked) {
 void Location::add_Pathway(Location& newPathway) {
 	this->pathways.push_back(&newPathway);
 }
-vector<Location*> Location::get_Pathways() {
-	return pathways;
+
+void Location::get_Pathways() {
+	for (int i = 0; this->pathways.size() > i; i++) {
+		cout << pathways[i]->get_Loc_Distant_Description();
+	}
 }

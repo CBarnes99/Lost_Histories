@@ -60,5 +60,12 @@ public:
 	*/
 	void destroy_Item();
 
+	/**
+	*	@brief A check to see if the Item is destroyed
+	*	@return The items destroyed value as a Bool
+	*/
+	bool is_Item_Destroyed();
+
+
 };
 
