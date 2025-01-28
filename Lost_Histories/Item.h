@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include "Obstacle.h"
 
 using namespace std;
 
@@ -22,12 +21,6 @@ private:
 	*	@brief If the item is destroyed, it wont be able to be used again. Private.
 	*/
 	bool isDestroyed;
-
-	/**
-	*	@brief The obstacle that your item is linked to.
-	*	For example, a key might be linked to a specifc door. Private.
-	*/
-	//Obstacle linkedObstacleForItem;
 
 public:
 	/**

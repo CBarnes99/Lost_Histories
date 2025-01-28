@@ -19,9 +19,9 @@ private:
 	string obstacleDescription;
 
 	/**
-	*	@brief The item that acts as a key to this obstale and allows the playe to pass
+	*	@brief The item that acts as a key to this obstale and allows the player to pass
 	*/
-	//Item obstcaleKey;
+	string obstacleKeyName;
 
 	/**
 	*	@brief A hint on how to pass this obstacle
@@ -32,12 +32,12 @@ private:
 public:
 	/**
 	*	@brief Constructor for the obstacle
-	*	@param obsName Obstacle name, as a string
-	*	@param obsDesc Obstacle description, as a string
-	*	@param obsKey The key to the obstacle that allows the player to pass through, as an Item Class
-	*	@param obsHint A hint for how to pass the obstacle, as a string
+	*	@param obsName Obstacle name, as a String
+	*	@param obsDesc Obstacle description, as a String
+	*	@param obsKeyName The name of the item that is required to pass the obstacle, as a Item class using get item name method
+	*	@param obsHint A hint for how to pass the obstacle, as a String
 	*/
-	Obstacle(string obsName, string obsDesc, string obsHint);
+	Obstacle(string obsName, string obsDesc, string obsKeyName, string obsHint);
 	//Item obsKey,
 
 	/**
@@ -51,6 +51,12 @@ public:
 	*	@return The obstacles description returned as a string
 	*/
 	string get_Obstacle_Description();
+
+	/**
+	*	@brief Sets the item key for the obstacle
+	*	@param itemKey The Item that opens/unlocks the obstacle, as an Item object
+	*/
+	void set_Obstacle_Key_Name(Item itemKey);
 
 	/**
 	*	@brief The hint to bypass this obstacle

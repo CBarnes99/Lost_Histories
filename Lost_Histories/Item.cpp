@@ -22,6 +22,7 @@ string Item::get_Item_Description() {
 }
 void Item::destroy_Item() {
 	this->isDestroyed = true;
+
 }
 
 bool Item::is_Item_Destroyed() {
