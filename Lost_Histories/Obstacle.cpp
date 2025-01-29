@@ -7,14 +7,18 @@ Obstacle::Obstacle(string obsName, string obsDesc, string obsKey, string obsHint
 	this->obstacleHint = obsHint;
 }
 
-string Obstacle::get_Obstacle_Name() {
+string Obstacle::get_obstacle_name() {
 	return obstacleName;
 }
 
-string Obstacle::get_Obstacle_Description() {
+string Obstacle::get_obstacle_description() {
 	return obstacleDescription;
 }
 
-string Obstacle::get_Obstacle_Hint() {
+string Obstacle::get_obstacle_hint() {
 	return obstacleHint;
+}
+
+string Obstacle::get_obstacle_key() {
+	return this->obstcaleKey;
 }

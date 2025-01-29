@@ -79,69 +79,69 @@ public:
 	*	@brief changes if theres light in the area
 	*	@param light True if theres light in the area, false if there is no longer light, as a bool
 	*/
-	void set_Light_In_Area(bool light);
+	void set_light_in_area(bool light);
 
 	/**
 	*	@brief Set an item into the area
 	*	@param lItem The Item that is now in that location, as an Item object
 	*/
-	void set_Item_In_Location(Item& lItem);
+	void set_item_in_location(Item& lItem);
 
 	/**
 	*	@brief remove the item from the location
 	*/
-	void set_Item_No_Longer_In_Location();
+	void set_item_no_longer_in_location();
 
 	/**
 	*	@brief Set that the path is blocked by an obstacle
 	*/
-	void set_Location_Path_Is_Blocked(Obstacle& obs);
+	void set_location_path_is_blocked(Obstacle& obs);
 
 	/**
 	*	@brief Sets the location unblocked so you can now pass through
 	*/
-	void set_Location_Unblocked();
+	void set_location_unblocked();
 
 	/**
 	*	@brief Gets the Locations name
 	*	@return The name of the location as a String
 	*/
-	string get_Loc_Name();
+	string get_loc_name();
 
 	/**
 	*	@brief Gets the Locations description
 	*	@return The locations description as a String
 	*/
-	string get_Loc_Description();
+	string get_loc_description();
 
 	/**
 	*	@brief Gets the Locations description if the location is not lit up
 	*	@return The locations description as a String
 	*/
-	string get_Not_Lit_Description();
+	string get_not_lit_description();
 
 	/**
 	*	@brief Gets the Locations description from a connecting location
 	*	@return The distant location description as a String
 	*/
-	string get_Loc_Distant_Description();
+	string get_loc_distant_description();
 
 
 	/**
 	*	@brief Searches the current location you are in
 	*/
-	void search_Location();
+	void search_location();
 
 	/**
 	*	@brief Adds a pathway to this location connecting to another location
 	*	@param A location object that is the new path, as a Location object
 	*/
-	void add_Pathway(Location& newPathway);
+	void add_pathway(Location& newPathway);
 
 	/**
 	*	@brief Displayes the connecting locations from this one
 	*	@return The locations connecting this as a vector of strings
 	*/
-	vector<Location*> get_Pathways();
+	vector<Location*> get_pathways();
 };
 

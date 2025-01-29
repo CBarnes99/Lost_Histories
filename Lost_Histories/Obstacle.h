@@ -43,19 +43,24 @@ public:
 	*	@brief The obstacles name
 	*	@return The obstacles name returned as a string
 	*/
-	string get_Obstacle_Name();
+	string get_obstacle_name();
 
 	/**
 	*	@brief The obstacles descripition
 	*	@return The obstacles description returned as a string
 	*/
-	string get_Obstacle_Description();
+	string get_obstacle_description();
 
 	/**
 	*	@brief The hint to bypass this obstacle
 	*	@return The hint to bypass this obstacle returned as a string
 	*/
-	string get_Obstacle_Hint();
+	string get_obstacle_hint();
+
+	/**
+	*	@brief Get the key to the obstacle
+	*/
+	string get_obstacle_key();
 
 };
 

@@ -22,23 +22,23 @@ Location::Location(string lName, string lDesc, string lDistDesc) {
 }
 
 
-string Location::get_Loc_Name() {
+string Location::get_loc_name() {
 	return this->locName;
 }
 
-string Location::get_Loc_Description() {
+string Location::get_loc_description() {
 	return this->locDescription;
 }
 
-string Location::get_Not_Lit_Description() {
+string Location::get_not_lit_description() {
 	return locNoLightSearchDescription;
 }
 
-string Location::get_Loc_Distant_Description() {
+string Location::get_loc_distant_description() {
 	return this->locDistantDescription;
 }
 
-void Location::search_Location() {
+void Location::search_location() {
 	if (isLight == true) {
 		//check to see if theres an item
 			//if there is - say its description
@@ -52,34 +52,34 @@ void Location::search_Location() {
 	}
 }
 
-void Location::set_Light_In_Area(bool light) {
+void Location::set_light_in_area(bool light) {
 	this->isLight = light;
 }
 
-void Location::set_Item_No_Longer_In_Location() {
+void Location::set_item_no_longer_in_location() {
 	this->isItemInArea = false;
 	this->roomSearchDescription = "You examine the area but theres nothing of note in the area.";
 	this->locNoLightSearchDescription = "Its too dark to examine the area. But you remember you've already searched this location before.";
 }
 
-void Location::add_Pathway(Location& newPathway) {
+void Location::add_pathway(Location& newPathway) {
 	pathways.push_back(&newPathway);
 }
 
-void Location::set_Location_Path_Is_Blocked(Obstacle& obs) {
+void Location::set_location_path_is_blocked(Obstacle& obs) {
 	this->isPathBlocked = true;
-	this->pathBlockedByObstacle = obs.get_Obstacle_Name();
+	this->pathBlockedByObstacle = obs.get_obstacle_name();
 }
 
-void Location::set_Location_Unblocked() {
+void Location::set_location_unblocked() {
 	this->isPathBlocked = false;
 }
-vector<Location*> Location::get_Pathways() {
+vector<Location*> Location::get_pathways() {
 	return pathways;
 }
 
-void Location::set_Item_In_Location(Item& lItem) {
+void Location::set_item_in_location(Item& lItem) {
 	this->isItemInArea = true;
 	this->locItems = lItem;
-	this->roomSearchDescription = this->locItems.get_Item_Search_Description();
+	this->roomSearchDescription = this->locItems.get_item_search_description();
 }

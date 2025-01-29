@@ -38,28 +38,28 @@ public:
 	/**
 	*	@brief Set the players name
 	*/
-	void set_Player_Name(string nName);
+	void set_player_name(string nName);
 
 	/**
 	*	@brief Gets the players name
 	*	@return The players name returned as a string
 	*/
-	string get_Player_Name();
+	string get_player_name();
 
 	/**
 	*	@brief Adds the item found within the location to the players inventory
 	*/
-	void add_Item_To_Inventory(Item nItem);
+	void add_item_to_inventory(Item nItem);
 
 	/**
 	*	@brief Outputs all the items in the players inventory
 	*/
-	void output_All_Items_In_Inventory();
+	void output_all_items_in_inventory();
 
 	/**
 	*	@brief Sets the players light soruce to true or false
 	*/
-	void set_Light(bool hasLight);
+	void set_light(bool hasLight);
 
 
 };

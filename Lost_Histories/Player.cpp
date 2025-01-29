@@ -9,25 +9,25 @@ Player::Player() {
 	this->hasLight = false;
 }
 
-void Player::set_Player_Name(string nName) {
+void Player::set_player_name(string nName) {
 	this->playerName = nName;
 }
 
-string Player::get_Player_Name() {
+string Player::get_player_name() {
 	return playerName;
 }
 
-void Player::add_Item_To_Inventory(Item nItem) {
+void Player::add_item_to_inventory(Item nItem) {
 	playerInventory.push_back(nItem);
 }
 
-void Player::output_All_Items_In_Inventory() {
+void Player::output_all_items_in_inventory() {
 	for (int i = 0; i < this->playerInventory.size(); i++) {
 		this->playerInventory[i];//ADD ITEM DESCRIPTIONS HERE-------------------------------------------------------
 	}
-	
 }
-void Player::set_Light(bool hasLight) {
+
+void Player::set_light(bool hasLight) {
 	this->hasLight = hasLight;
 	if (this->hasLight == true) {
 		cout << "You've lightend up the room" << endl;

@@ -21,22 +21,23 @@ int main()
 
 
     Player player = Player();
-    player.set_Player_Name("Steve");
-
+    player.set_player_name("Steve");
 
     Item rustyKey = Item();
-    rustyKey.set_Item_Defaults("Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.");
+    rustyKey.set_item_defaults("Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.");
 
-    Obstacle door = Obstacle("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily.", rustyKey.get_Item_Name(), "The key hole seems in tact. Maybe theres a key around here.");
+    Obstacle door = Obstacle("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily.", rustyKey.get_item_name(), "The key hole seems in tact. Maybe theres a key around here.");
     Location bedroom = Location("Bedroom", "A small bedroom that looks like a childs play room.", "Childs Bedroom");
     Location hallway = Location("Hallway", "A hallway with multiple connecting doors.", "Hallway");
 
-    bedroom.add_Pathway(hallway);
-    bedroom.set_Item_In_Location(rustyKey);
-    bedroom.set_Light_In_Area(true);
 
-    hallway.add_Pathway(bedroom);
-    hallway.set_Location_Path_Is_Blocked(door);
+    bedroom.add_pathway(hallway);
+    bedroom.set_item_in_location(rustyKey);
+    bedroom.set_light_in_area(true);
+
+    hallway.add_pathway(bedroom);
+    hallway.set_location_path_is_blocked(door);
+
 
     Location& curruntLocation = bedroom;
     int userInput;
@@ -44,12 +45,12 @@ int main()
 
     while (true) {
 
-        cout << "You are at --- " << curruntLocation.get_Loc_Name() << endl;
-        cout << curruntLocation.get_Loc_Description() << endl;
+        cout << "You are at --- " << curruntLocation.get_loc_name() << endl;
+        cout << curruntLocation.get_loc_description() << endl;
 
         cout << '\n' << "You can see these (Enter number to travel)" << endl;
-        for (int i = 0; i < curruntLocation.get_Pathways().size(); i++) {
-            cout << "[ " << i << " ] " << curruntLocation.get_Pathways()[i]->get_Loc_Distant_Description() << endl;
+        for (int i = 0; i < curruntLocation.get_pathways().size(); i++) {
+            cout << "[ " << i << " ] " << curruntLocation.get_pathways()[i]->get_loc_distant_description() << endl;
         }
         cout << ">>>";
         cin >> userInput;
