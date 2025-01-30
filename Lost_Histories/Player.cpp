@@ -23,7 +23,9 @@ void Player::add_item_to_inventory(Item nItem) {
 
 void Player::output_all_items_in_inventory() {
 	for (int i = 0; i < this->playerInventory.size(); i++) {
-		this->playerInventory[i];//ADD ITEM DESCRIPTIONS HERE-------------------------------------------------------
+		if (this->playerInventory[i].is_item_destroyed() == false) {
+			this->playerInventory[i].get_item_description();
+		}
 	}
 }
 

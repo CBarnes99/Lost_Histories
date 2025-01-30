@@ -37,7 +37,12 @@ public:
 	*	@param obsKey The key to the obstacle that allows the player to pass through, as an Item Class
 	*	@param obsHint A hint for how to pass the obstacle, as a string
 	*/
-	Obstacle(string obsName, string obsDesc, string obsKey, string obsHint);
+	//Obstacle(string obsName, string obsDesc, string obsKey, string obsHint);
+	Obstacle();
+
+	void set_obstacle_defualts(string obsName, string obsDesc, string obsKey, string obsHint);
+
+
 
 	/**
 	*	@brief The obstacles name

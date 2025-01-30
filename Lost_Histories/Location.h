@@ -1,6 +1,7 @@
 #pragma once
 #include "Item.h"
 #include "Obstacle.h"
+#include "Player.h"
 #include <string>
 #include <vector>
 
@@ -58,7 +59,7 @@ private:
 	/**
 	*	@brief The obstacles name that is blocking the path if the path is blocked
 	*/
-	string pathBlockedByObstacle;
+	Obstacle pathBlockedByObstacle;
 
 	/**
 	*	@brief A vector of locations that the player cand move to from this location
@@ -74,33 +75,6 @@ public:
 	*	@param lDistDesc The Description for the location when viewed from another location, as a String
 	*/
 	Location(string lName, string lDesc, string lDistDesc);
-
-	/**
-	*	@brief changes if theres light in the area
-	*	@param light True if theres light in the area, false if there is no longer light, as a bool
-	*/
-	void set_light_in_area(bool light);
-
-	/**
-	*	@brief Set an item into the area
-	*	@param lItem The Item that is now in that location, as an Item object
-	*/
-	void set_item_in_location(Item& lItem);
-
-	/**
-	*	@brief remove the item from the location
-	*/
-	void set_item_no_longer_in_location();
-
-	/**
-	*	@brief Set that the path is blocked by an obstacle
-	*/
-	void set_location_path_is_blocked(Obstacle& obs);
-
-	/**
-	*	@brief Sets the location unblocked so you can now pass through
-	*/
-	void set_location_unblocked();
 
 	/**
 	*	@brief Gets the Locations name
@@ -126,11 +100,11 @@ public:
 	*/
 	string get_loc_distant_description();
 
-
 	/**
-	*	@brief Searches the current location you are in
+	*	@brief Displayes the connecting locations from this one
+	*	@return The locations connecting this as a vector of strings
 	*/
-	void search_location();
+	vector<Location*> get_pathways();
 
 	/**
 	*	@brief Adds a pathway to this location connecting to another location
@@ -139,9 +113,41 @@ public:
 	void add_pathway(Location& newPathway);
 
 	/**
-	*	@brief Displayes the connecting locations from this one
-	*	@return The locations connecting this as a vector of strings
+	*	@brief changes if theres light in the area
+	*	@param light True if theres light in the area, false if there is no longer light, as a bool
 	*/
-	vector<Location*> get_pathways();
+	void set_light_in_area(bool light);
+
+	/**
+	*	@brief Set an item into the area
+	*	@param lItem The Item that is now in that location, as an Item object
+	*/
+	void set_item_in_location(Item& lItem);
+
+	/**
+	*	@brief remove the item from the location
+	*/
+	void set_item_no_longer_in_location();
+
+	/**
+	*	@brief Set that the path is blocked by an obstacle
+	*/
+	void set_location_path_is_blocked_by(Obstacle& obs);
+
+	/**
+	*	@brief Sets the location unblocked so you can now pass through
+	*/
+	void set_location_unblocked();
+
+	/**
+	*	@brief Searches the current location you are in and promts the user to pick up an item if there is one
+	*	@param The player, as a Player object
+	*/
+	void search_location(Player& player);
+
+	/**
+	*	@breif Moves player to the new location if its not blocked by an obstacle
+	*/
+	bool move_to_location(Location& currentLoc, int& userInput);
 };
 

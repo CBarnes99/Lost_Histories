@@ -1,6 +1,13 @@
 #include "Obstacle.h"
 
-Obstacle::Obstacle(string obsName, string obsDesc, string obsKey, string obsHint) {
+Obstacle::Obstacle() {
+	this->obstacleName = "obsName";
+	this->obstacleDescription = "obsDesc";
+	this->obstcaleKey = "obsKey";
+	this->obstacleHint = "obsHint";
+}
+
+void Obstacle::set_obstacle_defualts(string obsName, string obsDesc, string obsKey, string obsHint) {
 	this->obstacleName = obsName;
 	this->obstacleDescription = obsDesc;
 	this->obstcaleKey = obsKey;
