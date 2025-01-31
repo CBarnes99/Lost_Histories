@@ -47,6 +47,8 @@ int main()
     hallway.add_pathway(bedroom);
     hallway.set_location_path_is_blocked_by(door);
 
+    player.add_item_to_inventory(rustyKey);
+
 
     Location* curruntLocation = &bedroom;
 
@@ -66,24 +68,24 @@ int main()
 
     while (playing == true) {
 
-        cout << "You are at --- " << curruntLocation->get_loc_name() << endl;
+        cout << "You are at --- " << curruntLocation->get_loc_name() << endl;       //Prints the location you are in
         cout << curruntLocation->get_loc_description() << endl;
 
         cout << '\n' << "You can see these (Enter number to travel)" << endl;
         for (int LoopIncrement = 0; LoopIncrement < curruntLocation->get_pathways().size(); LoopIncrement++) {
-            cout << "[" << LoopIncrement << "] " << curruntLocation->get_pathways()[LoopIncrement]->get_loc_distant_description() << endl;
+            cout << "[" << LoopIncrement << "] " << curruntLocation->get_pathways()[LoopIncrement]->get_loc_distant_description() << endl;  //outputs the locations connected to the location you are in
         }
-        cout << "[" << LoopIncrement + 1 << "] Search Area" << endl;
+        cout << "[" << LoopIncrement + 1 << "] Search Area" << endl;    //option to search the area you are in
         cout << ">>>";
         cin >> userInputNum;
 
-        while (userInputNum < 0 || userInputNum > LoopIncrement + 1) {
+        while (userInputNum < 0 || userInputNum > LoopIncrement + 1) {  //checks for wrong input
             cout << "Wrong input, try again!" << '\n' << ">>>";
             cin >> userInputNum;
         }
         system("cls");
 
-        if (userInputNum < LoopIncrement + 1 && curruntLocation->move_to_location(curruntLocation, userInputNum, player) == true) {
+        if (userInputNum < LoopIncrement + 1 && curruntLocation->move_to_location(curruntLocation, userInputNum, player) == true) { //moves to location if the user input was correct
             curruntLocation = curruntLocation->get_pathways()[userInputNum];
         }
 

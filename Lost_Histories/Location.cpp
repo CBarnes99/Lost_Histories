@@ -110,9 +110,14 @@ bool Location::move_to_location(Location* currentLoc, int userInput, Player play
 		}
 		
 		switch (choice) {
-		case(1):	//Use an item
+		case(0):	//Use an item
+			if (player.get_inventory_size() < 1) {
+				system("cls");
+				cout << "You have no Items in your inventory, you turn back" << endl;
+				return false;
+			}
 			choice = -1;
-			
+
 			while (choice < 0 || choice > player.get_inventory_size()) {
 				player.output_all_items_in_inventory();
 				cout << "Which item do you want to use?\n>>> ";
@@ -125,11 +130,11 @@ bool Location::move_to_location(Location* currentLoc, int userInput, Player play
 			}
 			break;
 
-		case(2):	//return to previous room
+		case(1):	//return to previous room
 			return false;
 			break;
 
-		case(3):	//get hint for obstacle
+		case(2):	//get hint for obstacle
 			cout << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_hint() << endl;
 			return false;
 			break;

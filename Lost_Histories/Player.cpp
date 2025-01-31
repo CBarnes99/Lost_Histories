@@ -22,9 +22,14 @@ void Player::add_item_to_inventory(Item nItem) {
 }
 
 void Player::output_all_items_in_inventory() {
-	for (int i = 0; i < this->playerInventory.size(); i++) {
-		if (this->playerInventory[i].is_item_destroyed() == false) {
-			cout << "[" << i << "] " << this->playerInventory[i].get_item_description() << endl;
+	if (this->playerInventory.size() < 1) {
+		cout << "You have no items in your inventory" << endl;
+	}
+	else {
+		for (int i = 0; i < this->playerInventory.size(); i++) {
+			if (this->playerInventory[i].is_item_destroyed() == false) {
+				cout << "[" << i << "] " << this->playerInventory[i].get_item_description() << endl;
+			}
 		}
 	}
 }
