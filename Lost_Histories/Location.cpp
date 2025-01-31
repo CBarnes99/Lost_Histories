@@ -96,10 +96,48 @@ void Location::search_location(Player& player) {
 	}
 }
 
-bool Location::move_to_location(Location& currentLoc, int& userInput) {
-	if (currentLoc.get_pathways()[userInput]->isPathBlocked == true) {
-		currentLoc.get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_description();
-		return false;
+bool Location::move_to_location(Location* currentLoc, int userInput, Player player) {
+	if (currentLoc->get_pathways()[userInput]->isPathBlocked == true) {
+		currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_description();
+		
+		cout << "What do you want to do?" << endl;
+
+		int choice = -1;
+
+		while (choice < 0 || choice > 2) {
+			cout << "[0] Use an item \n[1] Return to previous room \n[2] Get hint for obstacle" << endl;
+			cin >> choice;
+		}
+		
+		switch (choice) {
+		case(1):	//Use an item
+			choice = -1;
+			
+			while (choice < 0 || choice > player.get_inventory_size()) {
+				player.output_all_items_in_inventory();
+				cout << "Which item do you want to use?\n>>> ";
+				cin >> choice;
+			}
+			if (currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_name() == player.get_item_name_from_inventory(choice)) {
+				cout << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_removed() << endl;
+				cout << "You move into the " << currentLoc->get_pathways()[userInput]->get_loc_description() << endl;
+				return true;
+			}
+			break;
+
+		case(2):	//return to previous room
+			return false;
+			break;
+
+		case(3):	//get hint for obstacle
+			cout << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_hint() << endl;
+			return false;
+			break;
+
+		default:
+			return false;
+		}
+		
 	}
 	else {
 		return true;

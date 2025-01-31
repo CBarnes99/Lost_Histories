@@ -147,7 +147,10 @@ public:
 
 	/**
 	*	@breif Moves player to the new location if its not blocked by an obstacle
+	*	@param currentLoc The players current location, as a Location object
+	*	@param userInput The players input for the location choice, as an Int
+	*	@prarm player The player, as a Player object
 	*/
-	bool move_to_location(Location& currentLoc, int& userInput);
+	bool move_to_location(Location* currentLoc, int userInput, Player player);
 };
 

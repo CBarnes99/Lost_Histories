@@ -33,7 +33,7 @@ int main()
     rustyKey.set_item_defaults("Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.");
 
     Obstacle door = Obstacle();
-    door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily.", rustyKey.get_item_name(), "The key hole seems in tact. Maybe theres a key around here.");
+    door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily.", rustyKey.get_item_name(), "The key hole seems in tact. Maybe theres a key around here.", "You opened the door");
 
     
     Location bedroom = Location("Bedroom", "A small bedroom that looks like a childs play room.", "Childs Bedroom");
@@ -48,7 +48,7 @@ int main()
     hallway.set_location_path_is_blocked_by(door);
 
 
-    Location curruntLocation = bedroom;
+    Location* curruntLocation = &bedroom;
 
     bool playing = true;
     int userInputNum = 0;
@@ -64,17 +64,14 @@ int main()
     cout << "Welcome, " << player.get_player_name() << endl;
     
 
-
-
-
     while (playing == true) {
 
-        cout << "You are at --- " << curruntLocation.get_loc_name() << endl;
-        cout << curruntLocation.get_loc_description() << endl;
+        cout << "You are at --- " << curruntLocation->get_loc_name() << endl;
+        cout << curruntLocation->get_loc_description() << endl;
 
         cout << '\n' << "You can see these (Enter number to travel)" << endl;
-        for (int LoopIncrement = 0; LoopIncrement < curruntLocation.get_pathways().size(); LoopIncrement++) {
-            cout << "[" << LoopIncrement << "] " << curruntLocation.get_pathways()[LoopIncrement]->get_loc_distant_description() << endl;
+        for (int LoopIncrement = 0; LoopIncrement < curruntLocation->get_pathways().size(); LoopIncrement++) {
+            cout << "[" << LoopIncrement << "] " << curruntLocation->get_pathways()[LoopIncrement]->get_loc_distant_description() << endl;
         }
         cout << "[" << LoopIncrement + 1 << "] Search Area" << endl;
         cout << ">>>";
@@ -82,10 +79,12 @@ int main()
 
         while (userInputNum < 0 || userInputNum > LoopIncrement + 1) {
             cout << "Wrong input, try again!" << '\n' << ">>>";
+            cin >> userInputNum;
         }
+        system("cls");
 
-        if (userInputNum < LoopIncrement + 1 && curruntLocation.move_to_location(curruntLocation, userInputNum) == true) {
-            curruntLocation = curruntLocation.get_pathways()[userInputNum];
+        if (userInputNum < LoopIncrement + 1 && curruntLocation->move_to_location(curruntLocation, userInputNum, player) == true) {
+            curruntLocation = curruntLocation->get_pathways()[userInputNum];
         }
 
     }

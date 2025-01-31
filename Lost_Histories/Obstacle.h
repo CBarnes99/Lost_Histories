@@ -28,6 +28,10 @@ private:
 	*/
 	string obstacleHint;
 
+	/**
+	*	@brief What displays to the player when the obstacle is removed
+	*/
+	string obstacleRemoved;
 
 public:
 	/**
@@ -40,7 +44,7 @@ public:
 	//Obstacle(string obsName, string obsDesc, string obsKey, string obsHint);
 	Obstacle();
 
-	void set_obstacle_defualts(string obsName, string obsDesc, string obsKey, string obsHint);
+	void set_obstacle_defualts(string obsName, string obsDesc, string obsKey, string obsHint, string obsRemoved);
 
 
 
@@ -67,5 +71,10 @@ public:
 	*/
 	string get_obstacle_key();
 
+	/**
+	*	@brief Displays to the user once the obstacle has been removed
+	*	@return The obstacleRemoved, as a String
+	*/
+	string get_obstacle_removed();
 };
 

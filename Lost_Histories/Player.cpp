@@ -24,7 +24,7 @@ void Player::add_item_to_inventory(Item nItem) {
 void Player::output_all_items_in_inventory() {
 	for (int i = 0; i < this->playerInventory.size(); i++) {
 		if (this->playerInventory[i].is_item_destroyed() == false) {
-			this->playerInventory[i].get_item_description();
+			cout << "[" << i << "] " << this->playerInventory[i].get_item_description() << endl;
 		}
 	}
 }
@@ -37,4 +37,12 @@ void Player::set_light(bool hasLight) {
 	else {
 		cout << "The area has darkened" << endl;
 	}
+}
+
+size_t Player::get_inventory_size() {
+	return this->playerInventory.size();
+}
+
+string Player::get_item_name_from_inventory(int index) {
+	return playerInventory[index].get_item_name();
 }
