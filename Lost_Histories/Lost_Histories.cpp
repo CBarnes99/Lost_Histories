@@ -72,10 +72,10 @@ int main()
         cout << curruntLocation->get_loc_description() << endl;
 
         cout << '\n' << "You can see these (Enter number to travel)" << endl;
-        for (int LoopIncrement = 0; LoopIncrement < curruntLocation->get_pathways().size(); LoopIncrement++) {
+        for (LoopIncrement = 0; LoopIncrement < curruntLocation->get_pathways().size(); LoopIncrement++) {
             cout << "[" << LoopIncrement << "] " << curruntLocation->get_pathways()[LoopIncrement]->get_loc_distant_description() << endl;  //outputs the locations connected to the location you are in
         }
-        cout << "[" << LoopIncrement + 1 << "] Search Area" << endl;    //option to search the area you are in
+        cout << "[" << LoopIncrement << "] Search Area" << endl;    //option to search the area you are in
         cout << ">>>";
         cin >> userInputNum;
 

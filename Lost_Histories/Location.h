@@ -135,6 +135,12 @@ public:
 	void set_location_path_is_blocked_by(Obstacle& obs);
 
 	/**
+	*	@brief Gets the name of the obstacle thats blocking this location
+	*	@return The name of the obstacle, as a String
+	*/
+	string get_obstacle_name_from_location();
+
+	/**
 	*	@brief Sets the location unblocked so you can now pass through
 	*/
 	void set_location_unblocked();
@@ -151,6 +157,6 @@ public:
 	*	@param userInput The players input for the location choice, as an Int
 	*	@prarm player The player, as a Player object
 	*/
-	bool move_to_location(Location* currentLoc, int userInput, Player player);
+	bool move_to_location(Location* currentLoc, int userInput, Player& player);
 };
 

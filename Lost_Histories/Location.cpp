@@ -67,6 +67,10 @@ void Location::set_location_path_is_blocked_by(Obstacle& obs) {
 	this->pathBlockedByObstacle = obs;
 }
 
+string Location::get_obstacle_name_from_location() {
+	return this->pathBlockedByObstacle.get_obstacle_name();
+}
+
 void Location::set_location_unblocked() {
 	this->isPathBlocked = false;
 }
@@ -96,11 +100,11 @@ void Location::search_location(Player& player) {
 	}
 }
 
-bool Location::move_to_location(Location* currentLoc, int userInput, Player player) {
-	if (currentLoc->get_pathways()[userInput]->isPathBlocked == true) {
+bool Location::move_to_location(Location* currentLoc, int userInput, Player& player) {
+	if (currentLoc->get_pathways()[userInput]->isPathBlocked == true) {	//if the pathway the user selected is blocked by an obstacle
 		currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_description();
 		
-		cout << "What do you want to do?" << endl;
+		cout << "The path is blocked by " << currentLoc->get_pathways()[userInput]->get_obstacle_name_from_location() << ", What do you want to do? " << endl << endl;
 
 		int choice = -1;
 
@@ -123,8 +127,9 @@ bool Location::move_to_location(Location* currentLoc, int userInput, Player play
 				cout << "Which item do you want to use?\n>>> ";
 				cin >> choice;
 			}
-			if (currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_name() == player.get_item_name_from_inventory(choice)) {
+			if (currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_key() == player.get_item_name_from_inventory(choice)) {
 				cout << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_removed() << endl;
+				currentLoc->get_pathways()[userInput]->set_location_unblocked();
 				cout << "You move into the " << currentLoc->get_pathways()[userInput]->get_loc_description() << endl;
 				return true;
 			}
@@ -147,4 +152,7 @@ bool Location::move_to_location(Location* currentLoc, int userInput, Player play
 	else {
 		return true;
 	}
+	//if this doesnt work
+	cout << "THE MOVE TO LOCATION METHOD DIDNT WORK!!!!!!!!" << endl;
+	return false;
 }

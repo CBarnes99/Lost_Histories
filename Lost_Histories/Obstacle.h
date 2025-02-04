@@ -44,9 +44,16 @@ public:
 	//Obstacle(string obsName, string obsDesc, string obsKey, string obsHint);
 	Obstacle();
 
+
+	/**
+	*	@brief Setting the defualt obstacle parameters
+	*	@param obsName The name of the Obstacle blocking the location, as a String
+	*	@param obsDesc The description of the Obstacle, as a String
+	*	@param obsKey The name of the Item object that unblocks the location, as a String
+	*	@param obsHint The hint given to the player if they require an hint, as a String
+	*	@param obsRemoved What is displayed to the player when the obstacle is removed from the location, as a String
+	*/
 	void set_obstacle_defualts(string obsName, string obsDesc, string obsKey, string obsHint, string obsRemoved);
-
-
 
 	/**
 	*	@brief The obstacles name
