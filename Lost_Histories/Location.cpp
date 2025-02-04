@@ -92,11 +92,11 @@ void Location::search_location(Player& player) {
 			}
 		}
 		else {
-			cout << roomSearchDescription;
+			cout << roomSearchDescription << endl;
 		}
 	}
 	else {
-		cout << locNoLightSearchDescription;
+		cout << locNoLightSearchDescription << endl;
 	}
 }
 
