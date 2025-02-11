@@ -26,7 +26,7 @@ private:
 	/**
 	*	@brief A hint on how to pass this obstacle
 	*/
-	string obstacleHint;
+	//string obstacleHint;
 
 	/**
 	*	@brief What displays to the player when the obstacle is removed
@@ -35,25 +35,18 @@ private:
 
 public:
 	/**
-	*	@brief Constructor for the obstacle
-	*	@param obsName Obstacle name, as a string
-	*	@param obsDesc Obstacle description, as a string
-	*	@param obsKey The key to the obstacle that allows the player to pass through, as an Item Class
-	*	@param obsHint A hint for how to pass the obstacle, as a string
+	*	@brief Defualt constructor for Obstacle Object
 	*/
-	//Obstacle(string obsName, string obsDesc, string obsKey, string obsHint);
 	Obstacle();
-
 
 	/**
 	*	@brief Setting the defualt obstacle parameters
 	*	@param obsName The name of the Obstacle blocking the location, as a String
 	*	@param obsDesc The description of the Obstacle, as a String
 	*	@param obsKey The name of the Item object that unblocks the location, as a String
-	*	@param obsHint The hint given to the player if they require an hint, as a String
 	*	@param obsRemoved What is displayed to the player when the obstacle is removed from the location, as a String
 	*/
-	void set_obstacle_defualts(string obsName, string obsDesc, string obsKey, string obsHint, string obsRemoved);
+	void set_obstacle_defualts(string obsName, string obsDesc, string obsKey, string obsRemoved);
 
 	/**
 	*	@brief The obstacles name
@@ -66,12 +59,6 @@ public:
 	*	@return The obstacles description returned as a string
 	*/
 	string get_obstacle_description();
-
-	/**
-	*	@brief The hint to bypass this obstacle
-	*	@return The hint to bypass this obstacle returned as a string
-	*/
-	string get_obstacle_hint();
 
 	/**
 	*	@brief Get the key to the obstacle

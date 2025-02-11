@@ -1,18 +1,16 @@
 #include "Obstacle.h"
 
-Obstacle::Obstacle() {
+Obstacle::Obstacle() {	//defualt constructor for the obstacle object
 	this->obstacleName = "obsName";
 	this->obstacleDescription = "obsDesc";
 	this->obstcaleKey = "obsKey";
-	this->obstacleHint = "obsHint";
 	this->obstacleRemoved = "obsRemoved";
 }
 
-void Obstacle::set_obstacle_defualts(string obsName, string obsDesc, string obsKey, string obsHint, string obsRemoved) {
+void Obstacle::set_obstacle_defualts(string obsName, string obsDesc, string obsKey, string obsRemoved)	{
 	this->obstacleName = obsName;
 	this->obstacleDescription = obsDesc;
 	this->obstcaleKey = obsKey;
-	this->obstacleHint = obsHint;
 	this->obstacleRemoved = obsRemoved;
 }
 
@@ -22,10 +20,6 @@ string Obstacle::get_obstacle_name() {
 
 string Obstacle::get_obstacle_description() {
 	return obstacleDescription;
-}
-
-string Obstacle::get_obstacle_hint() {
-	return obstacleHint;
 }
 
 string Obstacle::get_obstacle_key() {

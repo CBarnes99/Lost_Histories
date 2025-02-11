@@ -3,6 +3,7 @@
 #include "Location.h"
 #include "Obstacle.h"
 #include "Player.h"
+#include "Global_Functions.h"
 
 using namespace std;
 
@@ -30,10 +31,10 @@ int main()
     player.set_player_name("Steve");
 
     Item rustyKey = Item();
-    rustyKey.set_item_defaults("Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.");
+    rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.");
 
     Obstacle door = Obstacle();
-    door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily.", rustyKey.get_item_name(), "The key hole seems in tact. Maybe theres a key around here.", "You opened the door");
+    door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily. The key hole still looks like its in working condition.", rustyKey.get_item_name(), /*"The key hole seems in tact. Maybe theres a key around here.",*/ "You opened the door");
 
     
     Location bedroom = Location("Bedroom", "A small bedroom that looks like a childs play room.", "Childs Bedroom");
@@ -47,8 +48,7 @@ int main()
     hallway.add_pathway(bedroom);
     hallway.set_location_path_is_blocked_by(door);
 
-    player.add_item_to_inventory(rustyKey);
-
+    //player.add_item_to_inventory(rustyKey);
 
     Location* curruntLocation = &bedroom;
 
@@ -79,16 +79,26 @@ int main()
         cout << ">>>";
         cin >> userInputNum;
 
-        while (userInputNum < 0 || userInputNum > LoopIncrement + 1) {  //checks for wrong input
-            cout << "Wrong input, try again!" << '\n' << ">>>";
+        while (cin.fail()) { //check for input that is not a number
+            cout << "Input a number" << endl;
+            clear_invalid_input();
             cin >> userInputNum;
+            while (userInputNum < 0 || userInputNum > LoopIncrement) {  //checks for wrong input
+                cout << "Wrong input, try again!" << '\n' << ">>>";
+                cin >> userInputNum;
+            }
         }
+
         system("cls");
 
-        if (userInputNum < LoopIncrement + 1 && curruntLocation->move_to_location(curruntLocation, userInputNum, player) == true) { //moves to location if the user input was correct
-            curruntLocation = curruntLocation->get_pathways()[userInputNum];
+        if (userInputNum < LoopIncrement) {
+            if (curruntLocation->move_to_location(curruntLocation, userInputNum, player) == true) {
+                curruntLocation = curruntLocation->get_pathways()[userInputNum];    //moves to location if the user input was correct
+            }            
+        }
+        else {
+            curruntLocation->search_location(player);
         }
 
     }
 }
-
