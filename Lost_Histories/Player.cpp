@@ -9,27 +9,32 @@ Player::Player() {
 	this->hasLight = false;
 }
 
-void Player::set_Player_Name(string nName) {
+void Player::set_player_name(string nName) {
 	this->playerName = nName;
 }
 
-string Player::get_Player_Name() {
+string Player::get_player_name() {
 	return playerName;
 }
 
-void Player::add_Item_To_Inventory(Item nItem) {
+void Player::add_item_to_inventory(Item nItem) {
 	playerInventory.push_back(nItem);
 }
 
-void Player::output_All_Items_In_Inventory() {
-	for (int i = 0; i < this->playerInventory.size(); i++) {
-		if (this->playerInventory[i].is_Item_Destroyed() == false) {
-			this->playerInventory[i].get_Item_Description();
+void Player::output_all_items_in_inventory() {
+	if (this->playerInventory.size() < 1) {
+		cout << "You have no items in your inventory" << endl;
+	}
+	else {
+		for (int i = 0; i < this->playerInventory.size(); i++) {
+			if (this->playerInventory[i].is_item_destroyed() == false) {
+				cout << "[" << i << "] " << this->playerInventory[i].get_item_description() << endl;
+			}
 		}
 	}
 }
 
-void Player::set_Light(bool hasLight) {
+void Player::set_light(bool hasLight) {
 	this->hasLight = hasLight;
 	if (this->hasLight == true) {
 		cout << "You've lightend up the room" << endl;
@@ -37,4 +42,12 @@ void Player::set_Light(bool hasLight) {
 	else {
 		cout << "The area has darkened" << endl;
 	}
+}
+
+size_t Player::get_inventory_size() {
+	return this->playerInventory.size();
+}
+
+string Player::get_item_name_from_inventory(int index) {
+	return playerInventory[index].get_item_name();
 }

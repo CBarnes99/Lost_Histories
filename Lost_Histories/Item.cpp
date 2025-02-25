@@ -8,23 +8,29 @@ Item::Item() {
 	this->isDestroyed = false;
 }
 
-void Item::set_Item_Defaults(string iName, string iDesc) {
+
+void Item::set_item_defaults(string iName, string iDesc, string iSearch) {
 	this->itemName = iName;
 	this->itemDescription = iDesc;
+	this->itemSearchLocationDescription = iSearch;
 }
 
-string Item::get_Item_Name() {
+string Item::get_item_name() {
 	return this->itemName;
 }
 
-string Item::get_Item_Description() {
+string Item::get_item_description() {
 	return this->itemDescription;
 }
-void Item::destroy_Item() {
-	this->isDestroyed = true;
 
+void Item::destroy_item() {
+	this->isDestroyed = true;
 }
 
-bool Item::is_Item_Destroyed() {
+string Item::get_item_search_description() {
+	return this->itemSearchLocationDescription;
+}
+
+bool Item::is_item_destroyed() {
 	return this->isDestroyed;
 }

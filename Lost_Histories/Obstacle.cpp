@@ -1,26 +1,31 @@
 #include "Obstacle.h"
 
-using namespace std;
-
-Obstacle::Obstacle(string obsName, string obsDesc, string obsKeyName, string obsHint) {
-	this->obstacleName = obsName;
-	this->obstacleDescription = obsDesc;
-	this->obstacleKeyName = obsKeyName;
-	this->obstacleHint = obsHint;
+Obstacle::Obstacle() {	//defualt constructor for the obstacle object
+	this->obstacleName = "obsName";
+	this->obstacleDescription = "obsDesc";
+	this->obstcaleKey = "obsKey";
+	this->obstacleRemoved = "obsRemoved";
 }
 
-string Obstacle::get_Obstacle_Name() {
+void Obstacle::set_obstacle_defualts(string obsName, string obsDesc, string obsKey, string obsRemoved)	{
+	this->obstacleName = obsName;
+	this->obstacleDescription = obsDesc;
+	this->obstcaleKey = obsKey;
+	this->obstacleRemoved = obsRemoved;
+}
+
+string Obstacle::get_obstacle_name() {
 	return obstacleName;
 }
 
-string Obstacle::get_Obstacle_Description() {
+string Obstacle::get_obstacle_description() {
 	return obstacleDescription;
 }
 
-string Obstacle::get_Obstacle_Hint() {
-	return obstacleHint;
+string Obstacle::get_obstacle_key() {
+	return this->obstcaleKey;
 }
 
-void Obstacle::set_Obstacle_Key_Name(Item itemKey) {
-	this->obstacleKeyName = itemKey.get_Item_Name();
+string Obstacle::get_obstacle_removed() {
+	return this->obstacleRemoved;
 }

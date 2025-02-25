@@ -19,50 +19,56 @@ private:
 	string obstacleDescription;
 
 	/**
-	*	@brief The item that acts as a key to this obstale and allows the player to pass
+	*	@brief The item that acts as a key to this obstale and allows the playe to pass
 	*/
-	string obstacleKeyName;
+	string obstcaleKey;
 
 	/**
 	*	@brief A hint on how to pass this obstacle
 	*/
-	string obstacleHint;
+	//string obstacleHint;
 
+	/**
+	*	@brief What displays to the player when the obstacle is removed
+	*/
+	string obstacleRemoved;
 
 public:
 	/**
-	*	@brief Constructor for the obstacle
-	*	@param obsName Obstacle name, as a String
-	*	@param obsDesc Obstacle description, as a String
-	*	@param obsKeyName The name of the item that is required to pass the obstacle, as a Item class using get item name method
-	*	@param obsHint A hint for how to pass the obstacle, as a String
+	*	@brief Defualt constructor for Obstacle Object
 	*/
-	Obstacle(string obsName, string obsDesc, string obsKeyName, string obsHint);
-	//Item obsKey,
+	Obstacle();
+
+	/**
+	*	@brief Setting the defualt obstacle parameters
+	*	@param obsName The name of the Obstacle blocking the location, as a String
+	*	@param obsDesc The description of the Obstacle, as a String
+	*	@param obsKey The name of the Item object that unblocks the location, as a String
+	*	@param obsRemoved What is displayed to the player when the obstacle is removed from the location, as a String
+	*/
+	void set_obstacle_defualts(string obsName, string obsDesc, string obsKey, string obsRemoved);
 
 	/**
 	*	@brief The obstacles name
 	*	@return The obstacles name returned as a string
 	*/
-	string get_Obstacle_Name();
+	string get_obstacle_name();
 
 	/**
 	*	@brief The obstacles descripition
 	*	@return The obstacles description returned as a string
 	*/
-	string get_Obstacle_Description();
+	string get_obstacle_description();
 
 	/**
-	*	@brief Sets the item key for the obstacle
-	*	@param itemKey The Item that opens/unlocks the obstacle, as an Item object
+	*	@brief Get the key to the obstacle
 	*/
-	void set_Obstacle_Key_Name(Item itemKey);
+	string get_obstacle_key();
 
 	/**
-	*	@brief The hint to bypass this obstacle
-	*	@return The hint to bypass this obstacle returned as a string
+	*	@brief Displays to the user once the obstacle has been removed
+	*	@return The obstacleRemoved, as a String
 	*/
-	string get_Obstacle_Hint();
-
+	string get_obstacle_removed();
 };
 
