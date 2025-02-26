@@ -81,7 +81,9 @@ int main()
         for (LoopIncrement = 0; LoopIncrement < curruntLocation->get_pathways().size(); LoopIncrement++) {
             cout << "[" << LoopIncrement << "] " << curruntLocation->get_pathways()[LoopIncrement]->get_loc_distant_description() << endl;  //outputs the locations connected to the location you are in
         }
+        cout << endl;
         cout << "[" << LoopIncrement << "] Search Area" << endl;    //option to search the area you are in
+        cout << "[" << LoopIncrement + 1 << "] Open Inventory" << endl; //desplays the items in your inventory
         cout << ">>>";
         cin >> userInputNum;
 
@@ -89,7 +91,7 @@ int main()
             cout << "Input a number" << endl;
             clear_invalid_input();
             cin >> userInputNum;
-            while (userInputNum < 0 || userInputNum > LoopIncrement) {  //checks for wrong input
+            while (userInputNum < 0 || userInputNum > LoopIncrement + 1) {  //checks for wrong input
                 cout << "Wrong input, try again!" << '\n' << ">>>";
                 cin >> userInputNum;
             }
@@ -102,8 +104,11 @@ int main()
                 curruntLocation = curruntLocation->get_pathways()[userInputNum];    //moves to location if the user input was correct
             }            
         }
+        else if (userInputNum == LoopIncrement){
+            curruntLocation->search_location(player);   //search location for items
+        }
         else {
-            curruntLocation->search_location(player);
+            player.output_all_items_in_inventory();     //displayes all inventory items to player
         }
 
     }

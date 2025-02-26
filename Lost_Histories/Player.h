@@ -71,9 +71,15 @@ public:
 	size_t get_inventory_size();
 
 	/**
-	*	@brief gets items name from a specific index in the inventory
-	*	@param index The location of the item in the inventory, as an Int
-	*	@return item name, as a string
+	*	@brief Get a specific item from the players inventory
+	*	@param index The Location of the item in the inventory vector, as an Int
+	*	@return The Item in your inventory at the specified index, as an Item object
 	*/
-	string get_item_name_from_inventory(int index);
+	Item get_item_from_inventory(int index);
+
+	/**
+	*	@brief Removes an item from your inventory
+	*	@param index The Location of the item in the inventory vector, as an Int
+	*/
+	void reduce_item_durability(int index);
 };

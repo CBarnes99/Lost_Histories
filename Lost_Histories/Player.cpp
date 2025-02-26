@@ -26,11 +26,15 @@ void Player::output_all_items_in_inventory() {
 		cout << "You have no items in your inventory" << endl;
 	}
 	else {
+		int itemCount = 0;
+		cout << "You open your inventory, you have:" << endl;
 		for (int i = 0; i < this->playerInventory.size(); i++) {
 			if (this->playerInventory[i].is_item_destroyed() == false) {
-				cout << "[" << i << "] " << this->playerInventory[i].get_item_description() << endl;
+				cout << "[" << itemCount << "]	" << this->playerInventory[i].get_item_description() << endl;
+				itemCount++;
 			}
 		}
+		cout << endl;
 	}
 }
 
@@ -48,6 +52,13 @@ size_t Player::get_inventory_size() {
 	return this->playerInventory.size();
 }
 
-string Player::get_item_name_from_inventory(int index) {
-	return playerInventory[index].get_item_name();
+Item Player::get_item_from_inventory(int index) {
+	return this->playerInventory[index];
+}
+
+void Player::reduce_item_durability(int index) {
+	this->get_item_from_inventory(index).reduce_item_durability();
+	if (this->get_item_from_inventory(index).is_item_destroyed() == true) {
+		this->playerInventory.erase(this->playerInventory.begin() + index);
+	}
 }

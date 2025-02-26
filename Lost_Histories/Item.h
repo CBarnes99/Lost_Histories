@@ -28,13 +28,13 @@ private:
 	string itemSearchLocationDescription;
 
 	/**
-	*	@brief The amount of times the item can be used
+	*	@brief The amount of times the item can be used before it is destroyed
 	*/
-	int amountOfUses;
+	int itemDurability;
 
 public:
 	/**
-	*	@brief Defualt constructor for the Item. 
+	*	@brief Defualt constructor for the Item.
 	*/
 	Item();
 
@@ -61,7 +61,7 @@ public:
 	/**
 	*	@brief Changes the item to be destroyed if the amount of uses reaches 0
 	*/
-	void destroy_item();
+	void reduce_item_durability();
 
 	/**
 	*	@brief A check to see if the Item is destroyed
