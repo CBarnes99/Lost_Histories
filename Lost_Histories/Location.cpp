@@ -141,10 +141,10 @@ bool Location::move_to_location(Location* currentLoc, int userInput, Player& pla
 			}
 			if (currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_key() == player.get_item_from_inventory(choice).get_item_name()) {	//if the item is the same item that is required to remove the and move into the room
 				system("cls");
-				cout << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_removed() << endl;
-				currentLoc->get_pathways()[userInput]->set_location_unblocked();
-				player.reduce_item_durability(choice);/////////////////////////////////
-				cout << "You move into the " << currentLoc->get_pathways()[userInput]->get_loc_name() << endl;
+				cout << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_removed() << endl; //prints to the console the obstacle removed
+				currentLoc->get_pathways()[userInput]->set_location_unblocked();	//sets location as unblocked so user can freely moved between locations
+				player.reduce_item_durability(player.get_item_from_inventory(choice), choice); //reduce item durability by one, if reaces zero, destroy item
+				cout << "You move into the " << currentLoc->get_pathways()[userInput]->get_loc_name() << endl;	//output the location moved into
 				return true;
 			}
 			break;

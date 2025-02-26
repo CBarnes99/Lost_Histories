@@ -5,7 +5,7 @@ using namespace std;
 
 Player::Player() {
 	this->playerName = "Default";
-	this->playerInventory = {}; //ADD A RUSTY ROOM KEY TO INVENTRY THAT BREAKS ON USE TO GET OUT OF THE FIRST ROOM
+	this->playerInventory = {};
 	this->hasLight = false;
 }
 
@@ -56,9 +56,10 @@ Item Player::get_item_from_inventory(int index) {
 	return this->playerInventory[index];
 }
 
-void Player::reduce_item_durability(int index) {
-	this->get_item_from_inventory(index).reduce_item_durability();
-	if (this->get_item_from_inventory(index).is_item_destroyed() == true) {
+void Player::reduce_item_durability(Item item, int index) {
+	item.reduce_item_durability();
+	if (item.is_item_destroyed() == true) {
+		cout << item.get_item_name() << " has broken and can no longer be used." << endl;
 		this->playerInventory.erase(this->playerInventory.begin() + index);
 	}
 }

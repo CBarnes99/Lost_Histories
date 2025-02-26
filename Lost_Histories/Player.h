@@ -79,7 +79,8 @@ public:
 
 	/**
 	*	@brief Removes an item from your inventory
-	*	@param index The Location of the item in the inventory vector, as an Int
+	*	@param item The Item that is getting its durability reduced, as an item reference
+	*	@param index The index of the item in the inventory
 	*/
-	void reduce_item_durability(int index);
+	void reduce_item_durability(Item item, int index);
 };
