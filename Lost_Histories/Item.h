@@ -27,6 +27,11 @@ private:
 	*/
 	string itemSearchLocationDescription;
 
+	/**
+	*	@brief The amount of times the item can be used
+	*/
+	int amountOfUses;
+
 public:
 	/**
 	*	@brief Defualt constructor for the Item. 
@@ -39,7 +44,7 @@ public:
 	*	@param iDesc The description for the item, as a String
 	*	@param iSearch The description of what you see in the area for this item, as a String
 	*/
-	void set_item_defaults(string iName, string iDesc, string iSearch);
+	void set_item_defaults(string iName, string iDesc, string iSearch, int iUses);
 
 	/**
 	*	@brief Gets the Items name
@@ -54,7 +59,7 @@ public:
 	string get_item_description();
 
 	/**
-	*	@brief Changes the item to be destroyed
+	*	@brief Changes the item to be destroyed if the amount of uses reaches 0
 	*/
 	void destroy_item();
 

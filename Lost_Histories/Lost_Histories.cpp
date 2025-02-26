@@ -25,17 +25,12 @@ int main()
         link path to other locations, add_pathway()
 
     */
-    /////
-    ///////////
-    //////////////
-    ///////////////
-
 
     Player player = Player();
     player.set_player_name("Steve");
 
     Item rustyKey = Item();
-    rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.");
+    rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.", 1);
 
     Obstacle door = Obstacle();
     door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily. The key hole still looks like its in working condition.", rustyKey.get_item_name(), /*"The key hole seems in tact. Maybe theres a key around here.",*/ "You opened the door");
@@ -43,16 +38,23 @@ int main()
     
     Location bedroom = Location("Bedroom", "A small bedroom that looks like a childs play room.", "Childs Bedroom");
     Location hallway = Location("Hallway", "A hallway with multiple connecting doors.", "Hallway");
-  
+    Location bathroom = Location("Bathroom", "A small bathroom", "Bathroom");
+    Location kitchen = Location("Kitchen", "A kitchen with an abundance of stoves for some reason", "Kitchen");
+
 
     bedroom.add_pathway(hallway);
     bedroom.set_item_in_location(rustyKey);
     bedroom.set_light_in_area(true);
 
     hallway.add_pathway(bedroom);
+    hallway.add_pathway(kitchen);
+    hallway.add_pathway(bathroom);
     hallway.set_location_path_is_blocked_by(door);
 
-    //player.add_item_to_inventory(rustyKey);
+    bathroom.add_pathway(hallway);
+
+    kitchen.add_pathway(hallway);
+    kitchen.set_light_in_area(true);
 
     Location* curruntLocation = &bedroom;
 

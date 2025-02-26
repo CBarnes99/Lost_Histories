@@ -6,13 +6,15 @@ Item::Item() {
 	this->itemName = "iName";
 	this->itemDescription = "iDesc";
 	this->isDestroyed = false;
+	this->amountOfUses = 1;
 }
 
 
-void Item::set_item_defaults(string iName, string iDesc, string iSearch) {
+void Item::set_item_defaults(string iName, string iDesc, string iSearch, int iUses) {
 	this->itemName = iName;
 	this->itemDescription = iDesc;
 	this->itemSearchLocationDescription = iSearch;
+	this->amountOfUses = iUses;
 }
 
 string Item::get_item_name() {
@@ -24,7 +26,10 @@ string Item::get_item_description() {
 }
 
 void Item::destroy_item() {
-	this->isDestroyed = true;
+	this->amountOfUses - 1;
+	if (this->amountOfUses < 0) {
+		this->isDestroyed = true;
+	}
 }
 
 string Item::get_item_search_description() {
