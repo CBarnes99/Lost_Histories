@@ -56,10 +56,14 @@ Item Player::get_item_from_inventory(int index) {
 	return this->playerInventory[index];
 }
 
-void Player::reduce_item_durability(Item item, int index) {
+void Player::reduce_item_durability(Item&& item, int index) {
 	item.reduce_item_durability();
 	if (item.is_item_destroyed() == true) {
 		cout << item.get_item_name() << " has broken and can no longer be used." << endl;
 		this->playerInventory.erase(this->playerInventory.begin() + index);
 	}
+}
+
+void Player::remove_item_from_inventory(int index) {
+	this->playerInventory.erase(this->playerInventory.begin() + index);
 }

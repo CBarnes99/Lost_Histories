@@ -82,5 +82,7 @@ public:
 	*	@param item The Item that is getting its durability reduced, as an item reference
 	*	@param index The index of the item in the inventory
 	*/
-	void reduce_item_durability(Item item, int index);
+	void reduce_item_durability(Item&& item, int index);
+
+	void remove_item_from_inventory(int index);
 };

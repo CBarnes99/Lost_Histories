@@ -79,19 +79,19 @@ void Location::set_location_unblocked() {
 void Location::search_location(Player& player) {
 	if (isLight == true) {	//check to see if theres light in the current location
 		if (isItemInArea == true) {	//check to see if theres an item in the current location
-			cout << locItems.get_item_search_description();
+			cout << this->locItems.get_item_search_description();
 			cout << "\nDo you want to pick up the item? Y or N" << endl;
 			string playerAnswer;
 			cin >> playerAnswer;
 			if (playerAnswer == "y" || playerAnswer == "Y") { //if user wants to pick up the item
 				system("cls");
-				player.add_item_to_inventory(locItems);
-				cout << "You pick up the " << locItems.get_item_name();
+				player.add_item_to_inventory(this->locItems);
+				cout << "You pick up the " << this->locItems.get_item_name();
 				set_item_no_longer_in_location();
 			}
 			else {
 				system("cls");
-				cout << "You didnt pick up the " << locItems.get_item_name() << endl;
+				cout << "You didnt pick up the " << this->locItems.get_item_name() << endl;
 			}
 		}
 		else {	//if theres no item in the location, print defualt room search description
@@ -143,7 +143,25 @@ bool Location::move_to_location(Location* currentLoc, int userInput, Player& pla
 				system("cls");
 				cout << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_removed() << endl; //prints to the console the obstacle removed
 				currentLoc->get_pathways()[userInput]->set_location_unblocked();	//sets location as unblocked so user can freely moved between locations
-				player.reduce_item_durability(player.get_item_from_inventory(choice), choice); //reduce item durability by one, if reaces zero, destroy item
+
+
+				//cout << &player.get_item_from_inventory(choice) << endl;
+
+				//////////////////////////////////////////////////////////////////////////////////
+				player.get_item_from_inventory(choice).reduce_item_durability();
+				if (player.get_item_from_inventory(choice).is_item_destroyed() == true) {
+					player.remove_item_from_inventory(choice);
+				}
+
+				//get item, reduce durability by one, check to see if its 0, if true, remove item from inventory
+
+
+
+
+
+
+				//player.reduce_item_durability(player.get_item_from_inventory(choice), choice); //reduce item durability by one, if reaces zero, destroy item
+				// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Item durability not reducing if durability is more than 1
 				cout << "You move into the " << currentLoc->get_pathways()[userInput]->get_loc_name() << endl;	//output the location moved into
 				return true;
 			}
