@@ -134,53 +134,38 @@ bool Location::move_to_location(Location* currentLoc, int userInput, Player& pla
 			}
 			choice = -1;
 
-			while (choice < 0 || choice > player.get_inventory_size()) { //if there is items in their inventory, output all the items
+			while (choice < 0 || choice > player.get_inventory_size()) { //if there is items in their inventory, output all the items ( size is 1+ than items in inventory, 1+ will be to back out of inventory)
 				player.output_all_items_in_inventory();
+				cout << "[" << player.get_inventory_size() << "] Turn Back." << endl;
 				cout << "Which item do you want to use?\n>>> ";
 				cin >> choice;
 			}
-			if (currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_key() == player.get_item_from_inventory(choice).get_item_name()) {	//if the item is the same item that is required to remove the and move into the room
-				system("cls");
-				cout << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_removed() << endl; //prints to the console the obstacle removed
-				currentLoc->get_pathways()[userInput]->set_location_unblocked();	//sets location as unblocked so user can freely moved between locations
+			if (choice < player.get_inventory_size()) { // if selected an item
+				//if item selected is the item required to unblock the obstacle in the way
+				if (currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_key() == player.get_item_from_inventory().at(choice)->get_item_name()) {	//if the item is the same item that is required to remove the and move into the room
+					system("cls");
+					cout << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_removed_description() << endl; //prints to the console the obstacle removed
+					currentLoc->get_pathways()[userInput]->set_location_unblocked();	//sets location as unblocked so user can freely moved between locations
 
+					player.get_item_from_inventory().at(choice)->reduce_item_durability();	//reduce the item used durability
+					if (player.get_item_from_inventory().at(choice)->is_item_destroyed() == true) {	//if durability reaches 0, remove item from inventory
+						player.remove_item_from_inventory(choice);
+					}
 
-				//cout << &player.get_item_from_inventory(choice) << endl;
-
-				//////////////////////////////////////////////////////////////////////////////////
-				//player.get_item_from_inventory(choice).reduce_item_durability();
-				//if (player.get_item_from_inventory(choice).is_item_destroyed() == true) {
-				//	player.remove_item_from_inventory(choice);
-				//}
-
-				//get item, reduce durability by one, check to see if its 0, if true, remove item from inventory
-
-				cout << player.get_item_from_inventory(choice).is_item_destroyed() << "		" << player.get_item_from_inventory(choice).item_durability() << endl;
-
-				
-				player.get_item_from_inventory(choice).set_item_durability();
-
-
-
-
-
-
-				cout << player.get_item_from_inventory(choice).is_item_destroyed() << "		" << player.get_item_from_inventory(choice).item_durability() << endl;
-
-				//player.reduce_item_durability(player.get_item_from_inventory(choice), choice); //reduce item durability by one, if reaces zero, destroy item
-				cout << player.get_item_from_inventory(choice).item_durability() << endl;
-				// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Item durability not reducing if durability is more than 1
-
-
-
-
-				cout << "You move into the " << currentLoc->get_pathways()[userInput]->get_loc_name() << endl;	//output the location moved into
-				return true;
+					cout << "You move into the " << currentLoc->get_pathways()[userInput]->get_loc_name() << endl;	//output the location moved into
+					return true;
+				}
+				else {
+					cout << player.get_item_from_inventory().at(choice)->get_item_name() << " has no effect on " << currentLoc->get_obstacle_name_from_location() << endl;
+					cout << "You turn back." << endl;
+					return false;
+				}
+				break;
 			}
-			break;
 
 		case(1):	//return to previous room
 			system("cls");
+			cout << "You turn back." << endl;
 			return false;
 			break;
 

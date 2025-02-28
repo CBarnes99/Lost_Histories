@@ -75,14 +75,11 @@ public:
 	*	@param index The Location of the item in the inventory vector, as an Int
 	*	@return The Item in your inventory at the specified index, as an Item object
 	*/
-	Item get_item_from_inventory(int index);
+	vector<Item*> get_item_from_inventory();
 
 	/**
 	*	@brief Removes an item from your inventory
-	*	@param item The Item that is getting its durability reduced, as an item reference
-	*	@param index The index of the item in the inventory
+	*	@param index The index of the item in the inventory, as an Int
 	*/
-	void reduce_item_durability(Item&& item, int index);
-
 	void remove_item_from_inventory(int index);
 };

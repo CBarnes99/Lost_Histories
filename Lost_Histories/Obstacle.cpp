@@ -26,6 +26,6 @@ string Obstacle::get_obstacle_key() {
 	return this->obstcaleKey;
 }
 
-string Obstacle::get_obstacle_removed() {
+string Obstacle::get_obstacle_removed_description() {
 	return this->obstacleRemoved;
 }

@@ -29,10 +29,7 @@ void Player::output_all_items_in_inventory() {
 		int itemCount = 0;
 		cout << "You open your inventory, you have:" << endl;
 		for (int i = 0; i < this->playerInventory.size(); i++) {
-			if (this->playerInventory[i].is_item_destroyed() == false) {
-				cout << "[" << itemCount << "]	" << this->playerInventory[i].get_item_description() << endl;
-				itemCount++;
-			}
+			cout << "[" << i << "] " << this->playerInventory.at(i)->get_item_name() << endl;
 		}
 		cout << endl;
 	}
@@ -52,17 +49,8 @@ size_t Player::get_inventory_size() {
 	return this->playerInventory.size();
 }
 
-Item Player::get_item_from_inventory(int index) {
-	return playerInventory.
-		this->playerInventory[index];
-}
-
-void Player::reduce_item_durability(Item&& item, int index) {
-	item.reduce_item_durability();
-	if (item.is_item_destroyed() == true) {
-		cout << item.get_item_name() << " has broken and can no longer be used." << endl;
-		this->playerInventory.erase(this->playerInventory.begin() + index);
-	}
+vector<Item*> Player::get_item_from_inventory() {
+	return playerInventory;
 }
 
 void Player::remove_item_from_inventory(int index) {

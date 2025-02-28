@@ -74,9 +74,5 @@ public:
 	*	@return itemSearchLocationDescription as a string
 	*/
 	string get_item_search_description();
-
-	int item_durability();
-
-	void set_item_durability();
 };
 

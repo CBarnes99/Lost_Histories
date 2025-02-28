@@ -24,11 +24,6 @@ private:
 	string obstcaleKey;
 
 	/**
-	*	@brief A hint on how to pass this obstacle
-	*/
-	//string obstacleHint;
-
-	/**
 	*	@brief What displays to the player when the obstacle is removed
 	*/
 	string obstacleRemoved;
@@ -69,6 +64,6 @@ public:
 	*	@brief Displays to the user once the obstacle has been removed
 	*	@return The obstacleRemoved, as a String
 	*/
-	string get_obstacle_removed();
+	string get_obstacle_removed_description();
 };
 

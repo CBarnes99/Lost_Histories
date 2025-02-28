@@ -29,7 +29,7 @@ int main()
     Player player = Player();
 
     Item rustyKey = Item();
-    rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.", 2); ////BUGGG IF DURABILITY IS GREATER THAN 1, ITEM IN INVENTORY DOSENT GET REDUCED BY 1 WHEN USED
+    rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.", 1); ////BUGGG IF DURABILITY IS GREATER THAN 1, ITEM IN INVENTORY DOSENT GET REDUCED BY 1 WHEN USED
 
 
 
@@ -73,8 +73,6 @@ int main()
     player.set_player_name(userInputString);
     system("cls");
     cout << "Welcome, " << player.get_player_name() << endl;
-
-    player.add_item_to_inventory(rustyKey);
 
     while (playing == true) {
 

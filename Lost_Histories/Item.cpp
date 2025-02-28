@@ -26,7 +26,7 @@ string Item::get_item_description() {
 }
 
 void Item::reduce_item_durability() {
-	this->itemDurability = this->itemDurability--;
+	this->itemDurability--;
 	cout << this->itemDurability << endl;
 	if (this->itemDurability < 1) {
 		this->isDestroyed = true;
@@ -39,12 +39,4 @@ string Item::get_item_search_description() {
 
 bool Item::is_item_destroyed() {
 	return this->isDestroyed;
-}
-
-int Item::item_durability() {
-	return this->itemDurability;
-}
-
-void Item::set_item_durability() {
-	this->itemDurability--;
 }
