@@ -31,6 +31,10 @@ int main()
     Item rustyKey = Item();
     rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.", 2); ////BUGGG IF DURABILITY IS GREATER THAN 1, ITEM IN INVENTORY DOSENT GET REDUCED BY 1 WHEN USED
 
+
+
+
+
     Obstacle door = Obstacle();
     door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily. The key hole still looks like its in working condition.", rustyKey.get_item_name(), /*"The key hole seems in tact. Maybe theres a key around here.",*/ "You opened the door");
 
@@ -69,7 +73,8 @@ int main()
     player.set_player_name(userInputString);
     system("cls");
     cout << "Welcome, " << player.get_player_name() << endl;
-    
+
+    player.add_item_to_inventory(rustyKey);
 
     while (playing == true) {
 

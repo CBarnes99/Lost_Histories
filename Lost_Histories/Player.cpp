@@ -17,8 +17,8 @@ string Player::get_player_name() {
 	return playerName;
 }
 
-void Player::add_item_to_inventory(Item nItem) {
-	playerInventory.push_back(nItem);
+void Player::add_item_to_inventory(Item& nItem) {
+	playerInventory.push_back(&nItem);
 }
 
 void Player::output_all_items_in_inventory() {
@@ -53,7 +53,8 @@ size_t Player::get_inventory_size() {
 }
 
 Item Player::get_item_from_inventory(int index) {
-	return this->playerInventory[index];
+	return playerInventory.
+		this->playerInventory[index];
 }
 
 void Player::reduce_item_durability(Item&& item, int index) {

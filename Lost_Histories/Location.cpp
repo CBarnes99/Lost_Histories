@@ -148,20 +148,32 @@ bool Location::move_to_location(Location* currentLoc, int userInput, Player& pla
 				//cout << &player.get_item_from_inventory(choice) << endl;
 
 				//////////////////////////////////////////////////////////////////////////////////
-				player.get_item_from_inventory(choice).reduce_item_durability();
-				if (player.get_item_from_inventory(choice).is_item_destroyed() == true) {
-					player.remove_item_from_inventory(choice);
-				}
+				//player.get_item_from_inventory(choice).reduce_item_durability();
+				//if (player.get_item_from_inventory(choice).is_item_destroyed() == true) {
+				//	player.remove_item_from_inventory(choice);
+				//}
 
 				//get item, reduce durability by one, check to see if its 0, if true, remove item from inventory
 
+				cout << player.get_item_from_inventory(choice).is_item_destroyed() << "		" << player.get_item_from_inventory(choice).item_durability() << endl;
+
+				
+				player.get_item_from_inventory(choice).set_item_durability();
 
 
 
 
+
+
+				cout << player.get_item_from_inventory(choice).is_item_destroyed() << "		" << player.get_item_from_inventory(choice).item_durability() << endl;
 
 				//player.reduce_item_durability(player.get_item_from_inventory(choice), choice); //reduce item durability by one, if reaces zero, destroy item
+				cout << player.get_item_from_inventory(choice).item_durability() << endl;
 				// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Item durability not reducing if durability is more than 1
+
+
+
+
 				cout << "You move into the " << currentLoc->get_pathways()[userInput]->get_loc_name() << endl;	//output the location moved into
 				return true;
 			}
