@@ -20,30 +20,28 @@ int main()
 
         Create location
         if item in location, set_item_in_location()
-        if this location is blocked, set_location_path_is_blocked_by()
-        if theres light in location, set_light_in_aera()
-        link path to other locations, add_pathway()
+        if this location is blocked by obstacle, set_location_path_is_blocked_by()
+        if theres light in location, set_light_in_area()
+        to link path to other locations, add_pathway()
 
     */
-
+    //Player Objects Here
     Player player = Player();
 
+
+    //Item Objects Here
     Item rustyKey = Item();
-    rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.", 1); ////BUGGG IF DURABILITY IS GREATER THAN 1, ITEM IN INVENTORY DOSENT GET REDUCED BY 1 WHEN USED
+    rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.", 1);
 
-
-
-
-
+    //Obstacle Objects Here
     Obstacle door = Obstacle();
     door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily. The key hole still looks like its in working condition.", rustyKey.get_item_name(), /*"The key hole seems in tact. Maybe theres a key around here.",*/ "You opened the door");
 
-    
+    //Location Objects Here
     Location bedroom = Location("Bedroom", "A small bedroom that looks like a childs play room.", "Childs Bedroom");
     Location hallway = Location("Hallway", "A hallway with multiple connecting doors.", "Hallway");
     Location bathroom = Location("Bathroom", "A small bathroom", "Bathroom");
     Location kitchen = Location("Kitchen", "A kitchen with an abundance of stoves for some reason", "Kitchen");
-
 
     bedroom.add_pathway(hallway);
     bedroom.set_item_in_location(rustyKey);
@@ -58,6 +56,7 @@ int main()
 
     kitchen.add_pathway(hallway);
     kitchen.set_light_in_area(true);
+
 
     Location* curruntLocation = &bedroom;
 
@@ -75,7 +74,7 @@ int main()
     cout << "Welcome, " << player.get_player_name() << endl;
 
     while (playing == true) {
-
+        
         cout << "You are at --- " << curruntLocation->get_loc_name() << endl;       //Prints the location you are in
         cout << curruntLocation->get_loc_description() << endl;
 
@@ -112,6 +111,6 @@ int main()
         else {
             player.output_all_items_in_inventory();     //displayes all inventory items to player
         }
-
+        
     }
 }

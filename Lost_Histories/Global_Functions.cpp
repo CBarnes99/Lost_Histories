@@ -7,3 +7,15 @@ void clear_invalid_input() {	//clears invalid input by the user to avoid endless
 	cin.clear();
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
+
+void sleep(int time) {
+	this_thread::sleep_for(chrono::milliseconds(time));
+}
+
+void letter_by_letter_output(string text) {
+	for (int i = 0; i < text.length(); i++) {
+		cout << text.at(i);
+		sleep(35);
+	}
+	cout << endl;
+}
