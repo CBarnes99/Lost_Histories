@@ -109,7 +109,7 @@ int main()
             curruntLocation->search_location(player);   //search location for items
         }
         else {
-            player.output_all_items_in_inventory();     //displayes all inventory items to player
+            player.output_all_items_in_inventory();     //displays all inventory items to player
         }
         
     }
