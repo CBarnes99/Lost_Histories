@@ -51,7 +51,7 @@ public:
 	*	@brief Adds the item found within the location to the players inventory
 	*	@param nItem The item added to the inventory, as an Item object
 	*/
-	void add_item_to_inventory(Item& nItemm);
+	void add_item_to_inventory(Item& nItem);
 
 	/**
 	*	@brief Outputs all the items in the players inventory
