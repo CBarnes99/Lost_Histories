@@ -19,14 +19,28 @@ void Object::set_item(Item* oItem) {
 	this->item = oItem;
 }
 
-void set_obstacle(Obstacle* oObstacle, string oUnblocked);
+void Object::set_obstacle(Obstacle* oObstacle, string oUnblocked) {
+	this->blockedByObstacle = oObstacle;
+	this->unblockedDescription = oUnblocked;
+}
 
-void set_needs_opening(string oOpeningDescription);
+void Object::set_needs_opening(string oOpeningDescription) {
+	this->objectNeedsOpening = true;
+	this->objectOpeningDescription = oOpeningDescription;
+}
 
-string get_object_name();
+string Object::get_object_name() {
+	return this->objectName;
+}
 
-Item* get_item();
+Item* Object::get_item() {
+	this->item;
+}
 
-Obstacle* get_obstacle();
+Obstacle* Object::get_obstacle() {
+	return this->blockedByObstacle;
+}
 
-string get_object_opening_description();
+string Object::get_object_opening_description() {
+	return this->objectOpeningDescription;
+}
