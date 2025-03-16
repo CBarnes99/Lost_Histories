@@ -96,7 +96,7 @@ void Location::search_location(Player& player) {
 			
 			if (playerAnswerInt >= 0 && playerAnswerInt < count) {
 				system("cls");
-				cout << this->locObject.at(count)->get_object_opening_description() << endl;
+				cout << this->locObject.at(count)->get_object_opening_description() << endl;  ///////////////////// Talk to Nick about his error
 				cout << "You see: " << this->locObject.at(count)->get_item().get_item_name();
 				cout << "Do you want to pick it up? Y or N" << endl;
 				

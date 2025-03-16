@@ -8,7 +8,7 @@ Object::Object() {
 	this->blockedByObstacle = nullptr;
 	this->unblockedDescription = "DefualtUnblockedDescription";
 	this->objectNeedsOpening = false;
-	this->objectOpeningDescription = "DefualtObjectOpeningDescription";
+	this->objectOpeningDescription = "DefualtOpeningDescription";
 }
 
 void Object::set_object_name(string oName) {
@@ -21,6 +21,7 @@ void Object::set_item(Item oItem) {
 
 void Object::set_obstacle(Obstacle* oObstacle, string oUnblocked) {
 	this->blockedByObstacle = oObstacle;
+	this->isObjectBlocked = true;
 	this->unblockedDescription = oUnblocked;
 }
 
