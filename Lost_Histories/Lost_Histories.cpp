@@ -13,6 +13,8 @@ int main()
         Create Player
         set player vars   set_player_name()
 
+        Create Objects
+
         Create Items
         Set Item Defaults set_item_defaults()
 
@@ -29,9 +31,20 @@ int main()
     Player player = Player();
 
 
+   
+
+
     //Item Objects Here
     Item rustyKey = Item();
     rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.", 1);
+
+
+    Object cupboard = Object();
+    cupboard.set_item(rustyKey);
+    cupboard.set_needs_opening("You open the door to the cupboard");
+    cupboard.set_object_name("Cupboard");
+
+
 
     //Obstacle Objects Here
     Obstacle door = Obstacle();
@@ -44,8 +57,9 @@ int main()
     Location kitchen = Location("Kitchen", "A kitchen with an abundance of stoves for some reason", "Kitchen");
 
     bedroom.add_pathway(hallway);
-    bedroom.set_item_in_location(rustyKey);
+    //bedroom.set_object_in_location(rustyKey);
     bedroom.set_light_in_area(true);
+    bedroom.set_object_in_location(cupboard);
 
     hallway.add_pathway(bedroom);
     hallway.add_pathway(kitchen);

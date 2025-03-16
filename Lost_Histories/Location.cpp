@@ -12,8 +12,8 @@ Location::Location(string lName, string lDesc, string lDistDesc) {	//constructor
 	this->isLight = false;
 	this->locNoLightSearchDescription = "Its too dark to examine the area.";
 
-	this->isItemInArea = false;
-	this->locItems = Item();
+	this->isObjectInArea = false;
+	//this->locItems = Item();
 	this->roomSearchDescription = "You examine the area but theres nothing of note in the vicinity.";
 
 	this->isPathBlocked = false;
@@ -44,21 +44,26 @@ vector<Location*> Location::get_pathways() {
 }
 
 void Location::add_pathway(Location& newPathway) {
-	pathways.push_back(&newPathway);
+	this->pathways.push_back(&newPathway);
 }
 
 void Location::set_light_in_area(bool light) {
 	this->isLight = light;
 }
 
-void Location::set_item_in_location(Item& lItem) {
-	this->isItemInArea = true;
-	this->locItems = lItem;
-	this->roomSearchDescription = this->locItems.get_item_search_description();
+void Location::set_object_in_location(Object& lObject) {
+	this->isObjectInArea = true;
+	this->locObject.push_back(&lObject);
+	//this->locItems = lItem;
+	//this->roomSearchDescription = this->locItems.get_item_search_description();
+}
+
+vector<Object*> Location::get_all_objects() {
+	return this->locObject;
 }
 
 void Location::set_item_no_longer_in_location() {
-	this->isItemInArea = false;
+	this->isObjectInArea = false;
 	this->roomSearchDescription = "You examine the area but theres nothing of note in the area.";
 	this->locNoLightSearchDescription = "Its too dark to examine the area. But you remember you've already searched this location before.";
 }
@@ -78,20 +83,40 @@ void Location::set_location_unblocked() {
 
 void Location::search_location(Player& player) {
 	if (isLight == true) {	//check to see if theres light in the current location
-		if (isItemInArea == true) {	//check to see if theres an item in the current location
-			cout << this->locItems.get_item_search_description();
-			cout << "\nDo you want to pick up the item? Y or N" << endl;
-			string playerAnswer;
-			cin >> playerAnswer;
-			if (playerAnswer == "y" || playerAnswer == "Y") { //if user wants to pick up the item
+		if (isObjectInArea == true) {	//check to see if theres an item in the current location
+			cout << "In this area, you see: " << endl;
+			int count = 0;
+			for (count; count < this->locObject.size(); count++) {
+				cout << "[" << count << "] " << this->locObject.at(count)->get_object_name() << endl;
+			}
+			cout << "[" << count << "] Return." << endl;
+			cout << "Do you want to search an object? Select the number next to the object." << endl;
+			int playerAnswerInt;
+			cin >> playerAnswerInt;
+			
+			if (playerAnswerInt >= 0 && playerAnswerInt < count) {
 				system("cls");
-				player.add_item_to_inventory(this->locItems);
-				cout << "You pick up the " << this->locItems.get_item_name();
-				set_item_no_longer_in_location();
+				cout << this->locObject.at(count)->get_object_opening_description() << endl;
+				cout << "You see: " << this->locObject.at(count)->get_item().get_item_name();
+				cout << "Do you want to pick it up? Y or N" << endl;
+				
+				string playerAnswerString;
+				cin >> playerAnswerString;
+				if (playerAnswerString == "y" || playerAnswerString == "Y") { //if user wants to pick up the item
+					system("cls");
+
+					cout << "You pick up the " << this->locObject.at(count)->get_item().get_item_name();
+					player.add_item_to_inventory(this->locObject.at(count)->get_item());
+					
+					set_item_no_longer_in_location();
+				}
+				else {
+					system("cls");
+					cout << "You didnt pick up the " << this->locObject.at(count)->get_item().get_item_name() << endl;
+				}
 			}
 			else {
-				system("cls");
-				cout << "You didnt pick up the " << this->locItems.get_item_name() << endl;
+				cout << "You didn't search the objects" << endl;
 			}
 		}
 		else {	//if theres no item in the location, print defualt room search description

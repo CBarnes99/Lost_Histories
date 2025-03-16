@@ -3,7 +3,7 @@
 
 Object::Object() {
 	this->objectName = "DefualtObjectName";
-	this->item = nullptr;
+	this->item = Item();
 	this->isObjectBlocked = false;
 	this->blockedByObstacle = nullptr;
 	this->unblockedDescription = "DefualtUnblockedDescription";
@@ -15,7 +15,7 @@ void Object::set_object_name(string oName) {
 	this->objectName = oName;
 }
 
-void Object::set_item(Item* oItem) {
+void Object::set_item(Item oItem) {
 	this->item = oItem;
 }
 
@@ -33,8 +33,8 @@ string Object::get_object_name() {
 	return this->objectName;
 }
 
-Item* Object::get_item() {
-	this->item;
+Item& Object::get_item() {
+	return this->item;
 }
 
 Obstacle* Object::get_obstacle() {

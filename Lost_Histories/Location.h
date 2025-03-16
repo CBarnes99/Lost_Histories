@@ -2,6 +2,7 @@
 #include "Item.h"
 #include "Obstacle.h"
 #include "Player.h"
+#include "Object.h"
 #include <string>
 #include <vector>
 
@@ -36,18 +37,18 @@ private:
 	bool isLight;
 
 	/**
-	*	@brief A check to see if theres an item in the area
+	*	@brief A check to see if theres a searchable object in the area
 	*/
-	bool isItemInArea;
+	bool isObjectInArea;
 
 	/**
 	*	@brief This is an item that is placed within the room
 	*/
-	Item locItems;
+	vector<Object*> locObject;
 
 	/**
 	*	@brief What appears when you search a room
-	*	Depending on if theres an item in the room, the result will be different
+	*	Depending on if theres a searchable object in the room, the result will be different
 	*/
 	string roomSearchDescription;
 
@@ -122,7 +123,14 @@ public:
 	*	@brief Set an item into the area
 	*	@param lItem The Item that is now in that location, as an Item object
 	*/
-	void set_item_in_location(Item& lItem);
+	void set_object_in_location(Object& lObject);
+
+
+
+	vector<Object*> get_all_objects();
+
+
+
 
 	/**
 	*	@brief remove the item from the location

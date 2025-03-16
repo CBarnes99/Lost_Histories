@@ -16,7 +16,7 @@ private:
 	/**
 	*	@brief The Item in or at the object. Private
 	*/
-	Item* item;
+	Item item;
 
 	/**
 	*	@brief Is object blocked. Private
@@ -48,7 +48,7 @@ public:
 
 	void set_object_name(string oName);
 
-	void set_item(Item* oItem);
+	void set_item(Item oItem);
 
 	void set_obstacle(Obstacle* oObstacle, string oUnblocked);
 
@@ -56,7 +56,7 @@ public:
 
 	string get_object_name();
 
-	Item* get_item();
+	Item& get_item();
 
 	Obstacle* get_obstacle();
 
