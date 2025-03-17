@@ -96,8 +96,8 @@ void Location::search_location(Player& player) {
 			
 			if (playerAnswerInt >= 0 && playerAnswerInt < count) {
 				system("cls");
-				cout << this->locObject.at(count)->get_object_opening_description() << endl;  ///////////////////// Talk to Nick about his error
-				cout << "You see: " << this->locObject.at(count)->get_item().get_item_name();
+				cout << this->locObject.at(playerAnswerInt)->get_object_opening_description() << endl;  ///////////////////// Talk to Nick about his error
+				cout << "You see: " << this->locObject.at(playerAnswerInt)->get_item().get_item_name();
 				cout << "Do you want to pick it up? Y or N" << endl;
 				
 				string playerAnswerString;
@@ -105,14 +105,14 @@ void Location::search_location(Player& player) {
 				if (playerAnswerString == "y" || playerAnswerString == "Y") { //if user wants to pick up the item
 					system("cls");
 
-					cout << "You pick up the " << this->locObject.at(count)->get_item().get_item_name();
-					player.add_item_to_inventory(this->locObject.at(count)->get_item());
+					cout << "You pick up the " << this->locObject.at(playerAnswerInt)->get_item().get_item_name();
+					player.add_item_to_inventory(this->locObject.at(playerAnswerInt)->get_item());
 					
-					set_item_no_longer_in_location();
+					set_item_no_longer_in_location(); //////////////////////add object no longer in location
 				}
 				else {
 					system("cls");
-					cout << "You didnt pick up the " << this->locObject.at(count)->get_item().get_item_name() << endl;
+					cout << "You didnt pick up the " << this->locObject.at(playerAnswerInt)->get_item().get_item_name() << endl;
 				}
 			}
 			else {
