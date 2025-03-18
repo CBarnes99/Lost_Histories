@@ -193,6 +193,7 @@ bool Location::move_to_location(Location* currentLoc, int userInput, Player& pla
 				}
 				//if the wrong item was chosen
 				else {
+					system("cls");
 					cout << player.get_item_from_inventory().at(choice)->get_item_name() << " has no effect on " << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle->get_obstacle_name() << endl;
 					cout << "You turn back." << endl;
 					return false;
