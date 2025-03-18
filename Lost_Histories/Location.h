@@ -60,7 +60,7 @@ private:
 	/**
 	*	@brief The obstacles name that is blocking the path if the path is blocked
 	*/
-	Obstacle pathBlockedByObstacle;
+	Obstacle* pathBlockedByObstacle;
 
 	/**
 	*	@brief A vector of locations that the player cand move to from this location
@@ -125,12 +125,11 @@ public:
 	*/
 	void set_object_in_location(Object& lObject);
 
-
-
+	/**
+	*	@brief Returns all the searchable objects in this location
+	*	@return All searchable objects, as a vector of Object*
+	*/
 	vector<Object*> get_all_objects();
-
-
-
 
 	/**
 	*	@brief remove the item from the location

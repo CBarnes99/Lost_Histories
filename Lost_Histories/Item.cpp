@@ -10,10 +10,10 @@ Item::Item() {
 }
 
 
-void Item::set_item_defaults(string iName, string iDesc, string iSearch, int iUses) {
+void Item::set_item_defaults(string iName, string iDesc, int iUses) {
 	this->itemName = iName;
 	this->itemDescription = iDesc;
-	this->itemSearchLocationDescription = iSearch;
+	//this->itemSearchLocationDescription = iSearch; string iSearch,
 	this->itemDurability = iUses;
 }
 
@@ -33,9 +33,9 @@ void Item::reduce_item_durability() {
 	}
 }
 
-string Item::get_item_search_description() {
-	return this->itemSearchLocationDescription;
-}
+//string Item::get_item_search_description() {
+//	return this->itemSearchLocationDescription;
+//}
 
 bool Item::is_item_destroyed() {
 	return this->isDestroyed;

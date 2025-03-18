@@ -19,6 +19,11 @@ private:
 	Item item;
 
 	/**
+	*	@brief If true, the item has already been taken. Private
+	*/
+	bool isThereAnItem;
+
+	/**
 	*	@brief Is object blocked. Private
 	*/
 	bool isObjectBlocked;
@@ -49,6 +54,10 @@ public:
 	void set_object_name(string oName);
 
 	void set_item(Item oItem);
+
+	bool is_there_an_item();
+
+	void set_item_taken();
 
 	void set_obstacle(Obstacle* oObstacle, string oUnblocked);
 

@@ -27,30 +27,34 @@ int main()
         to link path to other locations, add_pathway()
 
     */
-    //Player Objects Here
+    //Player Class Here
     Player player = Player();
 
 
-   
-
-
-    //Item Objects Here
+    //Item Classes Here
     Item rustyKey = Item();
-    rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", "On the counter top, theres an odd looking key collecting dust by the window.", 1);
+    rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", 1); //"On the counter top, theres an odd looking key collecting dust by the window.",
+    
+    Item gun = Item();
+    gun.set_item_defaults("Tommy Gun", "An old WW1 Tommy Gun", 10);
 
-
+    ///Object Classes Here
     Object cupboard = Object();
     cupboard.set_item(rustyKey);
     cupboard.set_needs_opening("You open the door to the cupboard");
     cupboard.set_object_name("Cupboard");
 
+    Object chest = Object();
+    chest.set_item(gun);
+    chest.set_needs_opening("You open the heavy lid of the chest");
+    chest.set_object_name("Gold lined chest");
 
 
-    //Obstacle Objects Here
+    //Obstacle Classes Here
     Obstacle door = Obstacle();
     door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily. The key hole still looks like its in working condition.", rustyKey.get_item_name(), /*"The key hole seems in tact. Maybe theres a key around here.",*/ "You opened the door");
 
-    //Location Objects Here
+    //Location Classes Here
     Location bedroom = Location("Bedroom", "A small bedroom that looks like a childs play room.", "Childs Bedroom");
     Location hallway = Location("Hallway", "A hallway with multiple connecting doors.", "Hallway");
     Location bathroom = Location("Bathroom", "A small bathroom", "Bathroom");
@@ -60,6 +64,7 @@ int main()
     //bedroom.set_object_in_location(rustyKey);
     bedroom.set_light_in_area(true);
     bedroom.set_object_in_location(cupboard);
+    bedroom.set_object_in_location(chest);
 
     hallway.add_pathway(bedroom);
     hallway.add_pathway(kitchen);

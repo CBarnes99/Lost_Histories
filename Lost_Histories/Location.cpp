@@ -17,7 +17,7 @@ Location::Location(string lName, string lDesc, string lDistDesc) {	//constructor
 	this->roomSearchDescription = "You examine the area but theres nothing of note in the vicinity.";
 
 	this->isPathBlocked = false;
-	this->pathBlockedByObstacle = Obstacle();
+	this->pathBlockedByObstacle = nullptr;
 
 	this->pathways = {};
 }
@@ -70,11 +70,12 @@ void Location::set_item_no_longer_in_location() {
 
 void Location::set_location_path_is_blocked_by(Obstacle& obs) {
 	this->isPathBlocked = true;
-	this->pathBlockedByObstacle = obs;
+	this->pathBlockedByObstacle = &obs;
 }
 
 string Location::get_obstacle_name_from_location() {
-	return this->pathBlockedByObstacle.get_obstacle_name();
+	//return this->pathBlockedByObstacle.get_obstacle_name();
+	return this->pathBlockedByObstacle->get_obstacle_name();
 }
 
 void Location::set_location_unblocked() {
@@ -89,31 +90,41 @@ void Location::search_location(Player& player) {
 			for (count; count < this->locObject.size(); count++) {
 				cout << "[" << count << "] " << this->locObject.at(count)->get_object_name() << endl;
 			}
-			cout << "[" << count << "] Return." << endl;
+			cout << "[" << count << "] Return" << endl;
 			cout << "Do you want to search an object? Select the number next to the object." << endl;
 			int playerAnswerInt;
 			cin >> playerAnswerInt;
 			
 			if (playerAnswerInt >= 0 && playerAnswerInt < count) {
 				system("cls");
-				cout << this->locObject.at(playerAnswerInt)->get_object_opening_description() << endl;  ///////////////////// Talk to Nick about his error
-				cout << "You see: " << this->locObject.at(playerAnswerInt)->get_item().get_item_name();
-				cout << "Do you want to pick it up? Y or N" << endl;
-				
-				string playerAnswerString;
-				cin >> playerAnswerString;
-				if (playerAnswerString == "y" || playerAnswerString == "Y") { //if user wants to pick up the item
-					system("cls");
-
-					cout << "You pick up the " << this->locObject.at(playerAnswerInt)->get_item().get_item_name();
-					player.add_item_to_inventory(this->locObject.at(playerAnswerInt)->get_item());
+				cout << this->locObject.at(playerAnswerInt)->get_object_opening_description() << endl;
+				if (this->locObject.at(playerAnswerInt)->is_there_an_item() == true) {
 					
-					set_item_no_longer_in_location(); //////////////////////add object no longer in location
+					cout << "You see: " << this->locObject.at(playerAnswerInt)->get_item().get_item_name();
+					cout << endl << "Do you want to pick it up? Y or N" << endl;
+
+					string playerAnswerString;
+					cin >> playerAnswerString;
+					if (playerAnswerString == "y" || playerAnswerString == "Y") { //if user wants to pick up the item
+						system("cls");
+
+						cout << "You pick up the " << this->locObject.at(playerAnswerInt)->get_item().get_item_name() << endl;
+						player.add_item_to_inventory(this->locObject.at(playerAnswerInt)->get_item());
+						this->locObject.at(playerAnswerInt)->set_item_taken();
+
+
+
+						//set_item_no_longer_in_location(); //////////////////////add object no longer in location
+					}
+					else {
+						system("cls");
+						cout << "You didnt pick up the " << this->locObject.at(playerAnswerInt)->get_item().get_item_name() << endl;
+					}
 				}
 				else {
-					system("cls");
-					cout << "You didnt pick up the " << this->locObject.at(playerAnswerInt)->get_item().get_item_name() << endl;
+					cout << "You don't see anthing else here." << endl;
 				}
+				
 			}
 			else {
 				cout << "You didn't search the objects" << endl;
@@ -167,9 +178,9 @@ bool Location::move_to_location(Location* currentLoc, int userInput, Player& pla
 			}
 			if (choice < player.get_inventory_size()) { // if selected an item
 				//if item selected is the item required to unblock the obstacle in the way
-				if (currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_key() == player.get_item_from_inventory().at(choice)->get_item_name()) {	//if the item is the same item that is required to remove the and move into the room
+				if (currentLoc->get_pathways()[userInput]->pathBlockedByObstacle->get_obstacle_key() == player.get_item_from_inventory().at(choice)->get_item_name()) {	//if the item is the same item that is required to remove the and move into the room
 					system("cls");
-					cout << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_removed_description() << endl; //prints to the console the obstacle removed
+					cout << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle->get_obstacle_removed_description() << endl; //prints to the console the obstacle removed
 					currentLoc->get_pathways()[userInput]->set_location_unblocked();	//sets location as unblocked so user can freely moved between locations
 
 					player.get_item_from_inventory().at(choice)->reduce_item_durability();	//reduce the item used durability
@@ -180,8 +191,9 @@ bool Location::move_to_location(Location* currentLoc, int userInput, Player& pla
 					cout << "You move into the " << currentLoc->get_pathways()[userInput]->get_loc_name() << endl;	//output the location moved into
 					return true;
 				}
+				//if the wrong item was chosen
 				else {
-					cout << player.get_item_from_inventory().at(choice)->get_item_name() << " has no effect on " << currentLoc->get_obstacle_name_from_location() << endl;
+					cout << player.get_item_from_inventory().at(choice)->get_item_name() << " has no effect on " << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle->get_obstacle_name() << endl;
 					cout << "You turn back." << endl;
 					return false;
 				}
@@ -196,7 +208,7 @@ bool Location::move_to_location(Location* currentLoc, int userInput, Player& pla
 
 		case(2):	//get the description for  the obstacle
 			system("cls");
-			cout << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle.get_obstacle_description() << endl;
+			cout << currentLoc->get_pathways()[userInput]->pathBlockedByObstacle->get_obstacle_description() << endl;
 			return false;
 			break;
 

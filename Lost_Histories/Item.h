@@ -25,7 +25,7 @@ private:
 	/**
 	*	@brief When location is search, this is what appears to the player
 	*/
-	string itemSearchLocationDescription;
+	//string itemSearchLocationDescription;
 
 	/**
 	*	@brief The amount of times the item can be used before it is destroyed
@@ -39,12 +39,13 @@ public:
 	Item();
 
 	/**
-	*	@breif Set default name, description, and area search for Item
+	*	@breif Set default name, description, and the amount of uses for Item
 	*	@param iName The name of the Item, as a String
 	*	@param iDesc The description for the item, as a String
-	*	@param iSearch The description of what you see in the area for this item, as a String
+	*	@param iUses The amount of times the item can be used, as an Int
 	*/
-	void set_item_defaults(string iName, string iDesc, string iSearch, int iUses);
+	void set_item_defaults(string iName, string iDesc, int iUses);
+	//string iSearch,
 
 	/**
 	*	@brief Gets the Items name
@@ -73,6 +74,6 @@ public:
 	*	@brief Gets the item search desciption
 	*	@return itemSearchLocationDescription as a string
 	*/
-	string get_item_search_description();
+	//string get_item_search_description();
 };
 

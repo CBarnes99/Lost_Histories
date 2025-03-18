@@ -4,6 +4,7 @@
 Object::Object() {
 	this->objectName = "DefualtObjectName";
 	this->item = Item();
+	this->isThereAnItem = true;
 	this->isObjectBlocked = false;
 	this->blockedByObstacle = nullptr;
 	this->unblockedDescription = "DefualtUnblockedDescription";
@@ -36,6 +37,14 @@ string Object::get_object_name() {
 
 Item& Object::get_item() {
 	return this->item;
+}
+
+bool Object::is_there_an_item() {
+	return this->isThereAnItem;
+}
+
+void Object::set_item_taken() {
+	this->isThereAnItem = false;
 }
 
 Obstacle* Object::get_obstacle() {
