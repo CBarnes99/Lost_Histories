@@ -120,9 +120,18 @@ int main()
         system("cls");
 
         if (userInputNum < LoopIncrement) {
-            if (curruntLocation->move_to_location(curruntLocation, userInputNum, player) == true) {
-                curruntLocation = curruntLocation->get_pathways()[userInputNum];    //moves to location if the user input was correct
-            }            
+            Location* desiredLocation = curruntLocation->get_pathways()[userInputNum];
+
+            if (desiredLocation->is_Loc_Accessible(player) == true) {
+                curruntLocation = desiredLocation;
+            }
+
+
+           // if (curruntLocation->move_to_location(curruntLocation, userInputNum, player) == true) {
+            //    curruntLocation = curruntLocation->get_pathways()[userInputNum];    //moves to location if the user input was correct
+            //}   
+
+
         }
         else if (userInputNum == LoopIncrement){
             curruntLocation->search_location(player);   //search location for items

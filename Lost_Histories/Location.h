@@ -165,5 +165,8 @@ public:
 	*	@prarm player The player, as a Player object
 	*/
 	bool move_to_location(Location* currentLoc, int userInput, Player& player);
+
+	bool is_Loc_Accessible(Player& player);
+
 };
 
