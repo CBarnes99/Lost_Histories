@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Player.h"
 
 using namespace std;
 
@@ -64,5 +65,11 @@ public:
 	*	@return The obstacleRemoved, as a String
 	*/
 	string get_obstacle_removed_description();
+
+	/**
+	*	@brief Gives the player options on what to do when ecnountering an obstacle
+	*	@param player The player, as a player object
+	*/
+	bool obstacle_choice(Player& player);
 };
 

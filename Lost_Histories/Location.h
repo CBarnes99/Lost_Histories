@@ -132,11 +132,6 @@ public:
 	vector<Object*> get_all_objects();
 
 	/**
-	*	@brief remove the item from the location
-	*/
-	void set_item_no_longer_in_location();
-
-	/**
 	*	@brief Set that the path is blocked by an obstacle
 	*/
 	void set_location_path_is_blocked_by(Obstacle& obs);
@@ -164,8 +159,12 @@ public:
 	*	@param userInput The players input for the location choice, as an Int
 	*	@prarm player The player, as a Player object
 	*/
-	bool move_to_location(Location* currentLoc, int userInput, Player& player);
+	//bool move_to_location(Location* currentLoc, int userInput, Player& player);
 
+	/**
+	*	@breif Moves player to the new location if its not blocked by an obstacle
+	*	@prarm player The player, as a Player object
+	*/
 	bool is_Loc_Accessible(Player& player);
 
 };

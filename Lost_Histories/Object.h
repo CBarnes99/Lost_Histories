@@ -63,6 +63,12 @@ public:
 
 	void set_needs_opening(string oOpeningDescription);
 
+	void set_object_not_blocked_by_obstacle();
+
+	void get_item_from_object(Player& player);
+
+	bool is_object_blocked_by_obstacle();
+
 	string get_object_name();
 
 	Item& get_item();

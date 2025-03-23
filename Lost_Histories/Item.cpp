@@ -1,5 +1,6 @@
 #include "Item.h"
 #include <iostream>
+#include "Global_Functions.h"
 using namespace std;
 
 Item::Item() {
@@ -13,7 +14,6 @@ Item::Item() {
 void Item::set_item_defaults(string iName, string iDesc, int iUses) {
 	this->itemName = iName;
 	this->itemDescription = iDesc;
-	//this->itemSearchLocationDescription = iSearch; string iSearch,
 	this->itemDurability = iUses;
 }
 
@@ -27,8 +27,10 @@ string Item::get_item_description() {
 
 void Item::reduce_item_durability() {
 	this->itemDurability--;
-	cout << this->itemDurability << endl;
+	//cout << this->itemDurability << endl;
 	if (this->itemDurability < 1) {
+		letter_by_letter_output(this->itemName, true);
+		letter_by_letter_output(" has broken after being used", false);
 		this->isDestroyed = true;
 	}
 }

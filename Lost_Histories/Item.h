@@ -23,11 +23,6 @@ private:
 	bool isDestroyed;
 
 	/**
-	*	@brief When location is search, this is what appears to the player
-	*/
-	//string itemSearchLocationDescription;
-
-	/**
 	*	@brief The amount of times the item can be used before it is destroyed
 	*/
 	int itemDurability;
@@ -69,11 +64,5 @@ public:
 	*	@return The items destroyed value as a Bool
 	*/
 	bool is_item_destroyed();
-
-	/*
-	*	@brief Gets the item search desciption
-	*	@return itemSearchLocationDescription as a string
-	*/
-	//string get_item_search_description();
 };
 

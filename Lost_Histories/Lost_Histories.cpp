@@ -38,6 +38,15 @@ int main()
     Item gun = Item();
     gun.set_item_defaults("Tommy Gun", "An old WW1 Tommy Gun", 10);
 
+  
+    //Obstacle Classes Here
+    Obstacle door = Obstacle();
+    door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily. The key hole still looks like its in working condition.", rustyKey.get_item_name(), "You opened the door");
+
+    Obstacle lock = Obstacle();
+    lock.set_obstacle_defualts("A silver Lock", "A silver lock with no key hole to be found", gun.get_item_name(), "You shoot the lock and it explodes into a billion pieces");
+    
+
     ///Object Classes Here
     Object cupboard = Object();
     cupboard.set_item(rustyKey);
@@ -45,14 +54,16 @@ int main()
     cupboard.set_object_name("Cupboard");
 
     Object chest = Object();
-    chest.set_item(gun);
     chest.set_needs_opening("You open the heavy lid of the chest");
     chest.set_object_name("Gold lined chest");
+    chest.set_obstacle(&lock, "Shot the lock");
+
+    Object draw = Object();
+    draw.set_item(gun);
+    draw.set_object_name("Drawer");
+    draw.set_needs_opening("You pull the draw open");
 
 
-    //Obstacle Classes Here
-    Obstacle door = Obstacle();
-    door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily. The key hole still looks like its in working condition.", rustyKey.get_item_name(), /*"The key hole seems in tact. Maybe theres a key around here.",*/ "You opened the door");
 
     //Location Classes Here
     Location bedroom = Location("Bedroom", "A small bedroom that looks like a childs play room.", "Childs Bedroom");
@@ -61,7 +72,6 @@ int main()
     Location kitchen = Location("Kitchen", "A kitchen with an abundance of stoves for some reason", "Kitchen");
 
     bedroom.add_pathway(hallway);
-    //bedroom.set_object_in_location(rustyKey);
     bedroom.set_light_in_area(true);
     bedroom.set_object_in_location(cupboard);
     bedroom.set_object_in_location(chest);
@@ -74,6 +84,7 @@ int main()
     bathroom.add_pathway(hallway);
 
     kitchen.add_pathway(hallway);
+    kitchen.set_object_in_location(draw);
     kitchen.set_light_in_area(true);
 
 
@@ -126,11 +137,9 @@ int main()
                 curruntLocation = desiredLocation;
             }
 
-
-           // if (curruntLocation->move_to_location(curruntLocation, userInputNum, player) == true) {
-            //    curruntLocation = curruntLocation->get_pathways()[userInputNum];    //moves to location if the user input was correct
-            //}   
-
+        // if (curruntLocation->move_to_location(curruntLocation, userInputNum, player) == true) {
+        //    curruntLocation = curruntLocation->get_pathways()[userInputNum];    //moves to location if the user input was correct
+        //}   
 
         }
         else if (userInputNum == LoopIncrement){
