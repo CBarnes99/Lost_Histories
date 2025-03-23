@@ -134,7 +134,6 @@ void Location::search_location(Player& player) {
 					cout << this->locObject.at(playerAnswerInt)->get_object_name() << " is blocked by " << this->locObject.at(playerAnswerInt)->get_obstacle()->get_obstacle_name() << endl;
 					if (this->locObject.at(playerAnswerInt)->get_obstacle()->obstacle_choice(player) == true) {
 						
-						cout << this->locObject.at(playerAnswerInt)->get_obstacle()->get_obstacle_removed_description() << endl;
 						this->locObject.at(playerAnswerInt)->set_object_not_blocked_by_obstacle();
 					
 						cout << "You unlock the " << this->locObject.at(playerAnswerInt)->get_object_name() << endl;	//output the location moved into

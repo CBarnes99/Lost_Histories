@@ -75,10 +75,6 @@ string Object::get_object_name() {
 	return this->objectName;
 }
 
-Item& Object::get_item() {
-	return this->item;
-}
-
 bool Object::is_there_an_item() {
 	return this->isThereAnItem;
 }

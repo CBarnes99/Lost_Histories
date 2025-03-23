@@ -71,8 +71,6 @@ public:
 
 	string get_object_name();
 
-	Item& get_item();
-
 	Obstacle* get_obstacle();
 
 	string get_object_opening_description();

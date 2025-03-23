@@ -72,7 +72,7 @@ bool Obstacle::obstacle_choice(Player& player)
 			//if item selected is the item required to unblock the obstacle in the way
 			if (this->get_obstacle_key() == player.get_item_from_inventory().at(choice)->get_item_name()) {	//if the item is the same item that is required to remove the and move into the room
 				system("cls");
-				cout << this->get_obstacle_removed_description() << endl; //prints to the console the obstacle removed
+				letter_by_letter_output(this->get_obstacle_removed_description(), false); //prints to the console the obstacle removed
 				
 				player.get_item_from_inventory().at(choice)->reduce_item_durability();	//reduce the item used durability
 				if (player.get_item_from_inventory().at(choice)->is_item_destroyed() == true) {	//if durability reaches 0, remove item from inventory

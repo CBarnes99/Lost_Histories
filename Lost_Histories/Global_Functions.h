@@ -15,7 +15,7 @@ void clear_invalid_input();
 void sleep(int time);
 
 /**
-*	@brief Out puts the string letter by letter similar to a typewriter
+*	@brief Outputs the string letter by letter similar to a typewriter
 *	@param text The string you want to output letter by letter, as a String
 *	@param moreTextAfterwards If true it wont endl after text output, if false it'll endl after text output, as a bool
 */
