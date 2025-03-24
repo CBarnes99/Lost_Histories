@@ -13,7 +13,7 @@ int main()
         Create Player
         set player vars   set_player_name()
 
-        Create Objects
+        Create Searchables
 
         Create Items
         Set Item Defaults set_item_defaults()
@@ -47,20 +47,20 @@ int main()
     lock.set_obstacle_defualts("A silver Lock", "A silver lock with no key hole to be found", gun.get_item_name(), "You shoot the lock and it explodes into a billion pieces");
     
 
-    ///Object Classes Here
-    Object cupboard = Object();
+    ///Searchables Classes Here
+    Searchables cupboard = Searchables();
     cupboard.set_item(rustyKey);
     cupboard.set_needs_opening("You open the door to the cupboard");
-    cupboard.set_object_name("Cupboard");
+    cupboard.set_searchables_name("Cupboard");
 
-    Object chest = Object();
+    Searchables chest = Searchables();
     chest.set_needs_opening("You open the heavy lid of the chest");
-    chest.set_object_name("Gold lined chest");
+    chest.set_searchables_name("Gold lined chest");
     chest.set_obstacle(&lock, "Shot the lock");
 
-    Object draw = Object();
+    Searchables draw = Searchables();
     draw.set_item(gun);
-    draw.set_object_name("Drawer");
+    draw.set_searchables_name("Drawer");
     draw.set_needs_opening("You pull the draw open");
 
 
@@ -73,8 +73,8 @@ int main()
 
     bedroom.add_pathway(hallway);
     bedroom.set_light_in_area(true);
-    bedroom.set_object_in_location(cupboard);
-    bedroom.set_object_in_location(chest);
+    bedroom.set_searchables_in_location(cupboard);
+    bedroom.set_searchables_in_location(chest);
 
     hallway.add_pathway(bedroom);
     hallway.add_pathway(kitchen);
@@ -84,7 +84,7 @@ int main()
     bathroom.add_pathway(hallway);
 
     kitchen.add_pathway(hallway);
-    kitchen.set_object_in_location(draw);
+    kitchen.set_searchables_in_location(draw);
     kitchen.set_light_in_area(true);
 
 
@@ -116,6 +116,7 @@ int main()
         cout << "[" << LoopIncrement << "] Search Area" << endl;    //option to search the area you are in
         cout << "[" << LoopIncrement + 1 << "] Open Inventory" << endl; //desplays the items in your inventory
         cout << ">>>";
+        clear_invalid_input();
         cin >> userInputNum;
 
         while (cin.fail()) { //check for input that is not a number
@@ -127,7 +128,7 @@ int main()
                 cin >> userInputNum;
             }
         }
-
+        clear_invalid_input();
         system("cls");
 
         if (userInputNum < LoopIncrement) {
@@ -136,10 +137,6 @@ int main()
             if (desiredLocation->is_Loc_Accessible(player) == true) {
                 curruntLocation = desiredLocation;
             }
-
-        // if (curruntLocation->move_to_location(curruntLocation, userInputNum, player) == true) {
-        //    curruntLocation = curruntLocation->get_pathways()[userInputNum];    //moves to location if the user input was correct
-        //}   
 
         }
         else if (userInputNum == LoopIncrement){

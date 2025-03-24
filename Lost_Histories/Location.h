@@ -2,7 +2,7 @@
 #include "Item.h"
 #include "Obstacle.h"
 #include "Player.h"
-#include "Object.h"
+#include "Searchables.h"
 #include <string>
 #include <vector>
 
@@ -37,18 +37,18 @@ private:
 	bool isLight;
 
 	/**
-	*	@brief A check to see if theres a searchable object in the area
+	*	@brief A check to see if theres a searchable Searchables in the area
 	*/
-	bool isObjectInArea;
+	bool isSearchablesInArea;
 
 	/**
 	*	@brief This is an item that is placed within the room
 	*/
-	vector<Object*> locObject;
+	vector<Searchables*> locSearchables;
 
 	/**
 	*	@brief What appears when you search a room
-	*	Depending on if theres a searchable object in the room, the result will be different
+	*	Depending on if theres a searchable Searchables in the room, the result will be different
 	*/
 	string roomSearchDescription;
 
@@ -109,7 +109,7 @@ public:
 
 	/**
 	*	@brief Adds a pathway to this location connecting to another location
-	*	@param A location object that is the new path, as a Location object
+	*	@param A location Searchables that is the new path, as a Location Object
 	*/
 	void add_pathway(Location& newPathway);
 
@@ -121,15 +121,15 @@ public:
 
 	/**
 	*	@brief Set an item into the area
-	*	@param lItem The Item that is now in that location, as an Item object
+	*	@param lItem The Item that is now in that location, as an Item Object
 	*/
-	void set_object_in_location(Object& lObject);
+	void set_searchables_in_location(Searchables& lSearchables);
 
 	/**
-	*	@brief Returns all the searchable objects in this location
-	*	@return All searchable objects, as a vector of Object*
+	*	@brief Returns all the searchable Searchables in this location
+	*	@return All searchable Searchables, as a vector of Searchables*
 	*/
-	vector<Object*> get_all_objects();
+	vector<Searchables*> get_all_searchables();
 
 	/**
 	*	@brief Set that the path is blocked by an obstacle

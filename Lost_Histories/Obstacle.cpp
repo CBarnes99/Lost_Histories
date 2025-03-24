@@ -40,6 +40,7 @@ bool Obstacle::obstacle_choice(Player& player)
 
 	while (choice < 0 || choice > 2) { //promt the user to either use an item, return to the previous room, or inspect the obstacle
 		cout << "[0] Use an item. \n[1] Return to previous room. \n[2] Inspect the obstacle." << endl;
+		
 		cin >> choice;
 		while (cin.fail()) {	//checks for invalid input from the user
 			clear_invalid_input();
@@ -52,7 +53,7 @@ bool Obstacle::obstacle_choice(Player& player)
 			cout << "Wrong Input" << endl;
 		}
 	}
-
+	clear_invalid_input();
 	switch (choice) {
 	case(0):	//Use an item
 		if (player.get_inventory_size() < 1) {	//if the player has no items in their inventory
@@ -66,6 +67,7 @@ bool Obstacle::obstacle_choice(Player& player)
 			player.output_all_items_in_inventory();
 			cout << "[" << player.get_inventory_size() << "] Turn Back." << endl;
 			cout << "Which item do you want to use?\n>>> ";
+			clear_invalid_input();
 			cin >> choice;
 		}
 		if (choice < player.get_inventory_size()) { // if selected an item

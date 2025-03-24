@@ -12,14 +12,14 @@ Location::Location(string lName, string lDesc, string lDistDesc) {	//constructor
 	this->isLight = false;
 	this->locNoLightSearchDescription = "Its too dark to examine the area.";
 
-	this->isObjectInArea = false;
+	this->isSearchablesInArea = false;
 	//this->locItems = Item();
 	this->roomSearchDescription = "You examine the area but theres nothing of note in the vicinity.";
 
 	this->isPathBlocked = false;
 	this->pathBlockedByObstacle = nullptr;
 
-	this->locObject = {};
+	this->locSearchables = {};
 	this->pathways = {};
 }
 
@@ -52,19 +52,19 @@ void Location::set_light_in_area(bool light) {
 	this->isLight = light;
 }
 
-void Location::set_object_in_location(Object& lObject) {
-	this->isObjectInArea = true;
-	this->locObject.push_back(&lObject);
+void Location::set_searchables_in_location(Searchables& lSearchables) {
+	this->isSearchablesInArea = true;
+	this->locSearchables.push_back(&lSearchables);
 	//this->locItems = lItem;
 	//this->roomSearchDescription = this->locItems.get_item_search_description();
 }
 
-vector<Object*> Location::get_all_objects() {
-	return this->locObject;
+vector<Searchables*> Location::get_all_searchables() {
+	return this->locSearchables;
 }
 
 //void Location::set_item_no_longer_in_location() {
-//	this->isObjectInArea = false;
+//	this->isSearchablesInArea = false;
 //	this->roomSearchDescription = "You examine the area but theres nothing of note in the area.";
 //	this->locNoLightSearchDescription = "Its too dark to examine the area. But you remember you've already searched this location before.";
 //}
@@ -85,21 +85,22 @@ void Location::set_location_unblocked() {
 
 void Location::search_location(Player& player) {
 	if (isLight == true) {	//check to see if theres light in the current location
-		if (isObjectInArea == true) {	//check to see if theres an item in the current location
+		if (isSearchablesInArea == true) {	//check to see if theres an item in the current location
 			cout << "In this area, you see: " << endl;
 			int count = 0;
-			for (count; count < this->locObject.size(); count++) {
-				cout << "[" << count << "] " << this->locObject.at(count)->get_object_name() << endl;
+			for (count; count < this->locSearchables.size(); count++) {
+				cout << "[" << count << "] " << this->locSearchables.at(count)->get_searchables_name() << endl;
 			}
 			cout << "[" << count << "] Return" << endl;
-			cout << "Do you want to search an object? Select the number next to the object." << endl;
+			cout << "Do you want to search an Searchables? Select the number next to the Searchables." << endl;
 			int playerAnswerInt;
+			clear_invalid_input();
 			cin >> playerAnswerInt;
 
 			if (playerAnswerInt >= 0 && playerAnswerInt < count) {
 				system("cls");
-				if (this->locObject.at(playerAnswerInt)->is_object_blocked_by_obstacle() == false) {
-					this->locObject.at(playerAnswerInt)->get_item_from_object(player);
+				if (this->locSearchables.at(playerAnswerInt)->is_searchables_blocked_by_obstacle() == false) {
+					this->locSearchables.at(playerAnswerInt)->get_item_from_searchables(player);
 					//cout << this->locObject.at(playerAnswerInt)->get_object_opening_description() << endl;
 					//if (this->locObject.at(playerAnswerInt)->is_there_an_item() == true) {
 
@@ -131,13 +132,13 @@ void Location::search_location(Player& player) {
 				}
 				else {
 					//The object is blocked by an obstacle
-					cout << this->locObject.at(playerAnswerInt)->get_object_name() << " is blocked by " << this->locObject.at(playerAnswerInt)->get_obstacle()->get_obstacle_name() << endl;
-					if (this->locObject.at(playerAnswerInt)->get_obstacle()->obstacle_choice(player) == true) {
+					cout << this->locSearchables.at(playerAnswerInt)->get_searchables_name() << " is blocked by " << this->locSearchables.at(playerAnswerInt)->get_obstacle()->get_obstacle_name() << endl;
+					if (this->locSearchables.at(playerAnswerInt)->get_obstacle()->obstacle_choice(player) == true) {
 						
-						this->locObject.at(playerAnswerInt)->set_object_not_blocked_by_obstacle();
+						this->locSearchables.at(playerAnswerInt)->set_searchables_not_blocked_by_obstacle();
 					
-						cout << "You unlock the " << this->locObject.at(playerAnswerInt)->get_object_name() << endl;	//output the location moved into
-						this->locObject.at(playerAnswerInt)->get_item_from_object(player);
+						cout << "You unlock the " << this->locSearchables.at(playerAnswerInt)->get_searchables_name() << endl;	//output the location moved into
+						this->locSearchables.at(playerAnswerInt)->get_item_from_searchables(player);
 					}
 					else {
 
@@ -146,8 +147,8 @@ void Location::search_location(Player& player) {
 				}
 			}
 			else {
-				//if you didnt search the objects
-				cout << "You didn't search the objects" << endl;
+				//if you didnt search the Searchables
+				cout << "You didn't search the Searchables" << endl;
 			}
 		}
 		else {	
