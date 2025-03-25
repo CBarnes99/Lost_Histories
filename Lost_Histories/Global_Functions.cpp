@@ -12,13 +12,12 @@ void sleep(int time) {
 	this_thread::sleep_for(chrono::milliseconds(time));
 }
 
-void letter_by_letter_output(string text, bool moreTextAfterwards) {
+void letter_by_letter_output(string text, int amountOfEndl) {
 	for (int i = 0; i < text.length(); i++) {
 		cout << text.at(i);
 		sleep(25);
 	}
-	if (moreTextAfterwards == false) {
-		cout << endl << endl;
+	for (int i = 0; i < amountOfEndl; i++) {
+		cout << endl;
 	}
-	
 }

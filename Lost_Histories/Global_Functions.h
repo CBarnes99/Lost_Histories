@@ -17,6 +17,6 @@ void sleep(int time);
 /**
 *	@brief Outputs the string letter by letter similar to a typewriter
 *	@param text The string you want to output letter by letter, as a String
-*	@param moreTextAfterwards If true it wont endl after text output, if false it'll endl after text output, as a bool
+*	@param amountOfEndl The amount of endl you want after the string outputed, typically between 0 and 2, as an int
 */
-void letter_by_letter_output(std::string text, bool moreTextAfterwards);
+void letter_by_letter_output(std::string text, int amountOfEndl);

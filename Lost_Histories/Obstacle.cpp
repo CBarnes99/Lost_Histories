@@ -40,7 +40,7 @@ bool Obstacle::obstacle_choice(Player& player)
 
 	while (choice < 0 || choice > 2) { //promt the user to either use an item, return to the previous room, or inspect the obstacle
 		cout << "[0] Use an item. \n[1] Return to previous room. \n[2] Inspect the obstacle." << endl;
-		
+		clear_invalid_input();
 		cin >> choice;
 		while (cin.fail()) {	//checks for invalid input from the user
 			clear_invalid_input();
@@ -53,7 +53,6 @@ bool Obstacle::obstacle_choice(Player& player)
 			cout << "Wrong Input" << endl;
 		}
 	}
-	clear_invalid_input();
 	switch (choice) {
 	case(0):	//Use an item
 		if (player.get_inventory_size() < 1) {	//if the player has no items in their inventory
@@ -64,7 +63,7 @@ bool Obstacle::obstacle_choice(Player& player)
 		choice = -1;
 
 		while (choice < 0 || choice > player.get_inventory_size()) { //if there is items in their inventory, output all the items ( size is 1+ than items in inventory, 1+ will be to back out of inventory)
-			player.output_all_items_in_inventory();
+			player.output_all_items_in_inventory(true);
 			cout << "[" << player.get_inventory_size() << "] Turn Back." << endl;
 			cout << "Which item do you want to use?\n>>> ";
 			clear_invalid_input();
@@ -74,7 +73,7 @@ bool Obstacle::obstacle_choice(Player& player)
 			//if item selected is the item required to unblock the obstacle in the way
 			if (this->get_obstacle_key() == player.get_item_from_inventory().at(choice)->get_item_name()) {	//if the item is the same item that is required to remove the and move into the room
 				system("cls");
-				letter_by_letter_output(this->get_obstacle_removed_description(), false); //prints to the console the obstacle removed
+				letter_by_letter_output(this->get_obstacle_removed_description(), 2); //prints to the console the obstacle removed
 				
 				player.get_item_from_inventory().at(choice)->reduce_item_durability();	//reduce the item used durability
 				if (player.get_item_from_inventory().at(choice)->is_item_destroyed() == true) {	//if durability reaches 0, remove item from inventory
@@ -102,7 +101,7 @@ bool Obstacle::obstacle_choice(Player& player)
 
 	case(2):	//get the description for  the obstacle
 		system("cls");
-		letter_by_letter_output(get_obstacle_description(), false);
+		letter_by_letter_output(get_obstacle_description(), 2);
 		return false;
 		break;
 

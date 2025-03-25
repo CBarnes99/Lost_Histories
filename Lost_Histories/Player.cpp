@@ -21,17 +21,26 @@ void Player::add_item_to_inventory(Item& nItem) {
 	playerInventory.push_back(&nItem);
 }
 
-void Player::output_all_items_in_inventory() {
+void Player::output_all_items_in_inventory(bool usingItem) {
 	if (this->playerInventory.size() < 1) {
 		cout << "You have no items in your inventory" << endl;
 	}
 	else {
 		int itemCount = 0;
 		cout << "You open your inventory, you have:" << endl;
-		for (int i = 0; i < this->playerInventory.size(); i++) {
-			cout << "[" << i << "] " << this->playerInventory.at(i)->get_item_name() << endl;
+		if (usingItem == true) {
+			for (int i = 0; i < this->playerInventory.size(); i++) {
+				cout << "[" << i << "] " << this->playerInventory.at(i)->get_item_name() << endl;
+			}
+			cout << endl;
 		}
-		cout << endl;
+		else {
+			for (int i = 0; i < this->playerInventory.size(); i++) {
+				cout << this->playerInventory.at(i)->get_item_name() << endl;
+			}
+			cout << endl;
+		}
+		
 	}
 }
 

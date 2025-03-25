@@ -29,7 +29,7 @@ private:
 	/**
 	*	@brief The locations description from another location from where you can move from
 	*/
-	string locDistantDescription;
+	string locInspectLocation;
 
 	/**
 	*	@brief If the room is lit from a light source, this will be true, otherwise false
@@ -73,9 +73,9 @@ public:
 	*	@brief Constructor for the Location.
 	*	@param lName The name of the Location, as a String
 	*	@param lDesc The description for the Location, as a String
-	*	@param lDistDesc The Description for the location when viewed from another location, as a String
+	*	@param lInspectDesc The Description for the location when inspected, as a String
 	*/
-	Location(string lName, string lDesc, string lDistDesc);
+	Location(string lName, string lDesc, string lInspectDesc);
 
 	/**
 	*	@brief Gets the Locations name
@@ -99,7 +99,7 @@ public:
 	*	@brief Gets the Locations description from a connecting location
 	*	@return The distant location description as a String
 	*/
-	string get_loc_distant_description();
+	string get_loc_inspect_location();
 
 	/**
 	*	@brief Displayes the connecting locations from this one

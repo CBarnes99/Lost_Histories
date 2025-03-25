@@ -56,7 +56,7 @@ public:
 	/**
 	*	@brief Outputs all the items in the players inventory
 	*/
-	void output_all_items_in_inventory();
+	void output_all_items_in_inventory(bool usingItem);
 
 	/**
 	*	@brief Sets the players light soruce to true or false

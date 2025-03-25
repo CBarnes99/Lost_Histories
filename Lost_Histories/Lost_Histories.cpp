@@ -65,6 +65,21 @@ int main()
 
 
     //Location Classes Here
+    //Location inFrontOfSquare = Location("Outside of Vatican City", )///////////////////////////////////////////////////////////////////////////////////Research the front of the vatican and put it here
+    Location stPetersSquare = Location("St Peter's Square", "A huge open area surrounded by statues overlooking the square.", "St Peter's Square");
+    Location leftFountain = Location("Left Fountain", "The left fountain within St Peter's Square.", "Left Fountain");
+    Location RightFountain = Location("Right Fountain", "The right fountain within St Peter's Square.", "Right Fountain");
+    //Location Obelisk = Location("Obelisk", )
+
+
+    Location stPetersBasilica = Location("St Peter's Basilica", "A monilithch structure that is the focal point of the Vatican", "St Peter's Basilica");
+
+
+    //////////////////ADD INSPECT LOCATION FUNCTION IN LOCATION CLASS
+
+
+
+
     Location bedroom = Location("Bedroom", "A small bedroom that looks like a childs play room.", "Childs Bedroom");
     Location hallway = Location("Hallway", "A hallway with multiple connecting doors.", "Hallway");
     Location bathroom = Location("Bathroom", "A small bathroom", "Bathroom");
@@ -109,7 +124,7 @@ int main()
 
         cout << '\n' << "You can see these (Enter number to travel)" << endl;
         for (LoopIncrement = 0; LoopIncrement < curruntLocation->get_pathways().size(); LoopIncrement++) {
-            cout << "[" << LoopIncrement << "] " << curruntLocation->get_pathways()[LoopIncrement]->get_loc_distant_description() << endl;  //outputs the locations connected to the location you are in
+            cout << "[" << LoopIncrement << "] " << curruntLocation->get_pathways()[LoopIncrement]->get_loc_name() << endl;  //outputs the locations connected to the location you are in
         }
         cout << endl;
         cout << "[" << LoopIncrement << "] Search Area" << endl;    //option to search the area you are in
@@ -124,10 +139,10 @@ int main()
             cin >> userInputNum;
             while (userInputNum < 0 || userInputNum > LoopIncrement + 1) {  //checks for wrong input
                 cout << "Wrong input, try again!" << '\n' << ">>>";
+                clear_invalid_input();
                 cin >> userInputNum;
             }
         }
-        clear_invalid_input();
         system("cls");
 
         if (userInputNum < LoopIncrement) {
@@ -142,7 +157,7 @@ int main()
             curruntLocation->search_location(player);   //search location for items
         }
         else {
-            player.output_all_items_in_inventory();     //displays all inventory items to player
+            player.output_all_items_in_inventory(false);     //displays all inventory items to player
         }
         
     }

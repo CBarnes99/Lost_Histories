@@ -28,8 +28,8 @@ string Item::get_item_description() {
 void Item::reduce_item_durability() {
 	this->itemDurability--;
 	if (this->itemDurability < 1) {
-		letter_by_letter_output(this->itemName, true);
-		letter_by_letter_output(" has broken after being used", false);
+		letter_by_letter_output(this->itemName, 0);
+		letter_by_letter_output(" has broken after being used", 2);
 		this->isDestroyed = true;
 	}
 }

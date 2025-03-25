@@ -38,19 +38,22 @@ void Searchables::set_searchables_not_blocked_by_obstacle() {
 }
 
 void Searchables::get_item_from_searchables(Player& player) {
-	letter_by_letter_output(this->searchablesOpeningDescription, false);
+	letter_by_letter_output(this->searchablesOpeningDescription, 1);
 	if (is_there_an_item() == true) {
 
-		cout << "You see: " << item.get_item_name();
-		cout << endl << "Do you want to pick it up? Y or N" << endl;
-
+		letter_by_letter_output("You see: ", 0);
+		letter_by_letter_output(item.get_item_name(), 1);
+		sleep(50);
+		letter_by_letter_output("Do you want to pick it up? Y or N", 1);
+		
 		clear_invalid_input();
 		string playerAnswerString;
 		cin >> playerAnswerString;
 		if (playerAnswerString == "y" || playerAnswerString == "Y") { //if user wants to pick up the item
 			system("cls");
 
-			cout << "You pick up the " << item.get_item_name() << endl;
+			letter_by_letter_output("You pick up the ", 0);
+			letter_by_letter_output(item.get_item_name(), 2);
 			player.add_item_to_inventory(item);
 			set_item_taken();
 
@@ -58,13 +61,14 @@ void Searchables::get_item_from_searchables(Player& player) {
 		else {
 			//You decided not to pick up an item
 			system("cls");
-			cout << "You didnt pick up the " << item.get_item_name() << endl;
+			letter_by_letter_output("You didn't pick up the ", 0);
+			letter_by_letter_output(item.get_item_name(), 2);
 		}
 
 	}
 	else {
 		//If theres no item in the Searchables
-		cout << "You don't see anthing else here." << endl;
+		letter_by_letter_output("You don't see anthing else here.", 2);
 	}
 }
 

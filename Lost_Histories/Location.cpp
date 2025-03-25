@@ -4,10 +4,10 @@
 
 using namespace std;
 
-Location::Location(string lName, string lDesc, string lDistDesc) {	//constructor for the location object
+Location::Location(string lName, string lDesc, string lInspectDesc) {	//constructor for the location object
 	this->locName = lName;
 	this->locDescription = lDesc;
-	this->locDistantDescription = lDistDesc;
+	this->locInspectLocation = lInspectDesc;
 	
 	this->isLight = false;
 	this->locNoLightSearchDescription = "Its too dark to examine the area.";
@@ -35,8 +35,8 @@ string Location::get_not_lit_description() {
 	return this->locNoLightSearchDescription;
 }
 
-string Location::get_loc_distant_description() {
-	return this->locDistantDescription;
+string Location::get_loc_inspect_location() {
+	return this->locInspectLocation;
 }
 
 vector<Location*> Location::get_pathways() {
@@ -82,7 +82,7 @@ void Location::search_location(Player& player) {
 				cout << "[" << count << "] " << this->locSearchables.at(count)->get_searchables_name() << endl;
 			}
 			cout << "[" << count << "] Return" << endl;
-			cout << "Do you want to search an Searchables? Select the number next to the Searchables." << endl;
+
 			int playerAnswerInt;
 			clear_invalid_input();
 			cin >> playerAnswerInt;
