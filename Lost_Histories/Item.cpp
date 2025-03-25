@@ -27,17 +27,12 @@ string Item::get_item_description() {
 
 void Item::reduce_item_durability() {
 	this->itemDurability--;
-	//cout << this->itemDurability << endl;
 	if (this->itemDurability < 1) {
 		letter_by_letter_output(this->itemName, true);
 		letter_by_letter_output(" has broken after being used", false);
 		this->isDestroyed = true;
 	}
 }
-
-//string Item::get_item_search_description() {
-//	return this->itemSearchLocationDescription;
-//}
 
 bool Item::is_item_destroyed() {
 	return this->isDestroyed;

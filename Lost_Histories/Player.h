@@ -37,9 +37,9 @@ public:
 
 	/**
 	*	@brief Set the players name
-	*	@param nName The name inputed by the player, as a string
+	*	@param pName The name inputed by the player, as a string
 	*/
-	void set_player_name(string nName);
+	void set_player_name(string pName);
 
 	/**
 	*	@brief Gets the players name

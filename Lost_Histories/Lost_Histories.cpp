@@ -64,7 +64,6 @@ int main()
     draw.set_needs_opening("You pull the draw open");
 
 
-
     //Location Classes Here
     Location bedroom = Location("Bedroom", "A small bedroom that looks like a childs play room.", "Childs Bedroom");
     Location hallway = Location("Hallway", "A hallway with multiple connecting doors.", "Hallway");
@@ -134,7 +133,7 @@ int main()
         if (userInputNum < LoopIncrement) {
             Location* desiredLocation = curruntLocation->get_pathways()[userInputNum];
 
-            if (desiredLocation->is_Loc_Accessible(player) == true) {
+            if (desiredLocation->is_loc_accessible(player) == true) {
                 curruntLocation = desiredLocation;
             }
 
