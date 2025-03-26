@@ -24,7 +24,7 @@ private:
 	/**
 	*	@brief The locations description when searched when theres no light
 	*/
-	string locNoLightSearchDescription;
+	//string locNoLightSearchDescription;
 
 	/**
 	*	@brief The locations description from another location from where you can move from
@@ -34,7 +34,7 @@ private:
 	/**
 	*	@brief If the room is lit from a light source, this will be true, otherwise false
 	*/
-	bool isLight;
+	//bool isLight;
 
 	/**
 	*	@brief A check to see if theres a searchable Searchables in the area
@@ -93,7 +93,7 @@ public:
 	*	@brief Gets the Locations description if the location is not lit up
 	*	@return The locations description as a String
 	*/
-	string get_not_lit_description();
+	//string get_not_lit_description();
 
 	/**
 	*	@brief Gets the Locations description from a connecting location
@@ -111,13 +111,13 @@ public:
 	*	@brief Adds a pathway to this location connecting to another location
 	*	@param A location Searchables that is the new path, as a Location Object
 	*/
-	void add_pathway(Location& newPathway);
+	void set_pathway(Location& newPathway);
 
 	/**
 	*	@brief changes if theres light in the area
 	*	@param light True if theres light in the area, false if there is no longer light, as a bool
 	*/
-	void set_light_in_area(bool light);
+	//void set_light_in_area(bool light);
 
 	/**
 	*	@brief Set an item into the area

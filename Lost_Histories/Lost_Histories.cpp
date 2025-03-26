@@ -24,7 +24,7 @@ int main()
         if item in location, set_item_in_location()
         if this location is blocked by obstacle, set_location_path_is_blocked_by()
         if theres light in location, set_light_in_area()
-        to link path to other locations, add_pathway()
+        to link path to other locations, set_pathway()
 
     */
     //Player Class Here//
@@ -32,50 +32,64 @@ int main()
 
 
     //Item Classes Here//
-    Item rustyKey = Item();
-    rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", 1); //"On the counter top, theres an odd looking key collecting dust by the window.",
+    //Item rustyKey = Item();
+    //rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", 1); //"On the counter top, theres an odd looking key collecting dust by the window.",
     
-    Item gun = Item();
-    gun.set_item_defaults("Tommy Gun", "An old WW1 Tommy Gun", 10);
+    Item iCoin = Item();
+    iCoin.set_item_defaults("A Gold Coin", "An Aureus Gold Coin, definitly not real but it looks cool", 1);
 
   
     //Obstacle Classes Here//
-    Obstacle door = Obstacle();
-    door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily. The key hole still looks like its in working condition.", rustyKey.get_item_name(), "You opened the door");
+    //Obstacle door = Obstacle();
+    //door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily. The key hole still looks like its in working condition.", rustyKey.get_item_name(), "You opened the door");
 
-    Obstacle lock = Obstacle();
-    lock.set_obstacle_defualts("A silver Lock", "A silver lock with no key hole to be found", gun.get_item_name(), "You shoot the lock and it explodes into a billion pieces");
     
 
     ///Searchables Classes Here//
-    Searchables cupboard = Searchables();
-    cupboard.set_item(rustyKey);
-    cupboard.set_needs_opening("You open the door to the cupboard");
-    cupboard.set_searchables_name("Cupboard");
+    //Searchables cupboard = Searchables();
+    //cupboard.set_item(rustyKey);
+    //cupboard.set_opening_description("You open the door to the cupboard");
+    //cupboard.set_searchables_name("Cupboard");
 
-    Searchables chest = Searchables();
-    chest.set_needs_opening("You open the heavy lid of the chest");
-    chest.set_searchables_name("Gold lined chest");
-    chest.set_obstacle(&lock, "Shot the lock");
+    Searchables sLeftFountain = Searchables();
+    sLeftFountain.set_searchables_name("The Bernini Fountain");
+    sLeftFountain.set_item(iCoin);
+    sLeftFountain.set_opening_description("You reach in to the fountains water.");
 
-    Searchables draw = Searchables();
-    draw.set_item(gun);
-    draw.set_searchables_name("Drawer");
-    draw.set_needs_opening("You pull the draw open");
-
+    
 
     //Location Classes Here//
-    Location inFrontOfSquare = Location("In Front of St Peter's Square", "An open entrance leading up to the Square", "Eearly quite, not another person in sight. The Popes situation must be serious.");
-    Location stPetersSquare = Location("St Peter's Square", "A huge open area surrounded by statues overlooking the square.", "Theres the Egyptian Obelisk in the center with fountains either side.");
-    Location leftFountain = Location("Left Fountain", "The fountain to the left of the Obelisk.", "The Bernini Fountain");
-    Location RightFountain = Location("Right Fountain", "The fountain to the right of the Obelisk.", "The Maderno Fountain");
-    Location Obelisk = Location("Obelisk", "Vaticano, one of the thirteen Roman Obelisks.", "Enscribed on the Obelisk says: Ecce Crucem Domini, Fugite, partes adversae, Vicit Leo de Tribu Juda, ")
+    Location lInFrontOfSquare = Location("In Front of St Peter's Square", "An open entrance leading up to the Square", "Eerily quite, not another person in sight. The Popes situation must be serious if the public aren't allowed in.");
+    Location lStPetersSquare = Location("St Peter's Square", "A huge open area surrounded by statues overlooking the square.", "The Obelisk in the center with fountains either side while being overlooked by St Peter's Basilica.");
+    Location lObelisk = Location("Obelisk", "Vaticano, one of the thirteen Roman Obelisks.", "Enscribed on the Obelisk says: DIVO CAESARI DIVI F AVGVSTO TI CAESARI DIVI AVGVSTI F AVGVSTO SACRVM, Sacred to the Divine Caesar Augustus, son of the Divine, to Tiberius Caesar Augustus, son of the Divine Augustus. ");
+    Location lLeftFountain = Location("Left Fountain", "The fountain to the left of the Obelisk.", "The Bernini Fountain");
+    Location lRightFountain = Location("Right Fountain", "The fountain to the right of the Obelisk.", "The Maderno Fountain");
 
 
-    Location stPetersBasilica = Location("St Peter's Basilica", "A monilithch structure that is the focal point of the Vatican", "St Peter's Basilica");
+    Location stPetersBasilicaEntrance = Location("St Peter's Basilica", "A monolithic structure that is the focal point of the Vatican", "St Peter's Basilica");
 
 
 
+
+    lInFrontOfSquare.set_pathway(lStPetersSquare);
+    
+
+    lStPetersSquare.set_pathway(lInFrontOfSquare);
+    lStPetersSquare.set_pathway(lObelisk);
+    lStPetersSquare.set_pathway(lLeftFountain);
+    lStPetersSquare.set_pathway(lRightFountain);
+    lStPetersSquare.set_pathway(stPetersBasilicaEntrance);
+
+    lObelisk.set_pathway(lStPetersSquare);
+    
+    lLeftFountain.set_pathway(lStPetersSquare);
+    lLeftFountain.set_searchables_in_location(sLeftFountain);
+
+
+
+    lRightFountain.set_pathway(lStPetersSquare);
+
+    stPetersBasilicaEntrance.set_pathway(lStPetersSquare);
 
 
 
@@ -85,29 +99,29 @@ int main()
     
     
     
+  /*
     Location bedroom = Location("Bedroom", "A small bedroom that looks like a childs play room.", "Childs Bedroom");
     Location hallway = Location("Hallway", "A hallway with multiple connecting doors.", "Hallway");
     Location bathroom = Location("Bathroom", "A small bathroom", "Bathroom");
     Location kitchen = Location("Kitchen", "A kitchen with an abundance of stoves for some reason", "Kitchen");
 
-    bedroom.add_pathway(hallway);
-    bedroom.set_light_in_area(true);
+    bedroom.set_pathway(hallway);
     bedroom.set_searchables_in_location(cupboard);
     bedroom.set_searchables_in_location(chest);
 
-    hallway.add_pathway(bedroom);
-    hallway.add_pathway(kitchen);
-    hallway.add_pathway(bathroom);
+    hallway.set_pathway(bedroom);
+    hallway.set_pathway(kitchen);
+    hallway.set_pathway(bathroom);
     hallway.set_location_path_is_blocked_by(door);
 
-    bathroom.add_pathway(hallway);
+    bathroom.set_pathway(hallway);
 
-    kitchen.add_pathway(hallway);
+    kitchen.set_pathway(hallway);
     kitchen.set_searchables_in_location(draw);
-    kitchen.set_light_in_area(true);
+  */
 
 
-    Location* curruntLocation = &bedroom;
+    Location* curruntLocation = &lInFrontOfSquare;
 
     bool playing = true;
     int userInputNum = 0;

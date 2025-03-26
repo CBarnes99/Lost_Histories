@@ -88,7 +88,7 @@ public:
 	*	@brief What is displayed if the searchable needs opening like a cupboard door
 	*	@param sOpeningDescription The description of the opening, as a String
 	*/
-	void set_needs_opening(string sOpeningDescription);
+	void set_opening_description(string sOpeningDescription);
 
 	/**
 	*	@brief After obstacle has been removed, set isSearchablesBlocked to false

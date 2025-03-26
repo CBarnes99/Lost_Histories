@@ -28,7 +28,7 @@ void Searchables::set_obstacle(Obstacle* sObstacle, string sUnblocked) {
 	this->unblockedDescription = sUnblocked;
 }
 
-void Searchables::set_needs_opening(string sOpeningDescription) {
+void Searchables::set_opening_description(string sOpeningDescription) {
 	this->searchablesNeedsOpening = true;
 	this->searchablesOpeningDescription = sOpeningDescription;
 }
