@@ -129,16 +129,20 @@ bool Location::is_loc_accessible(Player& player)
 {
 	if (isPathBlocked == true) {	//if the pathway the user selected is blocked by an obstacle
 
-		cout << "The path is blocked by " << get_obstacle_name_from_location() << ", What do you want to do? " << endl << endl;
+		letter_by_letter_output("The path is blocked by ", 0);
+		letter_by_letter_output(get_obstacle_name_from_location(), 0);
+		letter_by_letter_output(", What do you want to do?", 2);
+
 		if (this->pathBlockedByObstacle->obstacle_choice(player) == true) {
 
 			set_location_unblocked();	//sets location as unblocked so user can freely moved between locations
-			cout << "You move into the " << get_loc_name() << endl;	//output the location moved into
 
+			letter_by_letter_output("You move into -- ", 0);
+			letter_by_letter_output(get_loc_name(), 2);
+			
 			return true;
 		}
 		else {
-
 			return false;
 		}
 	}

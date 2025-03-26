@@ -57,7 +57,7 @@ bool Obstacle::obstacle_choice(Player& player)
 	case(0):	//Use an item
 		if (player.get_inventory_size() < 1) {	//if the player has no items in their inventory
 			system("cls");
-			cout << "You have no items in your inventory, you turn back" << endl;
+			letter_by_letter_output("You have no items in your inventory, you turn back", 2);
 			return false;
 		}
 		choice = -1;
@@ -65,7 +65,7 @@ bool Obstacle::obstacle_choice(Player& player)
 		while (choice < 0 || choice > player.get_inventory_size()) { //if there is items in their inventory, output all the items ( size is 1+ than items in inventory, 1+ will be to back out of inventory)
 			player.output_all_items_in_inventory(true);
 			cout << "[" << player.get_inventory_size() << "] Turn Back." << endl;
-			cout << "Which item do you want to use?\n>>> ";
+			letter_by_letter_output("Which item do you want to use?", 1);
 			clear_invalid_input();
 			cin >> choice;
 		}
@@ -86,8 +86,12 @@ bool Obstacle::obstacle_choice(Player& player)
 			//if the wrong item was chosen
 			else {
 				system("cls");
-				cout << player.get_item_from_inventory().at(choice)->get_item_name() << " has no effect on " << this->get_obstacle_name() << endl;
-				cout << "You turn back." << endl;
+				letter_by_letter_output(player.get_item_from_inventory().at(choice)->get_item_name(), 0);
+				letter_by_letter_output(" has no effect on ", 0);
+				letter_by_letter_output(this->get_obstacle_name(), 2);
+				sleep(100);
+				letter_by_letter_output("You turn back.", 2);
+				
 				return false;
 			}
 			break;
@@ -95,7 +99,7 @@ bool Obstacle::obstacle_choice(Player& player)
 
 	case(1):	//return to previous room
 		system("cls");
-		cout << "You turn back." << endl;
+		letter_by_letter_output("You turn back.", 2);
 		return false;
 		break;
 

@@ -27,11 +27,11 @@ int main()
         to link path to other locations, add_pathway()
 
     */
-    //Player Class Here
+    //Player Class Here//
     Player player = Player();
 
 
-    //Item Classes Here
+    //Item Classes Here//
     Item rustyKey = Item();
     rustyKey.set_item_defaults("Rusty Key", "A Rusty Key", 1); //"On the counter top, theres an odd looking key collecting dust by the window.",
     
@@ -39,7 +39,7 @@ int main()
     gun.set_item_defaults("Tommy Gun", "An old WW1 Tommy Gun", 10);
 
   
-    //Obstacle Classes Here
+    //Obstacle Classes Here//
     Obstacle door = Obstacle();
     door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily. The key hole still looks like its in working condition.", rustyKey.get_item_name(), "You opened the door");
 
@@ -47,7 +47,7 @@ int main()
     lock.set_obstacle_defualts("A silver Lock", "A silver lock with no key hole to be found", gun.get_item_name(), "You shoot the lock and it explodes into a billion pieces");
     
 
-    ///Searchables Classes Here
+    ///Searchables Classes Here//
     Searchables cupboard = Searchables();
     cupboard.set_item(rustyKey);
     cupboard.set_needs_opening("You open the door to the cupboard");
@@ -64,22 +64,27 @@ int main()
     draw.set_needs_opening("You pull the draw open");
 
 
-    //Location Classes Here
-    //Location inFrontOfSquare = Location("Outside of Vatican City", )///////////////////////////////////////////////////////////////////////////////////Research the front of the vatican and put it here
-    Location stPetersSquare = Location("St Peter's Square", "A huge open area surrounded by statues overlooking the square.", "St Peter's Square");
-    Location leftFountain = Location("Left Fountain", "The left fountain within St Peter's Square.", "Left Fountain");
-    Location RightFountain = Location("Right Fountain", "The right fountain within St Peter's Square.", "Right Fountain");
-    //Location Obelisk = Location("Obelisk", )
+    //Location Classes Here//
+    Location inFrontOfSquare = Location("In Front of St Peter's Square", "An open entrance leading up to the Square", "Eearly quite, not another person in sight. The Popes situation must be serious.");
+    Location stPetersSquare = Location("St Peter's Square", "A huge open area surrounded by statues overlooking the square.", "Theres the Egyptian Obelisk in the center with fountains either side.");
+    Location leftFountain = Location("Left Fountain", "The fountain to the left of the Obelisk.", "The Bernini Fountain");
+    Location RightFountain = Location("Right Fountain", "The fountain to the right of the Obelisk.", "The Maderno Fountain");
+    Location Obelisk = Location("Obelisk", "Vaticano, one of the thirteen Roman Obelisks.", "Enscribed on the Obelisk says: Ecce Crucem Domini, Fugite, partes adversae, Vicit Leo de Tribu Juda, ")
 
 
     Location stPetersBasilica = Location("St Peter's Basilica", "A monilithch structure that is the focal point of the Vatican", "St Peter's Basilica");
 
 
-    //////////////////ADD INSPECT LOCATION FUNCTION IN LOCATION CLASS
 
 
 
 
+
+
+
+    
+    
+    
     Location bedroom = Location("Bedroom", "A small bedroom that looks like a childs play room.", "Childs Bedroom");
     Location hallway = Location("Hallway", "A hallway with multiple connecting doors.", "Hallway");
     Location bathroom = Location("Bathroom", "A small bathroom", "Bathroom");
@@ -127,8 +132,9 @@ int main()
             cout << "[" << LoopIncrement << "] " << curruntLocation->get_pathways()[LoopIncrement]->get_loc_name() << endl;  //outputs the locations connected to the location you are in
         }
         cout << endl;
-        cout << "[" << LoopIncrement << "] Search Area" << endl;    //option to search the area you are in
-        cout << "[" << LoopIncrement + 1 << "] Open Inventory" << endl; //desplays the items in your inventory
+        cout << "[" << LoopIncrement << "] Inspect Current Location" << endl;    //option to search the area you are in
+        cout << "[" << LoopIncrement + 1 << "] Search Area" << endl; //desplays the items in your inventory
+        cout << "[" << LoopIncrement + 2 << "] Open Inventory" << endl; //desplays the items in your inventory
         cout << ">>>";
         clear_invalid_input();
         cin >> userInputNum;
@@ -137,7 +143,7 @@ int main()
             cout << "Input a number" << endl;
             clear_invalid_input();
             cin >> userInputNum;
-            while (userInputNum < 0 || userInputNum > LoopIncrement + 1) {  //checks for wrong input
+            while (userInputNum < 0 || userInputNum > LoopIncrement + 2) {  //checks for wrong input
                 cout << "Wrong input, try again!" << '\n' << ">>>";
                 clear_invalid_input();
                 cin >> userInputNum;
@@ -154,10 +160,15 @@ int main()
 
         }
         else if (userInputNum == LoopIncrement){
+            letter_by_letter_output(curruntLocation->get_loc_inspect_location(), 2); //output location inspection string
+        }
+        else if (userInputNum == LoopIncrement + 1) {
             curruntLocation->search_location(player);   //search location for items
+            
         }
         else {
             player.output_all_items_in_inventory(false);     //displays all inventory items to player
+     
         }
         
     }

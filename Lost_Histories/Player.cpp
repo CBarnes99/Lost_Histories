@@ -23,6 +23,7 @@ void Player::add_item_to_inventory(Item& nItem) {
 
 void Player::output_all_items_in_inventory(bool usingItem) {
 	if (this->playerInventory.size() < 1) {
+		
 		cout << "You have no items in your inventory" << endl;
 	}
 	else {
