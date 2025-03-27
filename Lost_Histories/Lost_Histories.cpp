@@ -28,7 +28,7 @@ int main()
 
     */
     //Player Class Here//
-    Player player = Player();
+    Player player = Player("defualt");
 
 
     //Item Classes Here//
@@ -134,8 +134,27 @@ int main()
     cin >> userInputString;
     player.set_player_name(userInputString);
     system("cls");
-    cout << "Welcome, " << player.get_player_name() << endl;
+    cout << "Welcome, " << player.get_character_name() << endl;
 
+    sleep(1000);
+
+    //make introduction section
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //main game
     while (playing == true) {
         
         cout << "You are at --- " << curruntLocation->get_loc_name() << endl;       //Prints the location you are in

@@ -1,12 +1,12 @@
 #pragma once
-#include <string>
+#include "Character.h"
 #include <vector>
 #include "Item.h"
 
 using namespace std;
 
 
-class Player
+class Player : public Character
 {
 	
 private:
@@ -20,32 +20,18 @@ private:
 	*/
 	vector<Item*> playerInventory;
 
-	/**
-	*	@brief If the player has light, it'll change the location the player is in.
-	*/
-	bool hasLight;
-
-
-	//int playerSanity ----------- might be fun to play with down the line
-
 
 public:
 	/**
 	*	@brief Constructor for the Player Class
 	*/
-	Player();
+	Player(string name);
 
 	/**
 	*	@brief Set the players name
 	*	@param pName The name inputed by the player, as a string
 	*/
 	void set_player_name(string pName);
-
-	/**
-	*	@brief Gets the players name
-	*	@return The players name returned as a string
-	*/
-	string get_player_name();
 
 	/**
 	*	@brief Adds the item found within the location to the players inventory
@@ -57,12 +43,6 @@ public:
 	*	@brief Outputs all the items in the players inventory
 	*/
 	void output_all_items_in_inventory(bool usingItem);
-
-	/**
-	*	@brief Sets the players light soruce to true or false
-	*	@param set if the player has light on them, as a Bool
-	*/
-	void set_light(bool hasLight);
 
 	/**
 	*	@brief returns the size of the players inventory

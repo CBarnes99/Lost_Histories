@@ -20,3 +20,8 @@ void sleep(int time);
 *	@param amountOfEndl The amount of endl you want after the string outputed, typically between 0 and 2, as an int
 */
 void letter_by_letter_output(std::string text, int amountOfEndl);
+
+/**
+*	@brief Use this to promt the user to press a key to continue, usually used after story description elements.
+*/
+void any_key_to_continue();

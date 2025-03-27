@@ -127,18 +127,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="Global_Functions.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Location.cpp" />
     <ClCompile Include="Lost_Histories.cpp" />
+    <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Searchables.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Character.h" />
     <ClInclude Include="Global_Functions.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Location.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="Searchables.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Player.h" />

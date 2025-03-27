@@ -4,18 +4,12 @@
 
 using namespace std;
 
-Player::Player() {
-	this->playerName = "Default";
+Player::Player(string name) : Character(name) {
 	this->playerInventory = {};
-	this->hasLight = false;
 }
 
-void Player::set_player_name(string nName) {
-	this->playerName = nName;
-}
-
-string Player::get_player_name() {
-	return playerName;
+void Player::set_player_name(string pName) {
+	this->charactersName = pName;
 }
 
 void Player::add_item_to_inventory(Item& nItem) {
@@ -73,16 +67,6 @@ void Player::output_all_items_in_inventory(bool usingItem) {
 			cout << endl;
 		}
 		
-	}
-}
-
-void Player::set_light(bool hasLight) {
-	this->hasLight = hasLight;
-	if (this->hasLight == true) {
-		cout << "You've lightend up the room" << endl;
-	}
-	else {
-		cout << "The area has darkened" << endl;
 	}
 }
 
