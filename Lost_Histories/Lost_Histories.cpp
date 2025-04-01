@@ -149,6 +149,7 @@ int main()
 
 
 
+
     //main game
     while (playing == true) {
         

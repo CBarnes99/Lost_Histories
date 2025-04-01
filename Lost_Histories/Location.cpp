@@ -8,9 +8,7 @@ Location::Location(string lName, string lDesc, string lInspectDesc) {	//construc
 	this->locName = lName;
 	this->locDescription = lDesc;
 	this->locInspectLocation = lInspectDesc;
-	
-	//this->isLight = false;
-	//this->locNoLightSearchDescription = "Its too dark to examine the area.";
+
 
 	this->isSearchablesInArea = false;
 	this->roomSearchDescription = "You examine the area but theres nothing of note in the vicinity.";
@@ -31,10 +29,6 @@ string Location::get_loc_description() {
 	return this->locDescription;
 }
 
-//string Location::get_not_lit_description() {
-//	return this->locNoLightSearchDescription;
-//}
-
 string Location::get_loc_inspect_location() {
 	return this->locInspectLocation;
 }
@@ -46,10 +40,6 @@ vector<Location*> Location::get_pathways() {
 void Location::set_pathway(Location& newPathway) {
 	this->pathways.push_back(&newPathway);
 }
-
-//void Location::set_light_in_area(bool light) {
-//	this->isLight = light;
-//}
 
 void Location::set_searchables_in_location(Searchables& lSearchables) {
 	this->isSearchablesInArea = true;
