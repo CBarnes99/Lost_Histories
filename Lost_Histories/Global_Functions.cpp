@@ -15,9 +15,23 @@ void sleep(int time) {
 void letter_by_letter_output(string text, int amountOfEndl) {
 	for (int i = 0; i < text.length(); i++) {
 		cout << text.at(i);
-		sleep(25);
+
+		if (text.at(i) == ',' || text.at(i) == '.' && i != text.length() -1) {
+			sleep(500);
+		}
+		else {
+			sleep(25);
+		}
 	}
 	for (int i = 0; i < amountOfEndl; i++) {
 		cout << endl;
 	}
+}
+
+void enter_to_continue() {
+	string enterToContinue;
+	clear_invalid_input();
+	cout << "ENTER TO CONTINUE...";
+	getline(cin, enterToContinue);
+	system("cls");
 }
