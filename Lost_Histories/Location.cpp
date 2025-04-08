@@ -83,7 +83,7 @@ if (isSearchablesInArea == true) {	//check to see if theres an item in the curre
 	cout << endl << "[" << count << "] Return" << endl;
 
 	int playerAnswerInt;
-	clear_invalid_input();
+	Globals::clear_invalid_input();
 	cin >> playerAnswerInt;
 
 	if (playerAnswerInt >= 0 && playerAnswerInt < count) {
@@ -123,16 +123,16 @@ bool Location::is_loc_accessible(Player& player)
 {
 	if (isPathBlocked == true) {	//if the pathway the user selected is blocked by an obstacle
 
-		letter_by_letter_output("The path is blocked by ", 0);
-		letter_by_letter_output(get_obstacle_name_from_location(), 0);
-		letter_by_letter_output(", What do you want to do?", 2);
+		Globals::letter_by_letter_output("The path is blocked by ", 0);
+		Globals::letter_by_letter_output(get_obstacle_name_from_location(), 0);
+		Globals::letter_by_letter_output(", What do you want to do?", 2);
 
 		if (this->pathBlockedByObstacle->obstacle_choice(player) == true) {
 
 			set_location_unblocked();	//sets location as unblocked so user can freely moved between locations
 
-			letter_by_letter_output("You move into -- ", 0);
-			letter_by_letter_output(get_loc_name(), 2);
+			Globals::letter_by_letter_output("You move into -- ", 0);
+			Globals::letter_by_letter_output(get_loc_name(), 2);
 			
 			return true;
 		}

@@ -136,7 +136,7 @@ int main()
     system("cls");
     cout << "Welcome, " << player.get_character_name() << endl;
 
-    sleep(1000);
+    Globals::sleep(1000);
 
     //make introduction section
 
@@ -169,16 +169,16 @@ int main()
         cout << "[" << LoopIncrement + 1 << "] Search Area" << endl; //desplays the items in your inventory
         cout << "[" << LoopIncrement + 2 << "] Open Inventory" << endl; //desplays the items in your inventory
         cout << ">>>";
-        clear_invalid_input();
+        Globals::clear_invalid_input();
         cin >> userInputNum;
 
         while (cin.fail()) { //check for input that is not a number
             cout << "Input a number" << endl;
-            clear_invalid_input();
+            Globals::clear_invalid_input();
             cin >> userInputNum;
             while (userInputNum < 0 || userInputNum > LoopIncrement + 2) {  //checks for wrong input
                 cout << "Wrong input, try again!" << '\n' << ">>>";
-                clear_invalid_input();
+                Globals::clear_invalid_input();
                 cin >> userInputNum;
             }
         }
@@ -193,7 +193,7 @@ int main()
 
         }
         else if (userInputNum == LoopIncrement){
-            letter_by_letter_output(curruntLocation->get_loc_inspect_location(), 2); //output location inspection string
+            Globals::letter_by_letter_output(curruntLocation->get_loc_inspect_location(), 2); //output location inspection string
         }
         else if (userInputNum == LoopIncrement + 1) {
             curruntLocation->search_location(player);   //search location for items
