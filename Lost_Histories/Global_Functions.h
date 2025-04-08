@@ -25,14 +25,11 @@ namespace Globals {
 	void letter_by_letter_output(std::string text, int amountOfEndl);
 
 	/**
-	*	@brief Use this to promt the user to press a key to continue, usually used after story description elements.
-	*/
-	void any_key_to_continue();
+*	@brief Use this to promt the user to press enter to continue, usually used after story description elements.
+*/
+	void enter_to_continue();
 }
 
 
 
-/**
-*	@brief Use this to promt the user to press enter to continue, usually used after story description elements.
-*/
-void enter_to_continue();
+

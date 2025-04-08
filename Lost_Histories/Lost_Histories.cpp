@@ -131,12 +131,12 @@ int main()
     Globals::sleep(1000);
 
     //make introduction section
-    letter_by_letter_output("I've been called in specifically to help with the situation thats taking place at the Vatican. The Pope has fallen ill and requires help from the best medical professional, that would indeed be me.", 1);
-    enter_to_continue();
-    letter_by_letter_output("Its currently 10pm, I'm unsure why they asked for me to wait for night to come and not ASAP, but the Pope probably has a busy schedule even when ill.", 1);
-    enter_to_continue();
-    letter_by_letter_output("As I approach the the entrance to the St.Peters Square, I am approched by someone in a fancy suit.", 1);
-    enter_to_continue();
+    Globals::letter_by_letter_output("I've been called in specifically to help with the situation thats taking place at the Vatican. The Pope has fallen ill and requires help from the best medical professional, that would indeed be me.", 1);
+    Globals::enter_to_continue();
+    Globals::letter_by_letter_output("Its currently 10pm, I'm unsure why they asked for me to wait for night to come and not ASAP, but the Pope probably has a busy schedule even when ill.", 1);
+    Globals::enter_to_continue();
+    Globals::letter_by_letter_output("As I approach the the entrance to the St Peters Square, I am approched by someone in a fancy suit.", 1);
+    Globals::enter_to_continue();
 
 
 
