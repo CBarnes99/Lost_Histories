@@ -22,19 +22,9 @@ private:
 	string locDescription;
 
 	/**
-	*	@brief The locations description when searched when theres no light
-	*/
-	//string locNoLightSearchDescription;
-
-	/**
 	*	@brief The locations description from another location from where you can move from
 	*/
 	string locInspectLocation;
-
-	/**
-	*	@brief If the room is lit from a light source, this will be true, otherwise false
-	*/
-	//bool isLight;
 
 	/**
 	*	@brief A check to see if theres a searchable Searchables in the area

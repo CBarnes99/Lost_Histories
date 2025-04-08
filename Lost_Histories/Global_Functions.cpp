@@ -8,8 +8,14 @@ void Globals::sleep(int time) {
 
 void Globals::letter_by_letter_output(std::string text, int amountOfEndl) {
 	for (int i = 0; i < text.length(); i++) {
-		std::cout << text.at(i);
-		sleep(25);
+		cout << text.at(i);
+
+		if (text.at(i) == ',' || text.at(i) == '.' && i != text.length() -1) {
+			sleep(500);
+		}
+		else {
+			sleep(25);
+		}
 	}
 	for (int i = 0; i < amountOfEndl; i++) {
 		std::cout << std::endl;
@@ -19,4 +25,11 @@ void Globals::letter_by_letter_output(std::string text, int amountOfEndl) {
 void Globals::clear_invalid_input() {
 	std::cin.clear();
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+void enter_to_continue() {
+	string enterToContinue;
+	clear_invalid_input();
+	cout << "ENTER TO CONTINUE...";
+	getline(cin, enterToContinue);
+	system("cls");
 }

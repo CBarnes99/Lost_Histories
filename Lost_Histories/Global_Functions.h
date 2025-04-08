@@ -32,3 +32,7 @@ namespace Globals {
 
 
 
+/**
+*	@brief Use this to promt the user to press enter to continue, usually used after story description elements.
+*/
+void enter_to_continue();
