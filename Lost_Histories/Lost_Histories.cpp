@@ -4,6 +4,8 @@
 #include "Obstacle.h"
 #include "Player.h"
 #include "Global_Functions.h"
+#include "NPC.h"
+#include "json-develop/include/nlohmann/json.hpp"
 
 using namespace std;
 
@@ -12,6 +14,8 @@ int main()
     /*
         Create Player
         set player vars   set_player_name()
+
+        Create NPCs
 
         Create Searchables
 
@@ -29,6 +33,10 @@ int main()
     */
     //Player Class Here//
     Player player = Player("defualt");
+
+    //NPC Classes Here//
+    NPC guide = NPC("Guide Test");
+    guide.addDiologue("Welcome " + player.get_character_name() + ".");
 
 
     //Item Classes Here//
@@ -126,9 +134,9 @@ int main()
     cin >> userInputString;
     player.set_player_name(userInputString);
     system("cls");
-    cout << "Welcome, " << player.get_character_name() << endl;
+    cout << guide.outputNextDiologue() << endl;
 
-    Globals::sleep(1000);
+    Globals::enter_to_continue();
 
     //make introduction section
     Globals::letter_by_letter_output("I've been called in specifically to help with the situation thats taking place at the Vatican. The Pope has fallen ill and requires help from the best medical professional, that would indeed be me.", 1);

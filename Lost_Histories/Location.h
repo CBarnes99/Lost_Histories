@@ -80,12 +80,6 @@ public:
 	string get_loc_description();
 
 	/**
-	*	@brief Gets the Locations description if the location is not lit up
-	*	@return The locations description as a String
-	*/
-	//string get_not_lit_description();
-
-	/**
 	*	@brief Gets the Locations description from a connecting location
 	*	@return The distant location description as a String
 	*/

@@ -30,7 +30,7 @@ void Globals::clear_invalid_input() {
 void Globals::enter_to_continue() {
 	std::string enterToContinue;
 	clear_invalid_input();
-	std::cout << "ENTER TO CONTINUE...";
+	std::cout << std::endl << "ENTER TO CONTINUE...";
 	std::getline(std::cin, enterToContinue);
 	system("cls");
 }
