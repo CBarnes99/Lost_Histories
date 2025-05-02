@@ -46,7 +46,7 @@ void Searchables::get_item_from_searchables(Player& player) {
 		Globals::sleep(50);
 		Globals::letter_by_letter_output("Do you want to pick it up? Y or N", 1);
 		
-		Globals::clear_invalid_input();
+		Globals::clear_invalid_input(false);
 		string playerAnswerString;
 		cin >> playerAnswerString;
 		if (playerAnswerString == "y" || playerAnswerString == "Y") { //if user wants to pick up the item

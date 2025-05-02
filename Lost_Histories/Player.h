@@ -37,6 +37,7 @@ public:
 
 	/**
 	*	@brief Outputs all the items in the players inventory
+	*	@param usingItem Are you using the item, as a Bool
 	*/
 	void output_all_items_in_inventory(bool usingItem);
 

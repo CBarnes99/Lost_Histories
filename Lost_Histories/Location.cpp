@@ -73,7 +73,7 @@ if (isSearchablesInArea == true) {	//check to see if theres an item in the curre
 	cout << endl << "[" << count << "] Return" << endl;
 
 	int playerAnswerInt;
-	Globals::clear_invalid_input();
+	Globals::clear_invalid_input(false);
 	cin >> playerAnswerInt;
 
 	if (playerAnswerInt >= 0 && playerAnswerInt < count) {

@@ -7,9 +7,10 @@
 namespace Globals {
 
 	/**
-*	@brief Clears invalid input from user, used after taken input and if that input was invalid
-*/
-	void clear_invalid_input();
+	*	@brief Clears invalid input from user, used after taken input and if that input was invalid
+	*	@param clear Even if input is valid, still clear input, as a Bool
+	*/
+	void clear_invalid_input(bool clear);
 
 	/**
 	*	@brief Stops the terminal for x amount of milliseconds
@@ -25,8 +26,8 @@ namespace Globals {
 	void letter_by_letter_output(std::string text, int amountOfEndl);
 
 	/**
-*	@brief Use this to promt the user to press enter to continue, usually used after story description elements.
-*/
+	*	@brief Use this to promt the user to press enter to continue, usually used after story description elements.
+	*/
 	void enter_to_continue();
 }
 

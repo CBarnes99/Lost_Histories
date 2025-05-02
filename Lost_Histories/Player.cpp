@@ -19,7 +19,7 @@ void Player::add_item_to_inventory(Item& nItem) {
 void Player::output_all_items_in_inventory(bool usingItem) {
 	if (this->playerInventory.size() < 1) {
 		
-		cout << "You have no items in your inventory" << endl;
+		cout << "You have no items in your inventory" << endl << endl;
 	}
 	else {
 		cout << "You open your inventory, you have:" << endl;
@@ -36,7 +36,7 @@ void Player::output_all_items_in_inventory(bool usingItem) {
 				cout << "[1] Return." << endl;
 
 				int choice = -1;
-				Globals::clear_invalid_input();
+				Globals::clear_invalid_input(false);
 				cin >> choice;
 
 				if (choice == 0) {
@@ -49,11 +49,11 @@ void Player::output_all_items_in_inventory(bool usingItem) {
 					cin >> choice;
 					while (cin.fail()) { //check for input that is not a number
 						cout << "Input a number" << endl;
-						Globals::clear_invalid_input();
+						Globals::clear_invalid_input(false);
 						cin >> choice;
 						while (choice < 0 || choice > this->playerInventory.size()) {  //checks for wrong input
 							cout << "Wrong input, try again!" << '\n' << ">>>";
-							Globals::clear_invalid_input();
+							Globals::clear_invalid_input(false);
 							cin >> choice;
 						}
 					}

@@ -22,8 +22,8 @@ void Globals::letter_by_letter_output(std::string text, int amountOfEndl) {
 	}
 }
 
-void Globals::clear_invalid_input() {
-	if (std::cin.fail()) {
+void Globals::clear_invalid_input(bool clear) {
+	if (std::cin.fail() || clear == true) {
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << "Input the correct information" << std::endl;
@@ -34,7 +34,7 @@ void Globals::clear_invalid_input() {
 void Globals::enter_to_continue() {
 	std::string enterToContinue;
 	if (std::cin.fail()) {
-		clear_invalid_input();
+		clear_invalid_input(false);
 	}
 	std::cout << std::endl << "ENTER TO CONTINUE...";
 	std::getline(std::cin, enterToContinue);
