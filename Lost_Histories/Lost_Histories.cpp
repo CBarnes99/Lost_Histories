@@ -18,12 +18,12 @@ int main()
 
         Create NPCs
 
-        Create Searchables
-
         Create Items
         Set Item Defaults set_item_defaults()
-
+        
         Create Obstacle and link the Item to them via item.get_item_name()
+
+        Create Searchables
 
         Create location
         if item in location, set_searchable_in_location()
@@ -46,23 +46,26 @@ int main()
     Item iCoin = Item();
     iCoin.set_item_defaults("A Gold Coin", "An Aureus Gold Coin, definitly not real but it looks cool", 1);
 
+    Item iRustyKey = Item();
+    iRustyKey.set_item_defaults("Rusty Key", "A rusty key that is bearly holding together, probably will break when its used.", 1);
+
   
     //Obstacle Classes Here//
-    //Obstacle door = Obstacle();
-    //door.set_obstacle_defualts("Cracked Door", "The Door looks extreamly old but its study enough to not be hit down easily. The key hole still looks like its in working condition.", rustyKey.get_item_name(), "You opened the door");
+    Obstacle oLockedDoor = Obstacle();
+    oLockedDoor.set_obstacle_defualts("Bloodstained Door", "The door locked is covered in fresh blood", iRustyKey.get_item_name(), "You put the key through the blood soaked keyhole and gently push open the door trying to avoid the blood with your hand.");
 
     
 
     ///Searchables Classes Here//
-    //Searchables cupboard = Searchables();
-    //cupboard.set_item(rustyKey);
-    //cupboard.set_opening_description("You open the door to the cupboard");
-    //cupboard.set_searchables_name("Cupboard");
-
     Searchables sLeftFountain = Searchables();
     sLeftFountain.set_searchables_name("The Bernini Fountain");
     sLeftFountain.set_item(iCoin);
     sLeftFountain.set_opening_description("You reach in to the fountains water.");
+
+    Searchables sMedicalTrolley = Searchables();
+    sMedicalTrolley.set_searchables_name("Medical Trolley");
+    sMedicalTrolley.set_item(iRustyKey);
+    sMedicalTrolley.set_opening_description("You open the draw on the trolley.");
 
     
 
@@ -85,10 +88,8 @@ int main()
     Location lApse = Location("Apse", "The Chair of St. Peter.", "Numerous scuptures surround the bronze Chair of St. Peter, what an incrediable sight to behold.");
     Location lStPetersAltar = Location("St Peter's Altar", "St.Peter's Baldachin is a large Baroque sculpted bronze canopy", "N/A");
        
-
     lInFrontOfSquare.set_pathway(lStPetersSquare);
     
-
     lStPetersSquare.set_pathway(lInFrontOfSquare);
     lStPetersSquare.set_pathway(lObelisk);
     lStPetersSquare.set_pathway(lLeftFountain);
@@ -123,10 +124,22 @@ int main()
     lApse.set_pathway(lInsideBasilica);
 
     lStPetersAltar.set_pathway(lInsideBasilica);
-
     //END OF INTRODUCTION LOCATIONS
 
     //START OF DUNGEON LOCATIONS
+    Location lHospitalRoom = Location("Hospital Room", "A room that looks and feels like an isolated hospital room.", "Theres a hospital bed, surgical equipment on a trolley, and a disturbing amount of blood all over the floor.");
+
+    Location lStorageRoom = Location("Small Storage Room", "A room filled to the brim with boxes and junk.", "It's almost smells like a morgue, lets not think about that part");
+
+    Location lHallway = Location("A Dim Hallway", "A hallway with many connecting doors, some locked, some not.", "The ominous unlit chandeliers and the black pillers makes this hallway even less inviting.");
+
+    //Location lStudy = Location
+
+    //Location lFridge = Location
+
+    //Location lCoffinRoom = Location
+
+    //Location lShrine = Location
 
 
     //END OF DUNGEON LOCATIONS
@@ -252,6 +265,8 @@ void introductionsEnd(NPC character) {
     Globals::enter_to_continue();
     Globals::letter_by_letter_output("You hit your head hard when you reached the ground, darkness.", 1);
     Globals::enter_to_continue();
-    Globals::letter_by_letter_output("When you come to, you're in a small room", 1);
+    Globals::letter_by_letter_output("You wake up, on the floor, in a daze, vision blurry, disoriented, your entire body aches like you've just been stabbed by a thousand tiny needles. You examine your where the aches are coming from and you notice multiple hole like scars.", 1);
+    Globals::enter_to_continue();
+    Globals::letter_by_letter_output("Please don't be what I think this could be... Shit it is isn't it. I've gotta find my way out of here.", 1);
     Globals::enter_to_continue();
 }
