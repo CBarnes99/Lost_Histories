@@ -100,12 +100,12 @@ if (isSearchablesInArea == true) {	//check to see if theres an item in the curre
 	}
 	else {
 		//if you didnt search the Searchables
-		cout << "You didn't search the Searchables" << endl;
+		cout << "You decided not to search." << endl;
 	}
 }
 else {	
 	//if theres no item in the location, print defualt room search description
-	cout << roomSearchDescription << endl;
+	cout << roomSearchDescription << endl << endl;
 	}
 }
 

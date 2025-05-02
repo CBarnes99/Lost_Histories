@@ -23,13 +23,19 @@ void Globals::letter_by_letter_output(std::string text, int amountOfEndl) {
 }
 
 void Globals::clear_invalid_input() {
-	std::cin.clear();
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	if (std::cin.fail()) {
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "Input the correct information" << std::endl;
+	}
+	
 }
 
 void Globals::enter_to_continue() {
 	std::string enterToContinue;
-	clear_invalid_input();
+	if (std::cin.fail()) {
+		clear_invalid_input();
+	}
 	std::cout << std::endl << "ENTER TO CONTINUE...";
 	std::getline(std::cin, enterToContinue);
 	system("cls");

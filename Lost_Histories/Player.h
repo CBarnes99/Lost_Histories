@@ -10,10 +10,6 @@ class Player : public Character
 {
 	
 private:
-	/**
-	*	@brief The players name
-	*/
-	string playerName;
 
 	/**
 	*	@brief The players invventory as a vector of items
