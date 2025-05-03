@@ -35,38 +35,134 @@ int main()
     Player player = Player("Barry");
 
     //NPC Classes Here//
-    NPC caretaker = NPC("Guide Test");
+    NPC caretaker = NPC("Careataker");
     caretaker.addDiologue("Thank you for coming on such short notice, " + player.get_character_name() + ". I am the caretaker of the Basilica. The pope is currenlty occupied but he'll be ready for you in a moment. I'll wait for you inside the Basilica.");
     caretaker.addDiologue("The Pope is still occupied, but let me ask you this, when you look at the Baldachin knowing its protecting St Peters Tomb from the light above, how does that make you feel?");
     caretaker.addDiologue("Ignoreing the first remark, I like your answer. But what if I told you the light of God isn't always the best thing for us.");
     caretaker.addDiologue("The Caretaker shaking his head in frustration. No no no, will you shut up! You simply don't get it, they CANT take in Gods rays, because, nevermind, you'll find you soon enough.");
 
-    //Item Classes Here//
-       
-    Item iCoin = Item();
+    //Item Classes Here// 
+    //S = IN SEARCHABLE X, O = OPENEING OBSTACLE X
+
+    Item iCoin = Item(); //1 - S 1, O ?????
     iCoin.set_item_defaults("A Gold Coin", "An Aureus Gold Coin, definitly not real but it looks cool", 1);
 
-    Item iRustyKey = Item();
+    Item iRustyKey = Item(); //2 - S 2, O 1 
     iRustyKey.set_item_defaults("Rusty Key", "A rusty key that is bearly holding together, probably will break when its used.", 1);
+
+    Item iTest2 = Item(); //3 --- 
+    iTest2.set_item_defaults(" ", " ", 1);
+
+    Item iTest3 = Item(); //4 --- 
+    iTest3.set_item_defaults(" ", " ", 1);
+
+    Item iTest4 = Item(); //5 --- 
+    iTest4.set_item_defaults(" ", " ", 1);
+
+    Item iNote = Item(); //6 --- In Chest of Drawers
+    iNote.set_item_defaults("A Note", "A medical note with alot of information about this one person called Nick, is this even useful?", 2);
+
+    Item iTest6 = Item(); //7 --- 
+    iTest6.set_item_defaults(" ", " ", 1);
+
+    Item iTest7 = Item(); //8 --- 
+    iTest7.set_item_defaults(" ", " ", 1);
+
+    Item iTest8 = Item(); //9 --- 
+    iTest8.set_item_defaults(" ", " ", 1);
+
+    Item iTest9 = Item(); //10 --- 
+    iTest9.set_item_defaults(" ", " ", 1);
+
+    Item iTest10 = Item(); //11 --- 11 will be a leaver to enter the shirne
+    iTest10.set_item_defaults( " ", " ", 1);
+
 
   
     //Obstacle Classes Here//
-    Obstacle oLockedDoor = Obstacle();
+    // I = ITEM NEEDED TO UNBLOCK OBSTACLE
+
+    Obstacle oLockedDoor = Obstacle(); //1 --- For entering the hallway
     oLockedDoor.set_obstacle_defualts("Bloodstained Door", "The door locked is covered in fresh blood", iRustyKey.get_item_name(), "You put the key through the blood soaked keyhole and gently push open the door trying to avoid the blood with your hand.");
 
+    Obstacle oTest2 = Obstacle(); //2 --- For opening TEST 3
+    oTest2.set_obstacle_defualts(" ", " ", " ", " ");
+
+    Obstacle oTest3 = Obstacle(); //3 --- 
+    oTest3.set_obstacle_defualts(" ", " ", " ", " ");
+
+    Obstacle oLockedChestOfDrawers = Obstacle(); //4 --- For the chest of drawers
+    //oLockedChestOfDrawers.set_obstacle_defualts("Chest of Draws With Keyhole", "One of the draws has a lock, now wheres the key", )
     
+    Obstacle oTest5 = Obstacle(); //5 --- 
+    oTest5.set_obstacle_defualts(" ", " ", " ", " ");
+
+    Obstacle oTest6 = Obstacle(); //6 --- 
+    oTest6.set_obstacle_defualts(" ", " ", " ", " ");
+
+    Obstacle oTest7 = Obstacle(); //7 --- 
+    oTest7.set_obstacle_defualts(" ", " ", " ", " ");
+
+    Obstacle oTest8 = Obstacle(); //8 --- 
+    oTest8.set_obstacle_defualts(" ", " ", " ", " ");
+
+    Obstacle oTest9 = Obstacle(); //9 --- 
+    oTest9.set_obstacle_defualts(" ", " ", " ", " ");
+
+    Obstacle oTest10 = Obstacle(); //10 --- 
+    oTest10.set_obstacle_defualts(" ", " ", " ", " ");
 
     ///Searchables Classes Here//
-    Searchables sLeftFountain = Searchables();
+    // N = NOT BLOCKED, B = BLOCKED BY X, G = GAIN AN ITEM FOR X OBSTACLE
+
+    Searchables sLeftFountain = Searchables(); //1 - N, G 1 --- In Left Fountain
     sLeftFountain.set_searchables_name("The Bernini Fountain");
     sLeftFountain.set_item(iCoin);
     sLeftFountain.set_opening_description("You reach in to the fountains water.");
 
-    Searchables sMedicalTrolley = Searchables();
+    Searchables sMedicalTrolley = Searchables(); //2 - N, G 2 --- In Hospital Room
     sMedicalTrolley.set_searchables_name("Medical Trolley");
     sMedicalTrolley.set_item(iRustyKey);
     sMedicalTrolley.set_opening_description("You open the draw on the trolley.");
 
+    Searchables sCabinet = Searchables(); //3 - N, G 3 --- In Hallway
+    sCabinet.set_searchables_name("Brown Cabinet");
+   //sCabinet.set_item();
+    sCabinet.set_opening_description("You open the two stiff doors gently hoping nothing jumps out.");
+
+    Searchables sTEST3 = Searchables(); //4 - B 2, G 4 --- In Storage 
+    sTEST3.set_searchables_name(" ");
+    //sTEST3.set_item();
+    sTEST3.set_opening_description(" ");
+
+    Searchables sChestOfDrawers = Searchables(); //5 --- In Hospital Room
+    sChestOfDrawers.set_searchables_name("Chest of Draws");
+    sChestOfDrawers.set_item(iNote);
+
+    Searchables sTEST5 = Searchables(); //6 --- 
+    sTEST5.set_searchables_name(" ");
+    //TEST5.set_item();
+    sTEST5.set_opening_description(" ");
+
+    Searchables sTEST6 = Searchables(); //7 --- 
+    sTEST6.set_searchables_name(" ");
+    //TEST6.set_item();
+    sTEST6.set_opening_description(" ");
+
+    Searchables sTEST7 = Searchables(); //8 --- 
+    sTEST7.set_searchables_name(" ");
+   // TEST7.set_item();
+    sTEST7.set_opening_description(" ");
+
+    Searchables sTEST8 = Searchables(); //9 --- 
+    sTEST8.set_searchables_name(" ");
+    //TEST8.set_item();
+    sTEST8.set_opening_description(" ");
+
+    Searchables sTEST9 = Searchables(); //10 --- 
+    sTEST9.set_searchables_name(" ");
+    //TEST9.set_item();
+    sTEST9.set_opening_description(" ");
     
 
     //Location Classes Here//
@@ -128,43 +224,34 @@ int main()
 
     //START OF DUNGEON LOCATIONS
     Location lHospitalRoom = Location("Hospital Room", "A room that looks and feels like an isolated hospital room.", "Theres a hospital bed, surgical equipment on a trolley, and a disturbing amount of blood all over the floor.");
-
     Location lStorageRoom = Location("Small Storage Room", "A room filled to the brim with boxes and junk.", "It's almost smells like a morgue, lets not think about that part");
+    Location lHallway = Location("Dim Hallway", "A hallway with many connecting doors, some locked, some not.", "The ominous unlit chandeliers and the black pillers makes this hallway even less inviting.");
+    Location lStudy = Location("Study", "A room with a desk and many many bookshelves.", "Everybook here is very well perserved, I don't even reconise most of these. They look ancient.");
+    Location lFridge = Location("Walk-in Freezer", "A fridged room filled with bloodbags stretching along all the walls.", "All the blood bags are labled with different names, John, Sasha, Nick, Carol, Barry... Thats worrying.");
+    Location lCoffinRoom = Location("Coffin Room", "A room with neatly stacked coffins leaning up against the back wall.", "None of the coffins open, but they each have different hand prints on them.");
+    Location lShrine = Location("Shrine", "Cold dark room with a bronze statue of the current pope adorning the wall, alone.", "N/A");
 
-    Location lHallway = Location("A Dim Hallway", "A hallway with many connecting doors, some locked, some not.", "The ominous unlit chandeliers and the black pillers makes this hallway even less inviting.");
 
-    //Location lStudy = Location
 
-    //Location lFridge = Location
+    lHospitalRoom.set_pathway(lHallway);
+    lHospitalRoom.set_pathway(lStorageRoom);
+    lHospitalRoom.set_searchables_in_location(sMedicalTrolley);
 
-    //Location lCoffinRoom = Location
 
-    //Location lShrine = Location
+    //lstoreageroom
 
+    lHallway.set_location_path_is_blocked_by(oLockedDoor);
+
+    //lstudy
+    //put searchable 9 here
+
+    //lfridge
+
+    //lcoffinroom
+
+    //lshirne
 
     //END OF DUNGEON LOCATIONS
-    
-  /*
-    Location bedroom = Location("Bedroom", "A small bedroom that looks like a childs play room.", "Childs Bedroom");
-    Location hallway = Location("Hallway", "A hallway with multiple connecting doors.", "Hallway");
-    Location bathroom = Location("Bathroom", "A small bathroom", "Bathroom");
-    Location kitchen = Location("Kitchen", "A kitchen with an abundance of stoves for some reason", "Kitchen");
-
-    bedroom.set_pathway(hallway);
-    bedroom.set_searchables_in_location(cupboard);
-    bedroom.set_searchables_in_location(chest);
-
-    hallway.set_pathway(bedroom);
-    hallway.set_pathway(kitchen);
-    hallway.set_pathway(bathroom);
-    hallway.set_location_path_is_blocked_by(door);
-
-    bathroom.set_pathway(hallway);
-
-    kitchen.set_pathway(hallway);
-    kitchen.set_searchables_in_location(draw);
-  */
-
 
     Location* curruntLocation = &lInFrontOfSquare;
 
@@ -180,7 +267,7 @@ int main()
    Globals::enter_to_continue();
    Globals::letter_by_letter_output("As I approach the the entrance to the St Peters Square, I am approched by someone in a black suit, a butler maybe?", 1);
    Globals::enter_to_continue();
-   Globals::letter_by_letter_output(caretaker.outputNextDiologue(), 2);
+   Globals::letter_by_letter_output(caretaker.outputNextDiologue(), 1);
    Globals::enter_to_continue();
    Globals::letter_by_letter_output("I guess I can explore a little bit, its been many years since I last came here with my family.", 1);
    Globals::enter_to_continue();
@@ -194,7 +281,7 @@ int main()
 
         if (curruntLocation == &lStPetersAltar) {
             introductionsEnd(caretaker);
-            curruntLocation == &lStPetersSquare;
+            curruntLocation = &lHospitalRoom;
         }
         else {
             cout << '\n' << "You can see these (Enter number to travel)" << endl;

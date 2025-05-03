@@ -16,6 +16,6 @@ string NPC::outputNextDiologue() {
 		return "NO MORE DIOLOGUE OPTIONS! FIX THIS!";
 	}
 	else {
-		return this->diologue.at(diologueIndex);
+		return this->charactersName + ": " + this->diologue.at(diologueIndex);
 	}
 }
