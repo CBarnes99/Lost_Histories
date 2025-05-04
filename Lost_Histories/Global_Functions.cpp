@@ -10,7 +10,7 @@ void Globals::letter_by_letter_output(std::string text, int amountOfEndl) {
 	for (int i = 0; i < text.length(); i++) {
 		std::cout << text.at(i);
 
-		if (text.at(i) == ',' || text.at(i) == '.' && i != text.length() -1) {
+		if (text.at(i) == ',' || text.at(i) == '.') {
 			sleep(500);
 		}
 		else {

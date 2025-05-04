@@ -84,17 +84,13 @@ if (isSearchablesInArea == true) {	//check to see if theres an item in the curre
 
 		else {
 			//The object is blocked by an obstacle
-			cout << this->locSearchables.at(playerAnswerInt)->get_searchables_name() << " is blocked by " << this->locSearchables.at(playerAnswerInt)->get_obstacle()->get_obstacle_name() << endl;
+			Globals::letter_by_letter_output(this->locSearchables.at(playerAnswerInt)->get_searchables_name() + " is blocked by " + this->locSearchables.at(playerAnswerInt)->get_obstacle()->get_obstacle_name(), 2);
 			if (this->locSearchables.at(playerAnswerInt)->get_obstacle()->obstacle_choice(player) == true) {
 					
 				this->locSearchables.at(playerAnswerInt)->set_searchables_not_blocked_by_obstacle();
 					
-				cout << "You unlock the " << this->locSearchables.at(playerAnswerInt)->get_searchables_name() << endl;	//output the location moved into
+				Globals::letter_by_letter_output("You unlock the " + this->locSearchables.at(playerAnswerInt)->get_searchables_name(), 2);	//output the location moved into
 				this->locSearchables.at(playerAnswerInt)->get_item_from_searchables(player);
-			}
-			else {
-
-
 			}
 		}
 	}
@@ -113,16 +109,15 @@ bool Location::is_loc_accessible(Player& player)
 {
 	if (isPathBlocked == true) {	//if the pathway the user selected is blocked by an obstacle
 
-		Globals::letter_by_letter_output("The path is blocked by ", 0);
-		Globals::letter_by_letter_output(get_obstacle_name_from_location(), 0);
-		Globals::letter_by_letter_output(", What do you want to do?", 2);
+		Globals::letter_by_letter_output("The path is blocked by " + get_obstacle_name_from_location() + ", what do you want to do?", 2);
 
 		if (this->pathBlockedByObstacle->obstacle_choice(player) == true) {
 
 			set_location_unblocked();	//sets location as unblocked so user can freely moved between locations
 
-			Globals::letter_by_letter_output("You move into -- ", 0);
-			Globals::letter_by_letter_output(get_loc_name(), 2);
+			Globals::letter_by_letter_output("You move into " + get_loc_name() + ".", 2);
+			Globals::sleep(1000);
+			system("cls");
 			
 			return true;
 		}

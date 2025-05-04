@@ -57,7 +57,7 @@ bool Obstacle::obstacle_choice(Player& player)
 	case(0):	//Use an item
 		if (player.get_inventory_size() < 1) {	//if the player has no items in their inventory
 			system("cls");
-			Globals::letter_by_letter_output("You have no items in your inventory, you turn back", 2);
+			Globals::letter_by_letter_output("You have no items in your inventory, you turn back.", 2);
 			return false;
 		}
 		choice = -1;
@@ -86,12 +86,11 @@ bool Obstacle::obstacle_choice(Player& player)
 			//if the wrong item was chosen
 			else {
 				system("cls");
-				Globals::letter_by_letter_output(player.get_item_from_inventory().at(choice)->get_item_name(), 0);
-				Globals::letter_by_letter_output(" has no effect on ", 0);
-				Globals::letter_by_letter_output(this->get_obstacle_name(), 2);
-				Globals::sleep(100);
+				Globals::letter_by_letter_output(player.get_item_from_inventory().at(choice)->get_item_name() + " has no effect on " + this->get_obstacle_name(), 2);
+				Globals::sleep(500);
 				Globals::letter_by_letter_output("You turn back.", 2);
-				
+				Globals::sleep(500);
+
 				return false;
 			}
 			break;

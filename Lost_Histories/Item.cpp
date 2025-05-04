@@ -8,6 +8,7 @@ Item::Item() {
 	this->itemDescription = "iDesc";
 	this->isDestroyed = false;
 	this->itemDurability = 1;
+	this->itemDestroyedText = "iDest";
 }
 
 
@@ -28,12 +29,15 @@ string Item::get_item_description() {
 void Item::reduce_item_durability() {
 	this->itemDurability--;
 	if (this->itemDurability < 1) {
-		Globals::letter_by_letter_output(this->itemName, 0);
-		Globals::letter_by_letter_output(" has broken after being used", 2);
+		Globals::letter_by_letter_output(this->itemDestroyedText, 2);
 		this->isDestroyed = true;
 	}
 }
 
 bool Item::is_item_destroyed() {
 	return this->isDestroyed;
+}
+
+void Item::set_item_destroyed_text(string text) {
+	this->itemDestroyedText = text;
 }

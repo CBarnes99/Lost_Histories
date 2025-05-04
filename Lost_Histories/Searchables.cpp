@@ -22,10 +22,10 @@ void Searchables::set_item(Item sItem) {
 	this->isThereAnItem = true;
 }
 
-void Searchables::set_obstacle(Obstacle* sObstacle, string sUnblocked) {
+void Searchables::set_obstacle(Obstacle* sObstacle) {
 	this->blockedByObstacle = sObstacle;
 	this->isSearchablesBlocked = true;
-	this->unblockedDescription = sUnblocked;
+	this->unblockedDescription = sObstacle->get_obstacle_removed_description();
 }
 
 void Searchables::set_opening_description(string sOpeningDescription) {
@@ -52,8 +52,7 @@ void Searchables::get_item_from_searchables(Player& player) {
 		if (playerAnswerString == "y" || playerAnswerString == "Y") { //if user wants to pick up the item
 			system("cls");
 
-			Globals::letter_by_letter_output("You pick up the ", 0);
-			Globals::letter_by_letter_output(item.get_item_name(), 2);
+			Globals::letter_by_letter_output("You pick up the " + item.get_item_name() + ".", 2);
 			player.add_item_to_inventory(item);
 			set_item_taken();
 

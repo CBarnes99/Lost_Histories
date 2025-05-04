@@ -82,7 +82,7 @@ public:
 	*	@param sObstacle The obstacle blocking the searchable, as an Obstacle object
 	*	@param sUnblocked The string stated when the obstacle is removed, as a String
 	*/
-	void set_obstacle(Obstacle* sObstacle, string sUnblocked);
+	void set_obstacle(Obstacle* sObstacle);
 
 	/**
 	*	@brief What is displayed if the searchable needs opening like a cupboard door

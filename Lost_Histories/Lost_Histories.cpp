@@ -35,140 +35,152 @@ int main()
     Player player = Player("Barry");
 
     //NPC Classes Here//
-    NPC caretaker = NPC("Careataker");
+    NPC caretaker = NPC("Caretaker");
     caretaker.addDiologue("Thank you for coming on such short notice, " + player.get_character_name() + ". I am the caretaker of the Basilica. The pope is currenlty occupied but he'll be ready for you in a moment. I'll wait for you inside the Basilica.");
     caretaker.addDiologue("The Pope is still occupied, but let me ask you this, when you look at the Baldachin knowing its protecting St Peters Tomb from the light above, how does that make you feel?");
-    caretaker.addDiologue("Ignoreing the first remark, I like your answer. But what if I told you the light of God isn't always the best thing for us.");
+    caretaker.addDiologue("Ignoring the first remark, I like your answer. But what if I told you the light of God isn't always the best thing for us.");
     caretaker.addDiologue("The Caretaker shaking his head in frustration. No no no, will you shut up! You simply don't get it, they CANT take in Gods rays, because, nevermind, you'll find you soon enough.");
 
+
     //Item Classes Here// 
-    //S = IN SEARCHABLE X, O = OPENEING OBSTACLE X
-
-    Item iCoin = Item(); //1 - S 1, O ?????
+    Item iCoin = Item(); //In sLeftFountain, Opens ???????????????????????????
     iCoin.set_item_defaults("A Gold Coin", "An Aureus Gold Coin, definitly not real but it looks cool", 1);
+    iCoin.set_item_destroyed_text("-----------------------------------------------------");
 
-    Item iRustyKey = Item(); //2 - S 2, O 1 
-    iRustyKey.set_item_defaults("Rusty Key", "A rusty key that is bearly holding together, probably will break when its used.", 1);
+    Item iBloodstainedKey = Item(); //In sMedicalTrolley, Opens oLockedDoor 
+    iBloodstainedKey.set_item_defaults("Bloodstained Key", "A key that is coated in blood.", 2);
 
-    Item iTest2 = Item(); //3 --- 
-    iTest2.set_item_defaults(" ", " ", 1);
+    Item iHammer = Item(); //In sCabinet, Opens oSmallWoodenCrate
+    iHammer.set_item_defaults("Small Hammer", "A hammer is only real use is smashing things. Now what do I smash.", 5);
+    iHammer.set_item_destroyed_text("After that final swing, the hammers handle snapped in two.");
 
-    Item iTest3 = Item(); //4 --- 
-    iTest3.set_item_defaults(" ", " ", 1);
+    Item iBronzeKey = Item(); //In sSmallWoodenCrate, Opens oBronzeDoor
+    iBronzeKey.set_item_defaults("Bronze Key", "A Bronze Key, it has loads of scratches, must be used often.", 2);
 
-    Item iTest4 = Item(); //5 --- 
-    iTest4.set_item_defaults(" ", " ", 1);
+    Item iLockPick = Item(); //In sDesk, Opens oChestOfDrawers
+    iLockPick.set_item_defaults("Lock Pick", "One Lock Pick, lets hope I use these correctly and not break them.", 1);
+    iLockPick.set_item_destroyed_text("The lockpick snapped.");
 
-    Item iNote = Item(); //6 --- In Chest of Drawers
+    Item iNote = Item(); //In sChestOfDrawers, Opens oBloodBagNick
     iNote.set_item_defaults("A Note", "A medical note with alot of information about this one person called Nick, is this even useful?", 2);
 
-    Item iTest6 = Item(); //7 --- 
-    iTest6.set_item_defaults(" ", " ", 1);
+    Item iSilverKey = Item(); //in sDesk, Opens oSilverDoor
+    iSilverKey.set_item_defaults("Silver Key", "A Silver Key in near pristine condition, must unlock to something valuable", 2);
 
-    Item iTest7 = Item(); //8 --- 
-    iTest7.set_item_defaults(" ", " ", 1);
+    Item iBloodBagNick = Item(); //in sBloodBagNick, Opens oGiantContainer
+    iBloodBagNick.set_item_defaults("Nick's Blood Bag", "A huge blood bag with a label names Nick. You notice there might be more than blood in this bag", 1);
+    iBloodBagNick.set_item_destroyed_text("You discard the bag after pouring it out into the container.");
 
-    Item iTest8 = Item(); //9 --- 
-    iTest8.set_item_defaults(" ", " ", 1);
+    Item iNickHand = Item(); //in s, Opens oChest
+    iNickHand.set_item_defaults("A hand", "The right hand possibly belonging to someone called Nick.", 1);
+    iNickHand.set_item_destroyed_text("The hand gets absorbed into the coffin when you pressed it against the hand print.");
 
-    Item iTest9 = Item(); //10 --- 
-    iTest9.set_item_defaults(" ", " ", 1);
+    Item iNicksEye = Item(); //in sNickCoffin, Opens oChest
+    iNicksEye.set_item_defaults("Eye Ball", "You took this eye that was hanging out of the corpse, lovely.", 1);
+    iNicksEye.set_item_destroyed_text("The eye becomes fused with the chest, unable to remove it.");
 
-    Item iTest10 = Item(); //11 --- 11 will be a leaver to enter the shirne
-    iTest10.set_item_defaults( " ", " ", 1);
+    Item iGoldKey = Item(); //in sChest, Opens oGoldDoor
+    iGoldKey.set_item_defaults("Gold Key", "A golden key, if I get out of here, im going to melt this down.", 2);
 
 
-  
     //Obstacle Classes Here//
-    // I = ITEM NEEDED TO UNBLOCK OBSTACLE
+    Obstacle oLockedDoor = Obstacle(); //iBloodstainedKey to open, For entering the lHallway from lHospitalRoom
+    oLockedDoor.set_obstacle_defualts("Bloodstained Door", "The locked door is covered in fresh blood.", iBloodstainedKey.get_item_name(), "You put the key through the blood soaked keyhole and gently push open the door trying to avoid the blood with your hand.");
 
-    Obstacle oLockedDoor = Obstacle(); //1 --- For entering the hallway
-    oLockedDoor.set_obstacle_defualts("Bloodstained Door", "The door locked is covered in fresh blood", iRustyKey.get_item_name(), "You put the key through the blood soaked keyhole and gently push open the door trying to avoid the blood with your hand.");
+    Obstacle oChestOfDrawers = Obstacle(); //iLockPick to open, For sChestOfDrawers in lHospitalRoom ///////////////////chhage toi padloockasckwsc
+    oChestOfDrawers.set_obstacle_defualts("a Lock on the drawer.", "One of the draws has a lock, there must be a key of somekind somewhere.", iLockPick.get_item_name(), "You carefully pick the lock. The Draw unlocks as soon as you snap the pick. Flawless job.");
 
-    Obstacle oTest2 = Obstacle(); //2 --- For opening TEST 3
-    oTest2.set_obstacle_defualts(" ", " ", " ", " ");
-
-    Obstacle oTest3 = Obstacle(); //3 --- 
-    oTest3.set_obstacle_defualts(" ", " ", " ", " ");
-
-    Obstacle oLockedChestOfDrawers = Obstacle(); //4 --- For the chest of drawers
-    //oLockedChestOfDrawers.set_obstacle_defualts("Chest of Draws With Keyhole", "One of the draws has a lock, now wheres the key", )
+    Obstacle oSmallWoodenCrate = Obstacle(); //iHammer to open, For opening sSmallWoodenCrate in lStorageRoom
+    oSmallWoodenCrate.set_obstacle_defualts("alot of rot and mold, probably for the best not to touch it.", "Small rotting wodden crate, probably easily broken open with something.", iHammer.get_item_name(), "You smashed the top of the crate into tiny pieces and can now see inside the crate.");
     
-    Obstacle oTest5 = Obstacle(); //5 --- 
-    oTest5.set_obstacle_defualts(" ", " ", " ", " ");
+    Obstacle oGiantContainer = Obstacle(); //iBloodBagNick to Open, For sTableWithAGiantContainer in lStorageRoom
+    oGiantContainer.set_obstacle_defualts("junk surrounding it, not worth digging it out until I might have a reason to.", "Its just a container, nothing useful at the moment.", iBloodBagNick.get_item_name(), " ");
 
-    Obstacle oTest6 = Obstacle(); //6 --- 
-    oTest6.set_obstacle_defualts(" ", " ", " ", " ");
+    Obstacle oBronzeDoor = Obstacle(); //iBronzeKey to open, For entering lFreezer from lHallway
+    oBronzeDoor.set_obstacle_defualts("Bronze Trimmed Door", "Theres a bronze lock on the door.", iBronzeKey.get_item_name(), "You used the Bronze Key to open the door.");
+    
+    Obstacle oSilverDoor = Obstacle(); //iSilverKey to Open, For entering Coffin Room from Hallway
+    oSilverDoor.set_obstacle_defualts("Silver Trimmed Door", "Theres a Silver lock on the door.", iSilverKey.get_item_name(), "You used the Silver Key to open the door.");
 
-    Obstacle oTest7 = Obstacle(); //7 --- 
-    oTest7.set_obstacle_defualts(" ", " ", " ", " ");
+    Obstacle oBloodBagNick = Obstacle(); //iNote to Open, For sBloodBagNick in lFreezer  //////////////create multiple for the other names
+    oBloodBagNick.set_obstacle_defualts("Blood Bag with the name Nick on the Label", "Why would this one be more useful then the rest, might need more information.", iNote.get_item_name() , "You take this blood bag due to the note, lets hope this helps somehow.");
 
-    Obstacle oTest8 = Obstacle(); //8 --- 
-    oTest8.set_obstacle_defualts(" ", " ", " ", " ");
+    Obstacle oCoffinHand = Obstacle(); //iNickHand to Open, for sNickCoffin in lCoffinRoom                Create multiple
+    oCoffinHand.set_obstacle_defualts("A Coffin with a hand print in the center.", "Theres no way to lift open the coffin, its sealed shut.", iNickHand.get_item_name(), "You placed the hand onto the coffin, blood starts spewing out from the seams the and lid starts sliding off reavaling a corpse.");
 
-    Obstacle oTest9 = Obstacle(); //9 --- 
-    oTest9.set_obstacle_defualts(" ", " ", " ", " ");
+    Obstacle oChest = Obstacle(); //iNicksEye to Open, for sChest in lStudy
+    oChest.set_obstacle_defualts("A Small Chest", "Theres no keyhole for the chest, just a spherical bloodied socket.", iNicksEye.get_item_name(), "You place the eye into the socket, blood stars spewing out from the cracks in the chest, the lid opens.");
 
-    Obstacle oTest10 = Obstacle(); //10 --- 
-    oTest10.set_obstacle_defualts(" ", " ", " ", " ");
+    Obstacle oGoldDoor = Obstacle(); //iGoldKey to Open, For entering Shrine from Hallway
+    oGoldDoor.set_obstacle_defualts("Gold Trimmed Door", "Theres a gold lock on the door.", iGoldKey.get_item_name(), "You used the Gold Key to open the door.");
 
-    ///Searchables Classes Here//
-    // N = NOT BLOCKED, B = BLOCKED BY X, G = GAIN AN ITEM FOR X OBSTACLE
-
-    Searchables sLeftFountain = Searchables(); //1 - N, G 1 --- In Left Fountain
+    //Searchables Classes Here//
+    Searchables sLeftFountain = Searchables(); //In lLeftFountain, Not Blocked, Gain iCoin, 
     sLeftFountain.set_searchables_name("The Bernini Fountain");
     sLeftFountain.set_item(iCoin);
     sLeftFountain.set_opening_description("You reach in to the fountains water.");
 
-    Searchables sMedicalTrolley = Searchables(); //2 - N, G 2 --- In Hospital Room
+    Searchables sMedicalTrolley = Searchables(); //In lHospitalRoom, Not Blocked, Gain iBloodstainedKey
     sMedicalTrolley.set_searchables_name("Medical Trolley");
-    sMedicalTrolley.set_item(iRustyKey);
+    sMedicalTrolley.set_item(iBloodstainedKey);
     sMedicalTrolley.set_opening_description("You open the draw on the trolley.");
 
-    Searchables sCabinet = Searchables(); //3 - N, G 3 --- In Hallway
+    Searchables sChestOfDrawers = Searchables(); //In lHospitalRoom, Blocked by oChestOfDrawers, Gain iNote
+    sChestOfDrawers.set_searchables_name("Chest of Drawers");
+    sChestOfDrawers.set_item(iNote);
+    sChestOfDrawers.set_opening_description("You open the draw.");
+    sChestOfDrawers.set_obstacle(&oChestOfDrawers);
+
+    Searchables sSmallWoodenCrate = Searchables(); //In lStorageRoom, Blocked by oSmallWoodenCrate, Gain iBronzeKey
+    sSmallWoodenCrate.set_searchables_name("Small Wooden Crate");
+    sSmallWoodenCrate.set_item(iBronzeKey);
+    sSmallWoodenCrate.set_opening_description("You peer into the smashed crate.");
+    sSmallWoodenCrate.set_obstacle(&oSmallWoodenCrate);
+
+    Searchables sTableWithAGiantContainer = Searchables(); //In lStorageRoom, Blocked by oGiantContainer, Gain iNickHand
+    sTableWithAGiantContainer.set_searchables_name("Table with a Giant Container");
+    sTableWithAGiantContainer.set_obstacle(&oGiantContainer);
+    sTableWithAGiantContainer.set_item(iNickHand);
+    sTableWithAGiantContainer.set_opening_description("You poor the blood back into the container, you notice theres more than just blood in the bag. You see a hand. You can only assume its the hand that belongs to Nick.");
+
+    Searchables sCabinet = Searchables(); //In lHallway, Not Blocked, Gain iHammer
     sCabinet.set_searchables_name("Brown Cabinet");
-   //sCabinet.set_item();
+    sCabinet.set_item(iHammer);
     sCabinet.set_opening_description("You open the two stiff doors gently hoping nothing jumps out.");
 
-    Searchables sTEST3 = Searchables(); //4 - B 2, G 4 --- In Storage 
-    sTEST3.set_searchables_name(" ");
-    //sTEST3.set_item();
-    sTEST3.set_opening_description(" ");
+    Searchables sDesk = Searchables(); //In lStudy, Not Blocked, Gain iLockPick
+    sDesk.set_searchables_name("Large Wooden Desk");
+    sDesk.set_item(iLockPick);
+    sDesk.set_opening_description("You search through the couple of draws in the desk.");
 
-    Searchables sChestOfDrawers = Searchables(); //5 --- In Hospital Room
-    sChestOfDrawers.set_searchables_name("Chest of Draws");
-    sChestOfDrawers.set_item(iNote);
+    Searchables sChest = Searchables(); //In lStudy, Blocked, Gain iNicksEye
+    sChest.set_searchables_name("Small Chest");
+    sChest.set_item(iGoldKey);
+    sChest.set_opening_description("The chests lid slides off now the eye has been placed.");
+    sChest.set_obstacle(&oChest);
 
-    Searchables sTEST5 = Searchables(); //6 --- 
-    sTEST5.set_searchables_name(" ");
-    //TEST5.set_item();
-    sTEST5.set_opening_description(" ");
+    Searchables sBookshelf = Searchables(); //In lStudy, Not Blocked, Gain iSilverKey     Create multiple
+    sBookshelf.set_searchables_name("Bookshelf");
+    sBookshelf.set_item(iSilverKey);
+    sBookshelf.set_opening_description("You start skimming through the books hopeing to find something, anything in the books. A note, anything.");   
 
-    Searchables sTEST6 = Searchables(); //7 --- 
-    sTEST6.set_searchables_name(" ");
-    //TEST6.set_item();
-    sTEST6.set_opening_description(" ");
+    Searchables sBloodBagNick = Searchables(); //In lFreezer, Blocked, Gain iBloodBagNick           Create Multiple John, Sasha, Nick, Carol, Barry
+    sBloodBagNick.set_searchables_name("Huge Blood Bag with the name Nick writen on the label.");
+    sBloodBagNick.set_item(iBloodBagNick);
+    sBloodBagNick.set_opening_description("You take the Blood Bag");
+    sBloodBagNick.set_obstacle(&oBloodBagNick);
 
-    Searchables sTEST7 = Searchables(); //8 --- 
-    sTEST7.set_searchables_name(" ");
-   // TEST7.set_item();
-    sTEST7.set_opening_description(" ");
-
-    Searchables sTEST8 = Searchables(); //9 --- 
-    sTEST8.set_searchables_name(" ");
-    //TEST8.set_item();
-    sTEST8.set_opening_description(" ");
-
-    Searchables sTEST9 = Searchables(); //10 --- 
-    sTEST9.set_searchables_name(" ");
-    //TEST9.set_item();
-    sTEST9.set_opening_description(" ");
+    Searchables sNickCoffin = Searchables(); //In lCoffingRoom, Blocked by iNickHand, Gain iNicksEye --------------Create Multiple
+    sNickCoffin.set_searchables_name("Coffin with bloodied handprint.");
+    sNickCoffin.set_item(iNicksEye);
+    sNickCoffin.set_opening_description("You move the lid now that its open.");
+    sNickCoffin.set_obstacle(&oCoffinHand);
     
 
     //Location Classes Here//
     
     // START OF INTRODUCTION LOCATIONS!
-    Location lInFrontOfSquare = Location("In Front of St Peter's Square", "An open entrance leading up to the Square", "Eerily quiet, not another person in sight. The Popes situation must be serious if the public aren't allowed in.");
+    Location lInFrontOfSquare = Location("In Front of St Peter's Square", "An open entrance leading up to the Square.", "Eerily quiet, not another person in sight. The Popes situation must be serious if the public aren't allowed in.");
     Location lStPetersSquare = Location("St Peter's Square", "A huge open area surrounded by statues overlooking the square.", "The Obelisk in the center with fountains either side while being overlooked by St Peter's Basilica.");
     Location lObelisk = Location("Obelisk", "Vaticano, one of the thirteen Roman Obelisks.", "Enscribed on the Obelisk says: DIVO CAESARI DIVI F AVGVSTO TI CAESARI DIVI AVGVSTI F AVGVSTO SACRVM. If I remember my latin correctly, Sacred to the Divine Caesar Augustus, son of the Divine, to Tiberius Caesar Augustus, son of the Divine Augustus.");
     Location lLeftFountain = Location("Left Fountain", "The fountain to the left of the Obelisk.", "The Bernini Fountain");
@@ -224,44 +236,58 @@ int main()
 
     //START OF DUNGEON LOCATIONS
     Location lHospitalRoom = Location("Hospital Room", "A room that looks and feels like an isolated hospital room.", "Theres a hospital bed, surgical equipment on a trolley, and a disturbing amount of blood all over the floor.");
-    Location lStorageRoom = Location("Small Storage Room", "A room filled to the brim with boxes and junk.", "It's almost smells like a morgue, lets not think about that part");
-    Location lHallway = Location("Dim Hallway", "A hallway with many connecting doors, some locked, some not.", "The ominous unlit chandeliers and the black pillers makes this hallway even less inviting.");
-    Location lStudy = Location("Study", "A room with a desk and many many bookshelves.", "Everybook here is very well perserved, I don't even reconise most of these. They look ancient.");
-    Location lFridge = Location("Walk-in Freezer", "A fridged room filled with bloodbags stretching along all the walls.", "All the blood bags are labled with different names, John, Sasha, Nick, Carol, Barry... Thats worrying.");
+    Location lStorageRoom = Location("Small Storage Room", "A room filled to the brim with boxes and junk.", "It's almost smells like a morgue, lets not think about that part.");
+    Location lHallway = Location("Hallway", "A hallway with many connecting doors, some locked, some not.", "The ominous unlit chandeliers and the black pillers makes this hallway even less inviting.");
+    Location lStudy = Location("Study", "A room with a desk and many many bookshelves.", "Every book here is very well perserved, I don't even recognise most of these. They look ancient.");
+    Location lFreezer = Location("Walk-in Freezer", "A fridged room filled with bloodbags stretching along all the walls.", "All the blood bags are labled with different names, John, Sasha, Nick, Carol, Barry... Thats worrying.");
     Location lCoffinRoom = Location("Coffin Room", "A room with neatly stacked coffins leaning up against the back wall.", "None of the coffins open, but they each have different hand prints on them.");
     Location lShrine = Location("Shrine", "Cold dark room with a bronze statue of the current pope adorning the wall, alone.", "N/A");
-
-
 
     lHospitalRoom.set_pathway(lHallway);
     lHospitalRoom.set_pathway(lStorageRoom);
     lHospitalRoom.set_searchables_in_location(sMedicalTrolley);
+    lHospitalRoom.set_searchables_in_location(sChestOfDrawers);
 
+    lStorageRoom.set_pathway(lHospitalRoom);
+    lStorageRoom.set_searchables_in_location(sSmallWoodenCrate);
+    lStorageRoom.set_searchables_in_location(sTableWithAGiantContainer);
 
-    //lstoreageroom
-
+    lHallway.set_pathway(lHospitalRoom);
+    lHallway.set_pathway(lCoffinRoom);
+    lHallway.set_pathway(lStudy);
+    lHallway.set_pathway(lFreezer);
+    lHallway.set_pathway(lShrine);
     lHallway.set_location_path_is_blocked_by(oLockedDoor);
+    lHallway.set_searchables_in_location(sCabinet);
 
-    //lstudy
-    //put searchable 9 here
+    lStudy.set_pathway(lHallway);
+    lStudy.set_searchables_in_location(sBookshelf);
+    lStudy.set_searchables_in_location(sChest);
+    lStudy.set_searchables_in_location(sDesk);
 
-    //lfridge
+    lFreezer.set_pathway(lHallway);
+    lFreezer.set_location_path_is_blocked_by(oBronzeDoor);
+    lFreezer.set_searchables_in_location(sBloodBagNick);
 
-    //lcoffinroom
+    lCoffinRoom.set_pathway(lHallway);
+    lCoffinRoom.set_location_path_is_blocked_by(oSilverDoor);
+    lCoffinRoom.set_searchables_in_location(sNickCoffin);
 
-    //lshirne
+    lShrine.set_pathway(lHallway);
+    lShrine.set_location_path_is_blocked_by(oGoldDoor);
 
     //END OF DUNGEON LOCATIONS
 
     Location* curruntLocation = &lInFrontOfSquare;
 
+    //Location* curruntLocation = &lHospitalRoom;
+
     bool playing = true;
     int userInputNum = 0;
     int LoopIncrement = 0;
-    //string userInputString = "abc";
 
    //Introduction section
-   Globals::letter_by_letter_output("I've been called in specifically to help with the situation thats taking place at the Vatican. The Pope has fallen ill and requires help from the best medical professional, that would indeed be me, Barry", 1);
+   Globals::letter_by_letter_output("I've been called in specifically to help with the situation thats taking place at the Vatican. The Pope has fallen ill and requires help from the best medical professional, that would indeed be me, Barry.", 1);
    Globals::enter_to_continue();
    Globals::letter_by_letter_output("Its currently 10pm, I'm unsure why they asked for me to wait for night to come and not ASAP, but the Pope probably has a busy schedule even when ill.", 1);
    Globals::enter_to_continue();
@@ -320,7 +346,7 @@ int main()
                 Globals::letter_by_letter_output(curruntLocation->get_loc_inspect_location(), 2); //output location inspection string
             }
             else if (userInputNum == LoopIncrement + 1) {
-                curruntLocation->search_location(player);   //search location for items
+                curruntLocation->search_location(player);   //search location for searchables
 
             }
             else if (userInputNum == LoopIncrement + 2) {
@@ -344,7 +370,7 @@ void introductionsEnd(NPC character) {
     Globals::enter_to_continue();
     Globals::letter_by_letter_output(character.outputNextDiologue(), 1);
     Globals::enter_to_continue();
-    Globals::letter_by_letter_output("Well of course too much sun is detrimental to your skin, but sun light provides vitamin d and...", 1);
+    Globals::letter_by_letter_output("Well of course too much sun is detrimental to your skin, but sun light provides vitamin D and...", 1);
     Globals::enter_to_continue();
     Globals::letter_by_letter_output(character.outputNextDiologue(), 1);
     Globals::enter_to_continue();
@@ -352,7 +378,7 @@ void introductionsEnd(NPC character) {
     Globals::enter_to_continue();
     Globals::letter_by_letter_output("You hit your head hard when you reached the ground, darkness.", 1);
     Globals::enter_to_continue();
-    Globals::letter_by_letter_output("You wake up, on the floor, in a daze, vision blurry, disoriented, your entire body aches like you've just been stabbed by a thousand tiny needles. You examine your where the aches are coming from and you notice multiple hole like scars.", 1);
+    Globals::letter_by_letter_output("You wake up, on the floor, in a daze, vision blurry, disoriented, your entire body aches like you've just been stabbed by a thousand tiny needles. You examine where the aches are coming from and you notice multiple hole like scars.", 1);
     Globals::enter_to_continue();
     Globals::letter_by_letter_output("Please don't be what I think this could be... Shit it is isn't it. I've gotta find my way out of here.", 1);
     Globals::enter_to_continue();

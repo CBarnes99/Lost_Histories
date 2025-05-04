@@ -27,6 +27,11 @@ private:
 	*/
 	int itemDurability;
 
+	/**
+	*	@brief What is said when the item has no durability left
+	*/
+	string itemDestroyedText;
+
 public:
 	/**
 	*	@brief Defualt constructor for the Item.
@@ -64,5 +69,11 @@ public:
 	*	@return The items destroyed value as a Bool
 	*/
 	bool is_item_destroyed();
+
+	/**
+	*	@brief What is said when the item has no durability left
+	*	@param noDurability What is said when the item is used up, as a string
+	*/
+	void set_item_destroyed_text(string text);
 };
 
