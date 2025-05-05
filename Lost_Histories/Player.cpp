@@ -22,8 +22,9 @@ void Player::output_all_items_in_inventory(bool usingItem) {
 		cout << "You have no items in your inventory" << endl << endl;
 	}
 	else {
-		cout << endl;
-		Globals::letter_by_letter_output("You open your inventory, you have:", 1);
+
+		cout << endl << "You open your inventory, you have:" << endl;
+
 		if (usingItem == true) {
 			for (int i = 0; i < this->playerInventory.size(); i++) {
 				cout << "[" << i << "] " << this->playerInventory.at(i)->get_item_name() << endl;

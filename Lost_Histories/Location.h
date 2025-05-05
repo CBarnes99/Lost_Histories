@@ -124,7 +124,7 @@ public:
 	*	@brief Gets the name of the obstacle thats blocking this location
 	*	@return The name of the obstacle, as a String
 	*/
-	string get_obstacle_name_from_location();
+	string get_obstacle_interact_from_location();
 
 	/**
 	*	@brief Sets the location unblocked so you can now pass through

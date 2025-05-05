@@ -6,24 +6,30 @@ using namespace std;
 
 Obstacle::Obstacle() {	//defualt constructor for the obstacle object
 	this->obstacleName = "obsName";
-	this->obstacleDescription = "obsDesc";
+	this->obstacleInteract = "obsInteract";
+	this->obstacleInspect = "obsInspect";
 	this->obstcaleKey = "obsKey";
 	this->obstacleRemoved = "obsRemoved";
 }
 
-void Obstacle::set_obstacle_defualts(string obsName, string obsDesc, string obsKey, string obsRemoved)	{
+void Obstacle::set_obstacle_defualts(string obsName, string obsInteract, string obsInspect, string obsKey, string obsRemoved) {
 	this->obstacleName = obsName;
-	this->obstacleDescription = obsDesc;
+	this->obstacleInteract = obsInteract;
+	this->obstacleInspect = obsInspect;
 	this->obstcaleKey = obsKey;
 	this->obstacleRemoved = obsRemoved;
 }
 
 string Obstacle::get_obstacle_name() {
-	return obstacleName;
+	this->obstacleName;
+}
+
+string Obstacle::get_obstacle_interact() {
+	return obstacleInteract;
 }
 
 string Obstacle::get_obstacle_description() {
-	return obstacleDescription;
+	return obstacleInspect;
 }
 
 string Obstacle::get_obstacle_key() {
@@ -86,7 +92,7 @@ bool Obstacle::obstacle_choice(Player& player)
 			//if the wrong item was chosen
 			else {
 				system("cls");
-				Globals::letter_by_letter_output(player.get_item_from_inventory().at(choice)->get_item_name() + " has no effect on " + this->get_obstacle_name(), 2);
+				Globals::letter_by_letter_output(player.get_item_from_inventory().at(choice)->get_item_name() + " has no effect on " + this->get_obstacle_interact(), 2);
 				Globals::sleep(500);
 				Globals::letter_by_letter_output("You turn back.", 2);
 				Globals::sleep(500);

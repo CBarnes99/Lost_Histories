@@ -55,8 +55,8 @@ void Location::set_location_path_is_blocked_by(Obstacle& obs) {
 	this->pathBlockedByObstacle = &obs;
 }
 
-string Location::get_obstacle_name_from_location() {
-	return this->pathBlockedByObstacle->get_obstacle_name();
+string Location::get_obstacle_interact_from_location() {
+	return this->pathBlockedByObstacle->get_obstacle_interact();
 }
 
 void Location::set_location_unblocked() {
@@ -84,7 +84,7 @@ if (isSearchablesInArea == true) {	//check to see if theres an item in the curre
 
 		else {
 			//The object is blocked by an obstacle
-			Globals::letter_by_letter_output(this->locSearchables.at(playerAnswerInt)->get_searchables_name() + " is blocked by " + this->locSearchables.at(playerAnswerInt)->get_obstacle()->get_obstacle_name(), 2);
+			Globals::letter_by_letter_output(this->locSearchables.at(playerAnswerInt)->get_obstacle()->get_obstacle_interact(), 2);
 			if (this->locSearchables.at(playerAnswerInt)->get_obstacle()->obstacle_choice(player) == true) {
 					
 				this->locSearchables.at(playerAnswerInt)->set_searchables_not_blocked_by_obstacle();
@@ -109,7 +109,7 @@ bool Location::is_loc_accessible(Player& player)
 {
 	if (isPathBlocked == true) {	//if the pathway the user selected is blocked by an obstacle
 
-		Globals::letter_by_letter_output("The path is blocked by " + get_obstacle_name_from_location() + ", what do you want to do?", 2);
+		Globals::letter_by_letter_output(get_obstacle_interact_from_location() + ", what do you want to do?", 2);
 
 		if (this->pathBlockedByObstacle->obstacle_choice(player) == true) {
 
