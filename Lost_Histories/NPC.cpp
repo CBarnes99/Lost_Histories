@@ -1,16 +1,16 @@
 #include "NPC.h"
 
 
-NPC::NPC(string Name) : Character(Name) {
+NPC::NPC(std::string Name) : Character(Name) {
 	diologueIndex = -1;
 	diologue = {};
 }
 
-void NPC::addDiologue(string nDiologue) {
+void NPC::addDiologue(std::string nDiologue) {
 	diologue.push_back(nDiologue);
 }
 
-string NPC::outputNextDiologue() {
+std::string NPC::outputNextDiologue() {
 	diologueIndex++;
 	if (diologue.at(diologueIndex).empty()) {
 		return "NO MORE DIOLOGUE OPTIONS! FIX THIS!";

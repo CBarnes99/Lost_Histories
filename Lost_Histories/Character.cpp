@@ -1,10 +1,10 @@
 #include "Character.h"
 
-Character::Character(string name) {
+Character::Character(std::string name) {
 	this->charactersName = name;
 }
 
-string Character::get_character_name()
+std::string Character::get_character_name()
 {
 	return this->charactersName;
 }

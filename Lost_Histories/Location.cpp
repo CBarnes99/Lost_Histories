@@ -2,13 +2,10 @@
 #include "Global_Functions.h"
 #include <iostream>
 
-using namespace std;
-
-Location::Location(string lName, string lDesc, string lInspectDesc) {	//constructor for the location object
+Location::Location(std::string lName, std::string lDesc, std::string lInspectDesc) {	//constructor for the location object
 	this->locName = lName;
 	this->locDescription = lDesc;
 	this->locInspectLocation = lInspectDesc;
-
 
 	this->isSearchablesInArea = false;
 	this->roomSearchDescription = "You examine the area but theres nothing of note in the vicinity.";
@@ -21,15 +18,15 @@ Location::Location(string lName, string lDesc, string lInspectDesc) {	//construc
 }
 
 
-string Location::get_loc_name() {
+std::string Location::get_loc_name() {
 	return this->locName;
 }
 
-string Location::get_loc_description() {
+std::string Location::get_loc_description() {
 	return this->locDescription;
 }
 
-string Location::get_loc_inspect_location() {
+std::string Location::get_loc_inspect_location() {
 	return this->locInspectLocation;
 }
 
@@ -55,7 +52,7 @@ void Location::set_location_path_is_blocked_by(Obstacle& obs) {
 	this->pathBlockedByObstacle = &obs;
 }
 
-string Location::get_obstacle_interact_from_location() {
+std::string Location::get_obstacle_interact_from_location() {
 	return this->pathBlockedByObstacle->get_obstacle_interact();
 }
 

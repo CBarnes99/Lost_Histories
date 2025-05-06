@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 
-using namespace std;
-
 class Item
 {
 
@@ -10,12 +8,12 @@ private:
 	/**
 	*	@brief Name of the Item. Private.
 	*/
-	string itemName;
+	std::string itemName;
 
 	/**
 	*	@brief The Items description. Private.
 	*/
-	string itemDescription;
+	std::string itemDescription;
 
 	/**
 	*	@brief If the item is destroyed, it wont be able to be used again. Private.
@@ -30,7 +28,7 @@ private:
 	/**
 	*	@brief What is said when the item has no durability left
 	*/
-	string itemDestroyedText;
+	std::string itemDestroyedText;
 
 public:
 	/**
@@ -44,20 +42,20 @@ public:
 	*	@param iDesc The description for the item, as a String
 	*	@param iUses The amount of times the item can be used, as an Int
 	*/
-	void set_item_defaults(string iName, string iDesc, int iUses);
+	void set_item_defaults(std::string iName, std::string iDesc, int iUses);
 	//string iSearch,
 
 	/**
 	*	@brief Gets the Items name
 	*	@return The name of the Item as a String
 	*/
-	string get_item_name();
+	std::string get_item_name();
 
 	/**
 	*	@brief Gets the Items description
 	*	@return The Items description as a String
 	*/
-	string get_item_description();
+	std::string get_item_description();
 
 	/**
 	*	@brief Changes the item to be destroyed if the amount of uses reaches 0
@@ -74,6 +72,6 @@ public:
 	*	@brief What is said when the item has no durability left
 	*	@param noDurability What is said when the item is used up, as a string
 	*/
-	void set_item_destroyed_text(string text);
+	void set_item_destroyed_text(std::string text);
 };
 

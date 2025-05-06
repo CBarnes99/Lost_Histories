@@ -2,13 +2,11 @@
 #include <iostream>
 #include "Global_Functions.h"
 
-using namespace std;
-
-Player::Player(string name) : Character(name) {
+Player::Player(std::string name) : Character(name) {
 	this->playerInventory = {};
 }
 
-void Player::set_player_name(string pName) {
+void Player::set_player_name(std::string pName) {
 	this->charactersName = pName;
 }
 
@@ -19,46 +17,46 @@ void Player::add_item_to_inventory(Item& nItem) {
 void Player::output_all_items_in_inventory(bool usingItem) {
 	if (this->playerInventory.size() < 1) {
 		
-		cout << "You have no items in your inventory" << endl << endl;
+		std::cout << "You have no items in your inventory" << std::endl << std::endl;
 	}
 	else {
 
-		cout << endl << "You open your inventory, you have:" << endl;
+		std::cout << std::endl << "You open your inventory, you have:" << std::endl;
 
 		if (usingItem == true) {
 			for (int i = 0; i < this->playerInventory.size(); i++) {
-				cout << "[" << i << "] " << this->playerInventory.at(i)->get_item_name() << endl;
+				std::cout << "[" << i << "] " << this->playerInventory.at(i)->get_item_name() << std::endl;
 			}
-			cout << endl;
+			std::cout << std::endl;
 		}
 		else {
 			for (int i = 0; i < this->playerInventory.size(); i++) {
-				cout << this->playerInventory.at(i)->get_item_name() << endl;
+				std::cout << this->playerInventory.at(i)->get_item_name() << std::endl;
 			}
 			
-			cout << endl << "[0] Inspect an Item." << endl;
-			cout << "[1] Return." << endl;
+			std::cout << std::endl << "[0] Inspect an Item." << std::endl;
+			std::cout << "[1] Return." << std::endl;
 			
 			int choice = -1;
 			Globals::clear_invalid_input(false);
-			cin >> choice;
+			std::cin >> choice;
 
 			if (choice == 0) {
 				system("cls");
 				for (int i = 0; i < this->playerInventory.size(); i++) {
-					cout << "[" << i << "] " << this->playerInventory.at(i)->get_item_name() << endl;
+					std::cout << "[" << i << "] " << this->playerInventory.at(i)->get_item_name() << std::endl;
 				}
 
 				choice = -1;
-				cin >> choice;
-				while (cin.fail()) { //check for input that is not a number
-					cout << "Input a number" << endl;
+				std::cin >> choice;
+				while (std::cin.fail()) { //check for input that is not a number
+					std::cout << "Input a number" << std::endl;
 					Globals::clear_invalid_input(false);
-					cin >> choice;
+					std::cin >> choice;
 					while (choice < 0 || choice > this->playerInventory.size()) {  //checks for wrong input
-						cout << "Wrong input, try again!" << '\n' << ">>>";
+						std::cout << "Wrong input, try again!" << '\n' << ">>>";
 						Globals::clear_invalid_input(false);
-						cin >> choice;
+						std::cin >> choice;
 					}
 				}
 				Globals::letter_by_letter_output(this->playerInventory.at(choice)->get_item_description(), 2);
@@ -73,7 +71,7 @@ size_t Player::get_inventory_size() {
 	return this->playerInventory.size();
 }
 
-vector<Item*> Player::get_item_from_inventory() {
+std::vector<Item*> Player::get_item_from_inventory() {
 	return playerInventory;
 }
 

@@ -13,7 +13,7 @@ Searchables::Searchables() {
 	this->searchablesOpeningDescription = "DefualtOpeningDescription";
 }
 
-void Searchables::set_searchables_name(string sName) {
+void Searchables::set_searchables_name(std::string sName) {
 	this->searchablesName = sName;
 }
 
@@ -28,7 +28,7 @@ void Searchables::set_obstacle(Obstacle* sObstacle) {
 	this->unblockedDescription = sObstacle->get_obstacle_removed_description();
 }
 
-void Searchables::set_opening_description(string sOpeningDescription) {
+void Searchables::set_opening_description(std::string sOpeningDescription) {
 	this->searchablesNeedsOpening = true;
 	this->searchablesOpeningDescription = sOpeningDescription;
 }
@@ -47,8 +47,8 @@ void Searchables::get_item_from_searchables(Player& player) {
 		Globals::letter_by_letter_output("Do you want to pick it up? Y or N", 1);
 		
 		Globals::clear_invalid_input(false);
-		string playerAnswerString;
-		cin >> playerAnswerString;
+		std::string playerAnswerString;
+		std::cin >> playerAnswerString;
 		if (playerAnswerString == "y" || playerAnswerString == "Y") { //if user wants to pick up the item
 			system("cls");
 

@@ -11,7 +11,7 @@ private:
 	/**
 	*	@brief The Searchables Name. Private
 	*/
-	string searchablesName;
+	std::string searchablesName;
 
 	/**
 	*	@brief The Item in or at the Searchables. Private
@@ -36,7 +36,7 @@ private:
 	/**
 	*	@brief When the obstacle is no longer blocked, this is displayed to the player. Private
 	*/
-	string unblockedDescription;
+	std::string unblockedDescription;
 
 	/**
 	*	@brief If the Searchables needs opening like a cupboard. Private
@@ -46,7 +46,7 @@ private:
 	/**
 	*	@brief When item is opened, show player the description of the Searchables openeing. Private.
 	*/
-	string searchablesOpeningDescription;
+	std::string searchablesOpeningDescription;
 
 public:
 	/**
@@ -58,7 +58,7 @@ public:
 	*	@breif Set the name of the searchable
 	*	@param sName The name of the searchable, as a String
 	*/
-	void set_searchables_name(string sName);
+	void set_searchables_name(std::string sName);
 
 	/**
 	*	@brief Set the item in the searchable, if you dont, it'll output to the player nothing is here
@@ -88,7 +88,7 @@ public:
 	*	@brief What is displayed if the searchable needs opening like a cupboard door
 	*	@param sOpeningDescription The description of the opening, as a String
 	*/
-	void set_opening_description(string sOpeningDescription);
+	void set_opening_description(std::string sOpeningDescription);
 
 	/**
 	*	@brief After obstacle has been removed, set isSearchablesBlocked to false
@@ -111,7 +111,7 @@ public:
 	*	@breif Returns the searchables name
 	*	@return The name of the searchable, as a String
 	*/
-	string get_searchables_name();
+	std::string get_searchables_name();
 
 	/**
 	*	@brief gets the obstacle that is blocking the searchable

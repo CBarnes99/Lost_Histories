@@ -26,7 +26,7 @@ void Globals::clear_invalid_input(bool clear) {
 	if (std::cin.fail() || clear == true) {
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Input the correct information" << std::endl;
+		std::cout << "Input the correct information." << std::endl;
 	}
 	
 }

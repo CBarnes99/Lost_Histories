@@ -6,25 +6,23 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-
 class Location
 {
 private:
 	/**
 	*	@brief Name of the location. Private
 	*/
-	string locName;
+	std::string locName;
 
 	/**
 	*	@brief The locations description when you are in that location
 	*/
-	string locDescription;
+	std::string locDescription;
 
 	/**
 	*	@brief The locations description from another location from where you can move from
 	*/
-	string locInspectLocation;
+	std::string locInspectLocation;
 
 	/**
 	*	@brief A check to see if theres a searchable Searchables in the area
@@ -34,13 +32,13 @@ private:
 	/**
 	*	@brief This is an item that is placed within the room
 	*/
-	vector<Searchables*> locSearchables;
+	std::vector<Searchables*> locSearchables;
 
 	/**
 	*	@brief What appears when you search a room
 	*	Depending on if theres a searchable Searchables in the room, the result will be different
 	*/
-	string roomSearchDescription;
+	std::string roomSearchDescription;
 
 	/**
 	*	@brief Check to see if this path is blocked by an on obstacle
@@ -55,7 +53,7 @@ private:
 	/**
 	*	@brief A vector of locations that the player cand move to from this location
 	*/
-	vector<Location*> pathways;
+	std::vector<Location*> pathways;
 
 public:
 
@@ -65,43 +63,37 @@ public:
 	*	@param lDesc The description for the Location, as a String
 	*	@param lInspectDesc The Description for the location when inspected, as a String
 	*/
-	Location(string lName, string lDesc, string lInspectDesc);
+	Location(std::string lName, std::string lDesc, std::string lInspectDesc);
 
 	/**
 	*	@brief Gets the Locations name
 	*	@return The name of the location as a String
 	*/
-	string get_loc_name();
+	std::string get_loc_name();
 
 	/**
 	*	@brief Gets the Locations description
 	*	@return The locations description as a String
 	*/
-	string get_loc_description();
+	std::string get_loc_description();
 
 	/**
 	*	@brief Gets the Locations description from a connecting location
 	*	@return The distant location description as a String
 	*/
-	string get_loc_inspect_location();
+	std::string get_loc_inspect_location();
 
 	/**
 	*	@brief Displayes the connecting locations from this one
 	*	@return The locations connecting this as a vector of strings
 	*/
-	vector<Location*> get_pathways();
+	std::vector<Location*> get_pathways();
 
 	/**
 	*	@brief Adds a pathway to this location connecting to another location
 	*	@param A location Searchables that is the new path, as a Location Object
 	*/
 	void set_pathway(Location& newPathway);
-
-	/**
-	*	@brief changes if theres light in the area
-	*	@param light True if theres light in the area, false if there is no longer light, as a bool
-	*/
-	//void set_light_in_area(bool light);
 
 	/**
 	*	@brief Set an item into the area
@@ -124,7 +116,7 @@ public:
 	*	@brief Gets the name of the obstacle thats blocking this location
 	*	@return The name of the obstacle, as a String
 	*/
-	string get_obstacle_interact_from_location();
+	std::string get_obstacle_interact_from_location();
 
 	/**
 	*	@brief Sets the location unblocked so you can now pass through

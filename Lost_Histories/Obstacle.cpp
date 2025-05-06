@@ -2,8 +2,6 @@
 #include "Global_Functions.h"
 #include <iostream>
 
-using namespace std;
-
 Obstacle::Obstacle() {	//defualt constructor for the obstacle object
 	this->obstacleName = "obsName";
 	this->obstacleInteract = "obsInteract";
@@ -12,7 +10,7 @@ Obstacle::Obstacle() {	//defualt constructor for the obstacle object
 	this->obstacleRemoved = "obsRemoved";
 }
 
-void Obstacle::set_obstacle_defualts(string obsName, string obsInteract, string obsInspect, string obsKey, string obsRemoved) {
+void Obstacle::set_obstacle_defualts(std::string obsName, std::string obsInteract, std::string obsInspect, std::string obsKey, std::string obsRemoved) {
 	this->obstacleName = obsName;
 	this->obstacleInteract = obsInteract;
 	this->obstacleInspect = obsInspect;
@@ -20,23 +18,23 @@ void Obstacle::set_obstacle_defualts(string obsName, string obsInteract, string 
 	this->obstacleRemoved = obsRemoved;
 }
 
-string Obstacle::get_obstacle_name() {
-	this->obstacleName;
+std::string Obstacle::get_obstacle_name() {
+	return this->obstacleName;
 }
 
-string Obstacle::get_obstacle_interact() {
+std::string Obstacle::get_obstacle_interact() {
 	return obstacleInteract;
 }
 
-string Obstacle::get_obstacle_description() {
+std::string Obstacle::get_obstacle_description() {
 	return obstacleInspect;
 }
 
-string Obstacle::get_obstacle_key() {
+std::string Obstacle::get_obstacle_key() {
 	return this->obstcaleKey;
 }
 
-string Obstacle::get_obstacle_removed_description() {
+std::string Obstacle::get_obstacle_removed_description() {
 	return this->obstacleRemoved;
 }
 
@@ -45,18 +43,18 @@ bool Obstacle::obstacle_choice(Player& player)
 	int choice = -1;
 
 	while (choice < 0 || choice > 2) { //promt the user to either use an item, return to the previous room, or inspect the obstacle
-		cout << "[0] Use an item. \n[1] Return to previous room. \n[2] Inspect the obstacle." << endl;
+		std::cout << "[0] Use an item. \n[1] Return to previous room. \n[2] Inspect the obstacle." << std::endl;
 		Globals::clear_invalid_input(false);
-		cin >> choice;
-		while (cin.fail()) {	//checks for invalid input from the user
+		std::cin >> choice;
+		while (std::cin.fail()) {	//checks for invalid input from the user
 			Globals::clear_invalid_input(false);
-			cout << "Wrong input" << endl;
-			cin >> choice;
+			std::cout << "Wrong input" << std::endl;
+			std::cin >> choice;
 
 		}
 		if (choice < 0 || choice > 2) {
 			system("cls");
-			cout << "Wrong Input" << endl;
+			std::cout << "Wrong Input" << std::endl;
 		}
 	}
 	switch (choice) {
@@ -70,12 +68,12 @@ bool Obstacle::obstacle_choice(Player& player)
 
 		while (choice < 0 || choice > player.get_inventory_size()) { //if there is items in their inventory, output all the items ( size is 1+ than items in inventory, 1+ will be to back out of inventory)
 			player.output_all_items_in_inventory(true);
-			cout << "[" << player.get_inventory_size() << "] Turn Back." << endl;
-			Globals::letter_by_letter_output("Which item do you want to use?", 1);
+			std::cout << "[" << player.get_inventory_size() << "] Turn Back." << std::endl;
+			std::cout << "Which item do you want to use?" << std::endl;
 			Globals::clear_invalid_input(false);
-			cin >> choice;
+			std::cin >> choice;
 		}
-		if (choice < player.get_inventory_size()) { // if selected an item
+		if (choice < player.get_inventory_size()) {
 			//if item selected is the item required to unblock the obstacle in the way
 			if (this->get_obstacle_key() == player.get_item_from_inventory().at(choice)->get_item_name()) {	//if the item is the same item that is required to remove the and move into the room
 				system("cls");
@@ -92,7 +90,7 @@ bool Obstacle::obstacle_choice(Player& player)
 			//if the wrong item was chosen
 			else {
 				system("cls");
-				Globals::letter_by_letter_output(player.get_item_from_inventory().at(choice)->get_item_name() + " has no effect on " + this->get_obstacle_interact(), 2);
+				Globals::letter_by_letter_output(player.get_item_from_inventory().at(choice)->get_item_name() + " has no effect on " + this->get_obstacle_name(), 2);
 				Globals::sleep(500);
 				Globals::letter_by_letter_output("You turn back.", 2);
 				Globals::sleep(500);
@@ -119,6 +117,6 @@ bool Obstacle::obstacle_choice(Player& player)
 	}
 
 
-	cout << "OBSTACLE CHOICE DIDNT WORK!!!!!!!!" << endl;
+	std::cout << "OBSTACLE CHOICE DIDNT WORK!!!!!!!!" << std::endl;
 	return false;
 }

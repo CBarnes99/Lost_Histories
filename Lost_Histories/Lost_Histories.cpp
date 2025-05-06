@@ -6,8 +6,6 @@
 #include "Global_Functions.h"
 #include "NPC.h"
 
-using namespace std;
-
 void introductionsEnd(NPC character);
 
 int main()
@@ -86,32 +84,32 @@ int main()
     Obstacle oLockedBloodstainedDoor = Obstacle(); //iBloodstainedKey to open, For entering the lHallway from lHospitalRoom
     oLockedBloodstainedDoor.set_obstacle_defualts("Bloodstained Door", "The Bloodstained Door wont budge, need to get past it somehow", "The locked door is covered in fresh blood.", iBloodstainedKey.get_item_name(), "You put the key through the blood soaked keyhole and gently push open the door trying to avoid the blood with your hand.");
 
-    Obstacle oChestOfDrawers = Obstacle(); //iCombinationLockNote to open, For sChestOfDrawers in lHospitalRoom ///////////////////chhage toi padloockasckwsc
+    Obstacle oChestOfDrawers = Obstacle(); //iCombinationLockNote to open, For sChestOfDrawers in lHospitalRoom
     oChestOfDrawers.set_obstacle_defualts("Chest of Drawers", "The draws won't budge, but one of the them has a four digit combination lock", "One of the draws has a combination lock, there must be a code for it somewhere.", iCombinationLockNote.get_item_name(), "You carefully pick the lock. The Draw unlocks as soon as you snap the pick. Flawless job.");
 
     Obstacle oSmallWoodenCrate = Obstacle(); //iHammer to open, For opening sSmallWoodenCrate in lStorageRoom
-    oSmallWoodenCrate.set_obstacle_defualts("Small Wodden Crate", "The crate is covered in rot and mold, probably for the best not to touch it.", "Small rotting wodden crate, probably easily broken open with something.", iHammer.get_item_name(), "You smashed the top of the crate into tiny pieces and can now see inside the crate.");
+    oSmallWoodenCrate.set_obstacle_defualts("Small Wodden Crate", "The crate is covered in rot and mold, probably for the best not to touch it", "Small rotting wodden crate, probably easily broken open with something.", iHammer.get_item_name(), "You smashed the top of the crate into tiny pieces and can now see inside the crate.");
     
     Obstacle oGiantContainer = Obstacle(); //iBloodBagNick to Open, For sTableWithAGiantContainer in lStorageRoom
-    oGiantContainer.set_obstacle_defualts("The Table is surrounded with junk, it's not worth digging it out until I might have a reason to.", "Its just a container, nothing useful at the moment.", iBloodBagNick.get_item_name(), " ");
+    oGiantContainer.set_obstacle_defualts("A Table with a Giant Glass Container", "The Table is surrounded with junk, it's not worth digging it out until I might have a reason to", "Its just a container, nothing useful at the moment.", iBloodBagNick.get_item_name(), "You clear out the junk around the table making sure not to break the container. You pour the blood bag into the container. You notice that its not just blood in the bag, something else is floating around.");
 
     Obstacle oBronzeDoor = Obstacle(); //iBronzeKey to open, For entering lFreezer from lHallway
-    oBronzeDoor.set_obstacle_defualts("The door has a Bronze trim around the edge of the door", "Theres a bronze lock on the door.", iBronzeKey.get_item_name(), "You used the Bronze Key to open the door.");
+    oBronzeDoor.set_obstacle_defualts("Bronze Trimmed Door", "The door has a Bronze trim around the edge of the door", "Theres a bronze lock on the door.", iBronzeKey.get_item_name(), "You used the Bronze Key to open the door.");
     
-    Obstacle oSilverDoor = Obstacle(); //iSilverKey to Open, For entering Coffin Room from Hallway
-    oSilverDoor.set_obstacle_defualts("The door has a Silver trim around the edge of the door", "Theres a Silver lock on the door.", iSilverKey.get_item_name(), "You used the Silver Key to open the door.");
+    Obstacle oSilverDoor = Obstacle(); //iSilverKey to Open, For entering Coffin Room from lHallway
+    oSilverDoor.set_obstacle_defualts("Silver Trimmed Door", "The door has a Silver trim around the edge of the door", "Theres a Silver lock on the door.", iSilverKey.get_item_name(), "You used the Silver Key to open the door.");
 
     Obstacle oBloodBagNick = Obstacle(); //iNote to Open, For sBloodBagNick in lFreezer  //////////////create multiple for the other names
-    oBloodBagNick.set_obstacle_defualts("Blood Bag with the name Nick on the Label", "Why would this one be more useful then the rest, might need more information.", iNote.get_item_name() , "You take this blood bag due to the note, lets hope this helps somehow.");
+    oBloodBagNick.set_obstacle_defualts("Blood Bag", "Blood Bag with the name Nick on the Label", "Why would this one be more useful then the rest, might need more information.", iNote.get_item_name() , "You take this blood bag due to the note, lets hope this helps somehow.");
 
-    Obstacle oCoffinHand = Obstacle(); //iNickHand to Open, for sNickCoffin in lCoffinRoom                Create multiple
-    oCoffinHand.set_obstacle_defualts("The Coffin doesn't have an openable lid, it's just marked witha hand print in the center.", "Theres no way to lift open the coffin, its sealed shut.", iNickHand.get_item_name(), "You placed the hand onto the coffin, blood starts spewing out from the seams the and lid starts sliding off, reavaling a corpse.");
+    Obstacle oCoffinHand = Obstacle(); //iNickHand to Open, for sNickCoffin in lCoffinRoom  /////////////////Create multiple
+    oCoffinHand.set_obstacle_defualts("Coffin", "The Coffin doesn't have an openable lid, it's just marked witha hand print in the center", "Theres no way to lift open the coffin, its sealed shut.", iNickHand.get_item_name(), "You placed the hand onto the coffin, blood starts spewing out from the seams the and lid starts sliding off, reavaling a corpse.");
 
     Obstacle oChest = Obstacle(); //iNicksEye to Open, for sChest in lStudy
-    oChest.set_obstacle_defualts("The Small Chest lid wont budge, there's not a lock on it either.", "Theres no keyhole for the chest, just a spherical bloodied socket on top.", iNicksEye.get_item_name(), "You place the eye into the socket, blood stars spewing out from the cracks in the chest, the lid opens.");
+    oChest.set_obstacle_defualts("Small Chest", "The Small Chest lid wont budge, there's not a lock on it either", "Theres no keyhole for the chest, just a spherical bloodied socket on top.", iNicksEye.get_item_name(), "You place the eye into the socket, blood stars spewing out from the cracks in the chest, the lid opens.");
 
     Obstacle oGoldDoor = Obstacle(); //iGoldKey to Open, For entering Shrine from Hallway
-    oGoldDoor.set_obstacle_defualts("The door has a Gold trim around the edge of the door", "Theres a gold lock on the door.", iGoldKey.get_item_name(), "You used the Gold Key to open the door.");
+    oGoldDoor.set_obstacle_defualts("Gold Trimmed Door", "The door has a Gold trim around the edge of the door", "Theres a gold lock on the door.", iGoldKey.get_item_name(), "You used the Gold Key to open the door.");
 
     //Searchables Classes Here//
     Searchables sLeftFountain = Searchables(); //In lLeftFountain, Not Blocked, Gain iCoin, 

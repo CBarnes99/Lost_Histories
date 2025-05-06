@@ -1,7 +1,6 @@
 #include "Item.h"
 #include <iostream>
 #include "Global_Functions.h"
-using namespace std;
 
 Item::Item() {
 	this->itemName = "iName";
@@ -12,17 +11,17 @@ Item::Item() {
 }
 
 
-void Item::set_item_defaults(string iName, string iDesc, int iUses) {
+void Item::set_item_defaults(std::string iName, std::string iDesc, int iUses) {
 	this->itemName = iName;
 	this->itemDescription = iDesc;
 	this->itemDurability = iUses;
 }
 
-string Item::get_item_name() {
+std::string Item::get_item_name() {
 	return this->itemName;
 }
 
-string Item::get_item_description() {
+std::string Item::get_item_description() {
 	return this->itemDescription;
 }
 
@@ -38,6 +37,6 @@ bool Item::is_item_destroyed() {
 	return this->isDestroyed;
 }
 
-void Item::set_item_destroyed_text(string text) {
+void Item::set_item_destroyed_text(std::string text) {
 	this->itemDestroyedText = text;
 }

@@ -15,26 +15,26 @@ private:
 	/**
 	*	@brief All the diologue a NPC has for the game
 	*/
-	vector<string> diologue;
+	std::vector<std::string> diologue;
 
 
 public:
 	/**
 	*	@brief Constructor for the NPC class that is the child of the Character class
 	*/
-	NPC(string name);
+	NPC(std::string name);
 
 	/**
 	*	@brief Adds a piece of diologue into the vector
 	*	@param nDiologue The text for the diologue, as a string
 	*/
-	void addDiologue(string nDiologue);
+	void addDiologue(std::string nDiologue);
 
 	/**
 	*	@brief Outputs the next piece of diologue this NPC needs to say.
 	*	@return The diologue, as a string
 	*/
-	string outputNextDiologue();
+	std::string outputNextDiologue();
 
 };
 

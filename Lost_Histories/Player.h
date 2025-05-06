@@ -3,8 +3,6 @@
 #include <vector>
 #include "Item.h"
 
-using namespace std;
-
 
 class Player : public Character
 {
@@ -14,20 +12,20 @@ private:
 	/**
 	*	@brief The players invventory as a vector of items
 	*/
-	vector<Item*> playerInventory;
+	std::vector<Item*> playerInventory;
 
 
 public:
 	/**
 	*	@brief Constructor for the Player Class
 	*/
-	Player(string name);
+	Player(std::string name);
 
 	/**
 	*	@brief Set the players name
 	*	@param pName The name inputed by the player, as a string
 	*/
-	void set_player_name(string pName);
+	void set_player_name(std::string pName);
 
 	/**
 	*	@brief Adds the item found within the location to the players inventory
@@ -52,7 +50,7 @@ public:
 	*	@param index The Location of the item in the inventory vector, as an Int
 	*	@return The Item in your inventory at the specified index, as an Item object
 	*/
-	vector<Item*> get_item_from_inventory();
+	std::vector<Item*> get_item_from_inventory();
 
 	/**
 	*	@brief Removes an item from your inventory
