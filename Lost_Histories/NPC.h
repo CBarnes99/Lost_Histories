@@ -34,7 +34,7 @@ public:
 	*	@brief Outputs the next piece of diologue this NPC needs to say.
 	*	@return The diologue, as a string
 	*/
-	std::string outputNextDiologue();
+	std::string getNextDiologue();
 
 };
 

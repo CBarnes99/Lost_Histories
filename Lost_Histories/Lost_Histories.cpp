@@ -6,7 +6,10 @@
 #include "Global_Functions.h"
 #include "NPC.h"
 
-void introductionsEnd(NPC character);
+
+#include "stdlib.h"
+
+bool storyDiologue(NPC character, int part);
 
 int main()
 {
@@ -39,6 +42,16 @@ int main()
     caretaker.addDiologue("Ignoring the first remark, I like your answer. But what if I told you the light of God isn't always the best thing for us.");
     caretaker.addDiologue("The Caretaker shaking his head in frustration. No no no, will you shut up! You simply don't get it, they CANT take in Gods rays, because, nevermind, you'll find you soon enough.");
 
+    NPC pope = NPC("The Pope");
+    pope.addDiologue("Welcome, glad you can make it. You've seemed to of made yourself at home.");
+    pope.addDiologue("All will be answered in due time little lamb, but first, sit.");
+    pope.addDiologue("You're here to see me, yes? To help me, yes?");
+    pope.addDiologue("Of course I didn't " + player.get_character_name() + ", you are excatly who I needed for this important task. *The Pope bares his fangs towards you*");
+    pope.addDiologue("Oh sorry, these fangs are not for you. Well depending on what you decided to do next. I'm going to need you to drink from this chalice.");
+    pope.addDiologue("This is the Holy Grail, yes the one and only.");
+    pope.addDiologue("Well I was expecting more of a reaction than that. Anyway, the rich deep red liquid it holds is the blood of Christ, he too was a vampire, and now you will continue the lineage.");
+    pope.addDiologue("Watch your language.");
+    pope.addDiologue("So, are you going to drink or not?");
 
     //Item Classes Here// 
     Item iCoin = Item(); //In sLeftFountain, Opens ???????????????????????????
@@ -238,7 +251,8 @@ int main()
     Location lStudy = Location("Study", "A room with a desk and many many bookshelves.", "Every book here is very well perserved, I don't even recognise most of these. They look ancient.");
     Location lFreezer = Location("Walk-in Freezer", "A fridged room filled with bloodbags stretching along all the walls.", "All the blood bags are labled with different names, John, Sasha, Nick, Carol, Barry... Thats worrying.");
     Location lCoffinRoom = Location("Coffin Room", "A room with neatly stacked coffins leaning up against the back wall.", "None of the coffins open, but they each have different hand prints on them.");
-    Location lShrine = Location("Shrine", "Cold dark room with a bronze statue of the current pope adorning the wall, alone.", "N/A");
+    Location lShrine = Location("Shrine", "Cold dark room with a bronze statue of the current pope adorning the wall, alone.", "How did the Pope get lifted and die? And why? I'm suddenly more worried about that than the whole vamipire shenanigans.");
+    Location lShrineExit = Location("Hidden Door", "N/A", "N/A");
 
     lHospitalRoom.set_pathway(lHallway);
     lHospitalRoom.set_pathway(lStorageRoom);
@@ -271,29 +285,31 @@ int main()
     lCoffinRoom.set_searchables_in_location(sNickCoffin);
 
     lShrine.set_pathway(lHallway);
+    lShrine.set_pathway(lShrineExit);
     lShrine.set_location_path_is_blocked_by(oGoldDoor);
 
     //END OF DUNGEON LOCATIONS
 
-    //////////Location* curruntLocation = &lInFrontOfSquare;
+    Location* curruntLocation = &lInFrontOfSquare;
 
-    Location* curruntLocation = &lHospitalRoom;
+    //////////Location* curruntLocation = &lHallway;
 
     bool playing = true;
     int userInputNum = 0;
     int LoopIncrement = 0;
+    bool beenToShrine = false;
 
    //Introduction section
-  /* Globals::letter_by_letter_output("I've been called in specifically to help with the situation thats taking place at the Vatican. The Pope has fallen ill and requires help from the best medical professional, that would indeed be me, Barry.", 1);
+   Globals::letter_by_letter_output("I've been called in specifically to help with the situation thats taking place at the Vatican. The Pope has fallen ill and requires help from the best medical professional, that would indeed be me, Barry.", 1);
    Globals::enter_to_continue();
    Globals::letter_by_letter_output("Its currently 10pm, I'm unsure why they asked for me to wait for night to come and not ASAP, but the Pope probably has a busy schedule even when ill.", 1);
    Globals::enter_to_continue();
    Globals::letter_by_letter_output("As I approach the the entrance to the St Peters Square, I am approched by someone in a black suit, a butler maybe?", 1);
    Globals::enter_to_continue();
-   Globals::letter_by_letter_output(caretaker.outputNextDiologue(), 1);
+   Globals::letter_by_letter_output(caretaker.getNextDiologue(), 1);//caretaker
    Globals::enter_to_continue();
    Globals::letter_by_letter_output("I guess I can explore a little bit, its been many years since I last came here with my family.", 1);
-   Globals::enter_to_continue();*/
+   Globals::enter_to_continue();
    //End of Introduction Section
 
     //main game
@@ -303,8 +319,19 @@ int main()
         cout << curruntLocation->get_loc_description() << endl;
 
         if (curruntLocation == &lStPetersAltar) {
-            introductionsEnd(caretaker);
+            system("cls");
+            playing = storyDiologue(caretaker, 1);
             curruntLocation = &lHospitalRoom;
+        }
+        else if (curruntLocation == &lShrine && beenToShrine == false) {
+            system("cls");
+            playing = storyDiologue(pope, 2);
+            beenToShrine = true;
+            
+        }
+        else if (curruntLocation == &lShrineExit) {
+            system("cls");
+            playing = storyDiologue(pope, 3);
         }
         else {
             cout << '\n' << "You can see these (Enter number to travel)" << endl;
@@ -337,46 +364,168 @@ int main()
                 if (desiredLocation->is_loc_accessible(player) == true) {
                     curruntLocation = desiredLocation;
                 }
-
             }
             else if (userInputNum == LoopIncrement) {
                 Globals::letter_by_letter_output(curruntLocation->get_loc_inspect_location(), 2); //output location inspection string
             }
             else if (userInputNum == LoopIncrement + 1) {
                 curruntLocation->search_location(player);   //search location for searchables
-
             }
             else if (userInputNum == LoopIncrement + 2) {
                 player.output_all_items_in_inventory(false);     //displays all inventory items to player
-
             }
         }        
     }
+
+    Globals::letter_by_letter_output("Thanks for Playing!", 2);
 }
 
-void introductionsEnd(NPC character) {
-    cout << endl;
+bool storyDiologue(NPC character, int part) {
+    
     Globals::clear_invalid_input(true);
-    Globals::letter_by_letter_output("You approach St Peter's Alter where the caretaker is standing, lost in thought.", 1);
-    Globals::enter_to_continue();
-    Globals::letter_by_letter_output("Is now a good time?", 1);
-    Globals::enter_to_continue();
-    Globals::letter_by_letter_output(character.outputNextDiologue(), 1);
-    Globals::enter_to_continue();
-    Globals::letter_by_letter_output("Uh, thats not something I've thought about. It's not like the dead can get a tan.\n The caretaker frowns at you.\n Sorry, I was insensitive. I guess they would like to feel the light of God again.", 1);
-    Globals::enter_to_continue();
-    Globals::letter_by_letter_output(character.outputNextDiologue(), 1);
-    Globals::enter_to_continue();
-    Globals::letter_by_letter_output("Well of course too much sun is detrimental to your skin, but sun light provides vitamin D and...", 1);
-    Globals::enter_to_continue();
-    Globals::letter_by_letter_output(character.outputNextDiologue(), 1);
-    Globals::enter_to_continue();
-    Globals::letter_by_letter_output("The Caretaker grabs you with both arms with unweieldly strength and throws you down into the tomb below the alter.", 1);
-    Globals::enter_to_continue();
-    Globals::letter_by_letter_output("You hit your head hard when you reached the ground, darkness.", 1);
-    Globals::enter_to_continue();
-    Globals::letter_by_letter_output("You wake up, on the floor, in a daze, vision blurry, disoriented, your entire body aches like you've just been stabbed by a thousand tiny needles. You examine where the aches are coming from and you notice multiple hole like scars.", 1);
-    Globals::enter_to_continue();
-    Globals::letter_by_letter_output("Please don't be what I think this could be... Shit it is isn't it. I've gotta find my way out of here.", 1);
-    Globals::enter_to_continue();
+
+    if (part == 1) {
+        Globals::letter_by_letter_output("You approach St Peter's Alter where the caretaker is standing, lost in thought.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("Is now a good time?", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output(character.getNextDiologue(), 1);//caretajer
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("Uh, thats not something I've thought about. It's not like the dead can get a tan.\n The caretaker frowns at you.\n Sorry, I was insensitive. I guess they would like to feel the light of God again.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output(character.getNextDiologue(), 1);//caretaker
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("Well of course too much sun is detrimental to your skin, but sun light provides vitamin D and", 2);
+        Globals::letter_by_letter_output(character.getNextDiologue(), 1);//caretaker
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("The Caretaker grabs you with both arms with unweieldly strength and throws you down into the tomb below the alter.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("You hit your head hard when you reached the ground, darkness.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("You wake up, on the floor, in a daze, vision blurry, disoriented, your entire body aches like you've just been stabbed by a thousand tiny needles. You examine where the aches are coming from and you notice multiple hole like scars.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("Please don't be what I think this could be... Shit it is isn't it. I've gotta find my way out of here.", 1);
+        Globals::enter_to_continue();
+
+        return true;
+
+    }
+    else if (part == 2) {
+        Globals::letter_by_letter_output("As you open the door into the shrine, the door creeks open. You notice a small dining table with two chairs in the center of the room, adorning the wall is a bronze statue of the current pope.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("You step into the room, a chill moves up your spine and you hear the floor boards creek.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("A man wearing a pure white robe, slowly steps closer towards you being lit by candles scattered across the floor.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("As he gets closer, you notice they are the reason why you are here in the first place, the Pope.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output(character.getNextDiologue(), 1);//pope
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("What the heck is happening, why did I get pushed down here?! What even is here?!", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output(character.getNextDiologue(), 1);//pope
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("You slowly make your way towards the table and take a seat, your legs are slightly trembling.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output(character.getNextDiologue(), 1); // pope
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("I think you've got the wrong person, I think I should leave.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output(character.getNextDiologue(), 1); //pope
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("You're too frightened to respond.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output(character.getNextDiologue(), 1);//pope
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("The Pope brings out a chalice, plated gold and coated in gems.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output(character.getNextDiologue(), 1); // pope
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("You stay in silence.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output(character.getNextDiologue(), 1); //pope
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("Wait what? One, why would I believe any of this? And two, God no.", 1);
+        Globals::letter_by_letter_output(character.getNextDiologue(), 1); // pope
+        Globals::letter_by_letter_output("Oh sorry father.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output(character.getNextDiologue(), 1); // pope
+        Globals::letter_by_letter_output("*The Pope slides the Holy Grail towards you*", 2); 
+
+        Globals::sleep(100);
+        Globals::letter_by_letter_output("Y or N", 1);
+        Globals::clear_invalid_input(false);
+        std::string playerAnswerString;
+        std::cin >> playerAnswerString;
+
+        Globals::clear_invalid_input(true);
+        system("cls");
+
+        if (playerAnswerString == "y" || playerAnswerString == "Y") {
+            Globals::letter_by_letter_output("You've decided to drink from the Holy Grail.", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("As you drink the viscous blood, you initially don't feel any difference. Soon after you look back down at the chalice in your hand thirsting for more, but its already gone.", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("The Pope: Can't have you drinking all of this now can we.", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("I feel like I've got all the energy in the world and the thirst of a thousand elephants.", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("The Pope: Dont worry, we all started like that.", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("I thought this, this transformation would be more painful.", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("The Pope: I know right! *The pope chuckles* Surpirsingly pain free. Anyway, lets get you some grub, Pope Barry.", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("You leave the shrine with your new found power and friend, going for a hunt.", 1);
+            Globals::enter_to_continue();
+            return false;
+        }
+        else {
+            Globals::letter_by_letter_output("You slap the Holy Grail off the table as hard as you can, the grail shatters as it hits the floor and the blood is spilled into the cracks of the floor.", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("The Pope: NOOOOOOO! WHAT DID YOU DO!!", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("You jump back from your seat as the Pope lunges towards the spilled blood on the floor licking up what little remains.", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("The Pope realises what he's just done, he's enduldging in the sacred blood. Stopping for a second knowing the sin he just committed, he continues licking the blood waiting for his fate.", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("You take this moment to back away towards the door but, you see the pope somehow being lifted by an invisible force by the neck until hes floating and grasping for air.", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("???: A sin committed, a death is granted.", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("The Pope: This, is, your, fau..lt.", 1);
+            Globals::enter_to_continue();
+            Globals::letter_by_letter_output("You hear a snap and the Pope falls lifelessly to the ground with a thud.", 1);
+            Globals::enter_to_continue();
+
+            system("cls");
+            system("start https://www.bbc.co.uk/news/articles/cqj42vd1rxlo");
+            Globals::enter_to_continue();
+
+            Globals::letter_by_letter_output("In shock, you start to make your way towards the entrance. Before you turn around, you notice at the other end of the room theres a door. Knowing where you came in is a dead end, what could go wrong?", 1);
+            Globals::enter_to_continue();
+
+            return true;
+        }
+    }
+    else if (part == 3){
+        Globals::letter_by_letter_output("As you open the door, you step through and notice that it leads to the back of the vatican.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("You take your time to look around making sure nothing else is going to leap to you... You make a run for it.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("You ran as fast as you can until you found civilization, called a taxi and gunned it for the airport.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("I think its time for an early retirement when I get back home, that was enough for me.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("The taxi driver looks in to the rear view mirror directly at you, his eyes turn pitch black.", 1);
+        Globals::enter_to_continue();
+        Globals::letter_by_letter_output("???: You've committed a grave sin...", 1);
+        Globals::enter_to_continue();
+
+        return false;
+    }
+    else {
+        std::cout << "STORY DIOLOGUE NOT WORKING" << std::endl;
+        return true;
+    }
 }

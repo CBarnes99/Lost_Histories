@@ -10,7 +10,7 @@ void NPC::addDiologue(std::string nDiologue) {
 	diologue.push_back(nDiologue);
 }
 
-std::string NPC::outputNextDiologue() {
+std::string NPC::getNextDiologue() {
 	diologueIndex++;
 	if (diologue.at(diologueIndex).empty()) {
 		return "NO MORE DIOLOGUE OPTIONS! FIX THIS!";
