@@ -63,6 +63,9 @@ void Player::output_all_items_in_inventory(bool usingItem) {
 				Globals::sleep(1000);
 				system("cls");
 			}
+			else {
+				system("cls");
+			}
 		}
 	}
 }
