@@ -299,6 +299,19 @@ int main()
     int LoopIncrement = 0;
     bool beenToShrine = false;
 
+ 
+   std::cout << " _______  _        _______ _________ _______  _       _________   ______   _        _______  _______  ______" << std::endl;
+   std::cout << "(  ___  )( (    /|(  ____  \\__   __/(  ____ \\( (    /|\\__   __/  (  ___ \\ ( \\      (  ___  )(  ___  )(  __  \\" << std::endl;
+   std::cout << "| (   ) ||  \\  ( || (    \\/   ) (   | (    \\/|  \\  ( |   ) (     | (   ) )| (      | (   ) || (   ) || (  \\  )" << std::endl;
+   std::cout << "| (___) ||   \\ | || |         | |   | (__    |   \\ | |   | |     | (__/ / | |      | |   | || |   | || |   ) |" << std::endl;
+   std::cout << "|  ___  || (\\ \\) || |         | |   |  __)   | (\\ \\) |   | |     |  __ (  | |      | |   | || |   | || |   | |" << std::endl;
+   std::cout << "| (   ) || | \\   || |         | |   | (      | | \\   |   | |     | (  \\ \\ | |      | |   | || |   | || |   ) |" << std::endl;
+   std::cout << "| )   ( || )  \\  || (____/\\___) (___| (____/\\| )  \\  |   | |     | )___) )| (____/\\| (___) || (___) || (__/  )" << std::endl;
+   std::cout << "|/     \\||/    )_)(_______/\\_______/(_______/|/    )_)   )_(     |/ \\___/ (_______/(_______)(_______)(______/ " << std::endl;
+                                                                                                              
+   Globals::enter_to_continue();
+
+
    //Introduction section
    Globals::letter_by_letter_output("I've been called in specifically to help with the situation thats taking place at the Vatican. The Pope has fallen ill and requires help from the best medical professional, that would indeed be me, Barry.", 1);
    Globals::enter_to_continue();
