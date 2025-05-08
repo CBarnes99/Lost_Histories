@@ -43,7 +43,6 @@ public:
 	*	@param iUses The amount of times the item can be used, as an Int
 	*/
 	void set_item_defaults(std::string iName, std::string iDesc, int iUses);
-	//string iSearch,
 
 	/**
 	*	@brief Gets the Items name

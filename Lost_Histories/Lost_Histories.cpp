@@ -311,6 +311,9 @@ int main()
                                                                                                               
    Globals::enter_to_continue();
 
+   //Work of Fiction Disclaimer
+   Globals::letter_by_letter_output("This game is a work of fiction. All the names, characters, places, events and incidents in this game are either the product of the developer's imagination or used in a fictitious manner. Any resemblance to actual persons, living or dead, or actual events is purely coincidental.", 2);
+   Globals::enter_to_continue();
 
    //Introduction section
    Globals::letter_by_letter_output("I've been called in specifically to help with the situation thats taking place at the Vatican. The Pope has fallen ill and requires help from the best medical professional, that would indeed be me, Barry.", 1);
@@ -510,10 +513,16 @@ bool storyDiologue(NPC character, int part) {
             Globals::enter_to_continue();
             Globals::letter_by_letter_output("You hear a snap and the Pope falls lifelessly to the ground with a thud.", 1);
             Globals::enter_to_continue();
-
+            
+            /*
             system("cls");
             system("start https://www.bbc.co.uk/news/articles/cqj42vd1rxlo");
             Globals::enter_to_continue();
+
+            Commented this out beacuse this game is a work of fiction and having this pop up during gameplay was initially a gag,
+            but it is insensitive and links the game to real world events which could disturb people and cause problems for the game.
+
+            */
 
             Globals::letter_by_letter_output("In shock, you start to make your way towards the entrance. Before you turn around, you notice at the other end of the room theres a door. Knowing where you came in is a dead end, what could go wrong?", 1);
             Globals::enter_to_continue();
