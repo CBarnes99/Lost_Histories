@@ -82,11 +82,11 @@ int main()
     iBloodBagNick.set_item_destroyed_text("You discard the bag after pouring it out into the container.");
 
     Item iNickHand = Item(); //in s, Opens oChest
-    iNickHand.set_item_defaults("A hand", "The right hand possibly belonging to someone called Nick.", 1);
+    iNickHand.set_item_defaults("Possbily Nick's Hand", "The right hand possibly belonging to someone called Nick.", 1);
     iNickHand.set_item_destroyed_text("The hand gets absorbed into the coffin when you pressed it against the hand print.");
 
     Item iNicksEye = Item(); //in sNickCoffin, Opens oChest
-    iNicksEye.set_item_defaults("Eye Ball", "You took this eye that was hanging out of the corpse, lovely.", 1);
+    iNicksEye.set_item_defaults("An Eye Ball", "You took this eye that was hanging out of the corpse, lovely.", 1);
     iNicksEye.set_item_destroyed_text("The eye becomes fused with the chest, unable to remove it.");
 
     Item iGoldKey = Item(); //in sChest, Opens oGoldDoor
@@ -102,7 +102,15 @@ int main()
 
     Obstacle oSmallWoodenCrate = Obstacle(); //iHammer to open, For opening sSmallWoodenCrate in lStorageRoom
     oSmallWoodenCrate.set_obstacle_defualts("Small Wodden Crate", "The crate is covered in rot and mold, probably for the best not to touch it", "Small rotting wodden crate, probably easily broken open with something.", iHammer.get_item_name(), "You smashed the top of the crate into tiny pieces and can now see inside the crate.");
-    
+    Obstacle oSmallWoodenCrate2 = Obstacle(); //iHammer to open, For opening sSmallWoodenCrate in lStorageRoom
+    oSmallWoodenCrate2.set_obstacle_defualts("Small Wodden Crate", "The crate is covered in rot and mold, probably for the best not to touch it", "Small rotting wodden crate, probably easily broken open with something.", iHammer.get_item_name(), "You smashed the top of the crate into tiny pieces and can now see inside the crate.");
+    Obstacle oSmallWoodenCrate3 = Obstacle(); //iHammer to open, For opening sSmallWoodenCrate in lStorageRoom
+    oSmallWoodenCrate3.set_obstacle_defualts("Small Wodden Crate", "The crate is covered in rot and mold, probably for the best not to touch it", "Small rotting wodden crate, probably easily broken open with something.", iHammer.get_item_name(), "You smashed the top of the crate into tiny pieces and can now see inside the crate.");
+    Obstacle oSmallWoodenCrate4 = Obstacle(); //iHammer to open, For opening sSmallWoodenCrate in lStorageRoom
+    oSmallWoodenCrate4.set_obstacle_defualts("Small Wodden Crate", "The crate is covered in rot and mold, probably for the best not to touch it", "Small rotting wodden crate, probably easily broken open with something.", iHammer.get_item_name(), "You smashed the top of the crate into tiny pieces and can now see inside the crate.");
+    Obstacle oSmallWoodenCrate5 = Obstacle(); //iHammer to open, For opening sSmallWoodenCrate in lStorageRoom
+    oSmallWoodenCrate5.set_obstacle_defualts("Small Wodden Crate", "The crate is covered in rot and mold, probably for the best not to touch it", "Small rotting wodden crate, probably easily broken open with something.", iHammer.get_item_name(), "You smashed the top of the crate into tiny pieces and can now see inside the crate.");
+
     Obstacle oGiantContainer = Obstacle(); //iBloodBagNick to Open, For sTableWithAGiantContainer in lStorageRoom
     oGiantContainer.set_obstacle_defualts("A Table with a Giant Glass Container", "The Table is surrounded with junk, it's not worth digging it out until I might have a reason to", "Its just a giant glass container.", iBloodBagNick.get_item_name(), "You clear out the junk around the table making sure not to break the container. You pour the blood bag into the container. You notice that its not just blood in the bag, something else is floating around.");
 
@@ -112,11 +120,25 @@ int main()
     Obstacle oSilverDoor = Obstacle(); //iSilverKey to Open, For entering Coffin Room from lHallway
     oSilverDoor.set_obstacle_defualts("Silver Trimmed Door", "The door has a Silver trim around the edge of the door", "Theres a Silver lock on the door.", iSilverKey.get_item_name(), "You used the Silver Key to open the door.");
 
-    Obstacle oBloodBagNick = Obstacle(); //iNote to Open, For sBloodBagNick in lFreezer  //////////////create multiple for the other names
-    oBloodBagNick.set_obstacle_defualts("Blood Bag", "Blood Bag with the name Nick on the Label", "Why would this one be more useful then the rest, might need more information.", iNote.get_item_name() , "You take this blood bag due to the note, lets hope this helps somehow.");
+    Obstacle oBloodBagNick = Obstacle(); //iNote to Open, For sBloodBagNick in lFreezer
+    oBloodBagNick.set_obstacle_defualts("Nick's Blood Bag", "Blood Bag with the name Nick on the Label", "Why would this one be more useful then the rest, might need more information.", iNote.get_item_name() , "You take this blood bag due to the note, lets hope this helps somehow.");
+    Obstacle oBloodBagJohn = Obstacle(); //CANT OPEN, For sBloodBagJohn in lFreezer
+    oBloodBagJohn.set_obstacle_defualts("John's Blood Bag", "Blood Bag with the name John on the Label", "Why would this one be more useful then the rest, might need more information.", "N/A", "N/A");
+    Obstacle oBloodBagSasha = Obstacle(); //CANT OPEN, For sBloodBagSasha in lFreezer
+    oBloodBagSasha.set_obstacle_defualts("Sasha's Blood Bag", "Blood Bag with the name Sasha on the Label", "Why would this one be more useful then the rest, might need more information.", "N/A", "N/A");
+    Obstacle oBloodBagCarol = Obstacle(); //CANT OPEN, For sBloodBagCarol in lFreezer 
+    oBloodBagCarol.set_obstacle_defualts("Carol's Blood Bag", "Blood Bag with the name Carol on the Label", "Why would this one be more useful then the rest, might need more information.", "N/A", "N/A");
+    Obstacle oBloodBagBarry = Obstacle(); //CANT OPEN, For sBloodBagBarry in lFreezer
+    oBloodBagBarry.set_obstacle_defualts("Barry's Blood Bag", "Blood Bag with the name Barry on the Label", "Why would this one be more useful then the rest, might need more information.", "N/A", "N/A");
 
-    Obstacle oCoffinHand = Obstacle(); //iNickHand to Open, for sNickCoffin in lCoffinRoom  /////////////////Create multiple
-    oCoffinHand.set_obstacle_defualts("Coffin", "The Coffin doesn't have an openable lid, it's just marked with a hand print in the center.", "Theres no way to lift open the coffin, its sealed shut.", iNickHand.get_item_name(), "You placed the hand onto the coffin, blood starts spewing out from the seams the and lid starts sliding off, reavaling a corpse.");
+    Obstacle oCoffinHand = Obstacle();  //CANT OPEN, for sNickCoffin in lCoffinRoom
+    oCoffinHand.set_obstacle_defualts("Coffin with Handprint", "The Coffin is marked with a Hand printed in blood in the center.", "Theres no way to lift open the coffin, its sealed shut.", iNickHand.get_item_name(), "You placed the hand onto the coffin, blood starts spewing out from the seams the and lid starts sliding off, reavaling a corpse.");
+    Obstacle oCoffinSkull = Obstacle(); //CANT OPEN, for sNickCoffin in lCoffinRoom 
+    oCoffinSkull.set_obstacle_defualts("Coffin with Skull print", "The Coffin is marked with a Skull printed in blood in the center.", "Theres no way to lift open the coffin, its sealed shut.", "N/A", "N/A");
+    Obstacle oCoffinFoot = Obstacle();  //CANT OPEN, for sNickCoffin in lCoffinRoom
+    oCoffinFoot.set_obstacle_defualts("Coffin with Footprint", "The Coffin is marked with a Foot printed in blood in the center.", "Theres no way to lift open the coffin, its sealed shut.", "N/A", "N/A");
+    Obstacle oCoffinRibcage = Obstacle(); //CANT OPEN, for sNickCoffin in lCoffinRoom 
+    oCoffinRibcage.set_obstacle_defualts("Coffin with Ribcage print", "The Coffin is marked with a Ribcage printed in blood in the center.", "Theres no way to lift open the coffin, its sealed shut.", "N/A", "N/A");
 
     Obstacle oChest = Obstacle(); //iNicksEye to Open, for sChest in lStudy
     oChest.set_obstacle_defualts("Small Chest", "The Small Chest lid wont budge, there's not a lock on it either", "Theres no keyhole for the chest, just a spherical bloodied socket on top.", iNicksEye.get_item_name(), "You place the eye into the socket, blood stars spewing out from the cracks in the chest, the lid opens.");
@@ -143,9 +165,29 @@ int main()
 
     Searchables sSmallWoodenCrate = Searchables(); //In lStorageRoom, Blocked by oSmallWoodenCrate, Gain iBronzeKey
     sSmallWoodenCrate.set_searchables_name("Small Wooden Crate");
-    sSmallWoodenCrate.set_item(iBronzeKey);
     sSmallWoodenCrate.set_opening_description("You peer into the smashed crate.");
     sSmallWoodenCrate.set_obstacle(&oSmallWoodenCrate);
+
+    Searchables sSmallWoodenCrate2 = Searchables(); //In lStorageRoom, Blocked by oSmallWoodenCrate
+    sSmallWoodenCrate2.set_searchables_name("Small Wooden Crate");
+    sSmallWoodenCrate2.set_opening_description("You peer into the smashed crate.");
+    sSmallWoodenCrate2.set_obstacle(&oSmallWoodenCrate);
+
+    Searchables sSmallWoodenCrate3 = Searchables(); //In lStorageRoom, Blocked by oSmallWoodenCrate
+    sSmallWoodenCrate3.set_searchables_name("Small Wooden Crate");
+    sSmallWoodenCrate3.set_opening_description("You peer into the smashed crate.");
+    sSmallWoodenCrate3.set_obstacle(&oSmallWoodenCrate3);
+
+    Searchables sSmallWoodenCrate4 = Searchables(); //In lStorageRoom, Blocked by oSmallWoodenCrate
+    sSmallWoodenCrate4.set_searchables_name("Small Wooden Crate");
+    sSmallWoodenCrate4.set_item(iBronzeKey);
+    sSmallWoodenCrate4.set_opening_description("You peer into the smashed crate.");
+    sSmallWoodenCrate4.set_obstacle(&oSmallWoodenCrate4);
+    
+    Searchables sSmallWoodenCrate5 = Searchables(); //In lStorageRoom, Blocked by oSmallWoodenCrate
+    sSmallWoodenCrate5.set_searchables_name("Small Wooden Crate");
+    sSmallWoodenCrate5.set_opening_description("You peer into the smashed crate.");
+    sSmallWoodenCrate5.set_obstacle(&oSmallWoodenCrate5);
 
     Searchables sTableWithAGiantContainer = Searchables(); //In lStorageRoom, Blocked by oGiantContainer, Gain iNickHand
     sTableWithAGiantContainer.set_searchables_name("Table with a Giant Container");
@@ -180,12 +222,35 @@ int main()
     sBloodBagNick.set_opening_description("You take the Blood Bag");
     sBloodBagNick.set_obstacle(&oBloodBagNick);
 
-    Searchables sNickCoffin = Searchables(); //In lCoffingRoom, Blocked by iNickHand, Gain iNicksEye --------------Create Multiple
+    Searchables sBloodBagJohn = Searchables(); //In lFreezer, Blocked, CANT UNLOCK
+    sBloodBagJohn.set_searchables_name("Huge Blood Bag with the name John writen on the label.");
+    sBloodBagJohn.set_obstacle(&oBloodBagJohn);
+    Searchables sBloodBagSasha = Searchables(); //In lFreezer, Blocked, CANT UNLOCK
+    sBloodBagSasha.set_searchables_name("Huge Blood Bag with the name Sasha writen on the label.");
+    sBloodBagSasha.set_obstacle(&oBloodBagSasha);
+    Searchables sBloodBagCarol = Searchables(); //In lFreezer, Blocked, CANT UNLOCK
+    sBloodBagCarol.set_searchables_name("Huge Blood Bag with the name Carol writen on the label.");
+    sBloodBagCarol.set_obstacle(&oBloodBagCarol);
+    Searchables sBloodBagBarry = Searchables(); //In lFreezer, Blocked, CANT UNLOCk
+    sBloodBagBarry.set_searchables_name("Huge Blood Bag with the name Barry writen on the label.");
+    sBloodBagBarry.set_obstacle(&oBloodBagBarry);
+
+    Searchables sNickCoffin = Searchables(); //In lCoffingRoom, Blocked by iNickHand, Gain iNicksEye 
     sNickCoffin.set_searchables_name("Coffin with bloodied handprint.");
     sNickCoffin.set_item(iNicksEye);
     sNickCoffin.set_opening_description("You move the lid now that its open.");
     sNickCoffin.set_obstacle(&oCoffinHand);
     
+    Searchables sCoffinSkull = Searchables(); //In lCoffingRoom, Blocked, CANT UNLOCK
+    sCoffinSkull.set_searchables_name("Coffin with bloodied skull print.");
+    sCoffinSkull.set_obstacle(&oCoffinSkull);
+    Searchables sCoffinFoot = Searchables(); //In lCoffingRoom, Blocked, CANT UNLOCK 
+    sCoffinFoot.set_searchables_name("Coffin with bloodied footprint.");
+    sCoffinFoot.set_obstacle(&oCoffinFoot);
+    Searchables sCoffinRibcage = Searchables(); //In lCoffingRoom, Blocked, CANT UNLOCK
+    sCoffinRibcage.set_searchables_name("Coffin with bloodied ribcage print.");
+    sCoffinRibcage.set_obstacle(&oCoffinRibcage);
+
 
     //Location Classes Here//
     
@@ -250,7 +315,7 @@ int main()
     Location lHallway = Location("Hallway", "A hallway with many connecting doors, some locked, some not.", "The ominous unlit chandeliers and the black pillers makes this hallway even less inviting.");
     Location lStudy = Location("Study", "A room with a desk and many many bookshelves.", "Every book here is very well perserved, I don't even recognise most of these. They look ancient.");
     Location lFreezer = Location("Walk-in Freezer", "A fridged room filled with bloodbags stretching along all the walls.", "All the blood bags are labled with different names, John, Sasha, Nick, Carol, Barry... Thats worrying.");
-    Location lCoffinRoom = Location("Coffin Room", "A room with neatly stacked coffins leaning up against the back wall.", "None of the coffins open, but they each have different hand prints on them.");
+    Location lCoffinRoom = Location("Coffin Room", "A room with neatly stacked coffins leaning up against the back wall.", "None of the coffins open, but they each have different bloodied prints on them.");
     Location lShrine = Location("Shrine", "Cold dark room with a bronze statue of the current pope adorning the wall, alone.", "How did the Pope get lifted and die? And why? I'm suddenly more worried about that than the whole vamipire shenanigans.");
     Location lShrineExit = Location("Hidden Door", "N/A", "N/A");
 
@@ -261,6 +326,10 @@ int main()
 
     lStorageRoom.set_pathway(lHospitalRoom);
     lStorageRoom.set_searchables_in_location(sSmallWoodenCrate);
+    lStorageRoom.set_searchables_in_location(sSmallWoodenCrate2);
+    lStorageRoom.set_searchables_in_location(sSmallWoodenCrate3);
+    lStorageRoom.set_searchables_in_location(sSmallWoodenCrate4);
+    lStorageRoom.set_searchables_in_location(sSmallWoodenCrate5);
     lStorageRoom.set_searchables_in_location(sTableWithAGiantContainer);
 
     lHallway.set_pathway(lHospitalRoom);
@@ -278,11 +347,19 @@ int main()
 
     lFreezer.set_pathway(lHallway);
     lFreezer.set_location_path_is_blocked_by(oBronzeDoor);
+    lFreezer.set_searchables_in_location(sBloodBagJohn);
+    lFreezer.set_searchables_in_location(sBloodBagSasha);
+    lFreezer.set_searchables_in_location(sBloodBagCarol);
     lFreezer.set_searchables_in_location(sBloodBagNick);
+    lFreezer.set_searchables_in_location(sBloodBagBarry);
 
     lCoffinRoom.set_pathway(lHallway);
     lCoffinRoom.set_location_path_is_blocked_by(oSilverDoor);
     lCoffinRoom.set_searchables_in_location(sNickCoffin);
+    lCoffinRoom.set_searchables_in_location(sCoffinFoot);
+    lCoffinRoom.set_searchables_in_location(sCoffinSkull);
+    lCoffinRoom.set_searchables_in_location(sCoffinRibcage);
+
 
     lShrine.set_pathway(lHallway);
     lShrine.set_pathway(lShrineExit);
@@ -290,9 +367,11 @@ int main()
 
     //END OF DUNGEON LOCATIONS
 
-    Location* curruntLocation = &lInFrontOfSquare;
+    //Location* curruntLocation = &lInFrontOfSquare;
 
-    //////////Location* curruntLocation = &lHallway;
+    Location* curruntLocation = &lHospitalRoom;
+
+    player.add_item_to_inventory(iHammer);
 
     bool playing = true;
     int userInputNum = 0;
@@ -312,20 +391,20 @@ int main()
    Globals::enter_to_continue();
 
    //Work of Fiction Disclaimer
-   Globals::letter_by_letter_output("This game is a work of fiction. All the names, characters, places, events and incidents in this game are either the product of the developer's imagination or used in a fictitious manner. Any resemblance to actual persons, living or dead, or actual events is purely coincidental.", 2);
-   Globals::enter_to_continue();
+   //Globals::letter_by_letter_output("This game is a work of fiction. All the names, characters, places, events and incidents in this game are either the product of the developer's imagination or used in a fictitious manner. Any resemblance to actual persons, living or dead, or actual events is purely coincidental.", 2);
+   //Globals::enter_to_continue();
 
-   //Introduction section
-   Globals::letter_by_letter_output("I've been called in specifically to help with the situation thats taking place at the Vatican. The Pope has fallen ill and requires help from the best medical professional, that would indeed be me, Barry.", 1);
-   Globals::enter_to_continue();
-   Globals::letter_by_letter_output("Its currently 10pm, I'm unsure why they asked for me to wait for night to come and not ASAP, but the Pope probably has a busy schedule even when ill.", 1);
-   Globals::enter_to_continue();
-   Globals::letter_by_letter_output("As I approach the the entrance to the St Peters Square, I am approched by someone in a black suit, a butler maybe?", 1);
-   Globals::enter_to_continue();
-   Globals::letter_by_letter_output(caretaker.getNextDiologue(), 1);//caretaker
-   Globals::enter_to_continue();
-   Globals::letter_by_letter_output("I guess I can explore a little bit, its been many years since I last came here with my family.", 1);
-   Globals::enter_to_continue();
+   ////Introduction section
+   //Globals::letter_by_letter_output("I've been called in specifically to help with the situation thats taking place at the Vatican. The Pope has fallen ill and requires help from the best medical professional, that would indeed be me, Barry.", 1);
+   //Globals::enter_to_continue();
+   //Globals::letter_by_letter_output("Its currently 10pm, I'm unsure why they asked for me to wait for night to come and not ASAP, but the Pope probably has a busy schedule even when ill.", 1);
+   //Globals::enter_to_continue();
+   //Globals::letter_by_letter_output("As I approach the the entrance to the St Peters Square, I am approched by someone in a black suit, a butler maybe?", 1);
+   //Globals::enter_to_continue();
+   //Globals::letter_by_letter_output(caretaker.getNextDiologue(), 1);//caretaker
+   //Globals::enter_to_continue();
+   //Globals::letter_by_letter_output("I guess I can explore a little bit, its been many years since I last came here with my family.", 1);
+   //Globals::enter_to_continue();
    //End of Introduction Section
 
     //main game

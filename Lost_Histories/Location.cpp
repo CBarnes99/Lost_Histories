@@ -93,6 +93,7 @@ if (isSearchablesInArea == true) {	//check to see if theres an item in the curre
 	}
 	else {
 		//if you didnt search the Searchables
+		system("cls");
 		cout << "You decided not to search." << endl;
 	}
 }
