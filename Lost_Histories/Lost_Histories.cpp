@@ -369,9 +369,6 @@ int main()
 
     Location* curruntLocation = &lInFrontOfSquare;
 
-
-    player.add_item_to_inventory(iHammer);
-
     bool playing = true;
     int userInputNum = 0;
     int LoopIncrement = 0;
