@@ -367,9 +367,8 @@ int main()
 
     //END OF DUNGEON LOCATIONS
 
-    //Location* curruntLocation = &lInFrontOfSquare;
+    Location* curruntLocation = &lInFrontOfSquare;
 
-    Location* curruntLocation = &lHospitalRoom;
 
     player.add_item_to_inventory(iHammer);
 
@@ -391,20 +390,20 @@ int main()
    Globals::enter_to_continue();
 
    //Work of Fiction Disclaimer
-   //Globals::letter_by_letter_output("This game is a work of fiction. All the names, characters, places, events and incidents in this game are either the product of the developer's imagination or used in a fictitious manner. Any resemblance to actual persons, living or dead, or actual events is purely coincidental.", 2);
-   //Globals::enter_to_continue();
+   Globals::letter_by_letter_output("This game is a work of fiction. All the names, characters, places, events and incidents in this game are either the product of the developer's imagination or used in a fictitious manner. Any resemblance to actual persons, living or dead, or actual events is purely coincidental.", 2);
+   Globals::enter_to_continue();
 
    ////Introduction section
-   //Globals::letter_by_letter_output("I've been called in specifically to help with the situation thats taking place at the Vatican. The Pope has fallen ill and requires help from the best medical professional, that would indeed be me, Barry.", 1);
-   //Globals::enter_to_continue();
-   //Globals::letter_by_letter_output("Its currently 10pm, I'm unsure why they asked for me to wait for night to come and not ASAP, but the Pope probably has a busy schedule even when ill.", 1);
-   //Globals::enter_to_continue();
-   //Globals::letter_by_letter_output("As I approach the the entrance to the St Peters Square, I am approched by someone in a black suit, a butler maybe?", 1);
-   //Globals::enter_to_continue();
-   //Globals::letter_by_letter_output(caretaker.getNextDiologue(), 1);//caretaker
-   //Globals::enter_to_continue();
-   //Globals::letter_by_letter_output("I guess I can explore a little bit, its been many years since I last came here with my family.", 1);
-   //Globals::enter_to_continue();
+   Globals::letter_by_letter_output("I've been called in specifically to help with the situation thats taking place at the Vatican. The Pope has fallen ill and requires help from the best medical professional, that would indeed be me, Barry.", 1);
+   Globals::enter_to_continue();
+   Globals::letter_by_letter_output("Its currently 10pm, I'm unsure why they asked for me to wait for night to come and not ASAP, but the Pope probably has a busy schedule even when ill.", 1);
+   Globals::enter_to_continue();
+   Globals::letter_by_letter_output("As I approach the the entrance to the St Peters Square, I am approched by someone in a black suit, a butler maybe?", 1);
+   Globals::enter_to_continue();
+   Globals::letter_by_letter_output(caretaker.getNextDiologue(), 1);//caretaker
+   Globals::enter_to_continue();
+   Globals::letter_by_letter_output("I guess I can explore a little bit, its been many years since I last came here with my family.", 1);
+   Globals::enter_to_continue();
    //End of Introduction Section
 
     //main game
